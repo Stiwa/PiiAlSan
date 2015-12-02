@@ -11,31 +11,56 @@ public class Proyecto {
 		Scanner fichero = null;	
 		  try {
 		  	fichero = new Scanner(new File("ejecucion.txt"));
+		  	
+		  	String word = fichero.nextLine();
 		    while (fichero.hasNextLine()) {
-		    	
-		    	String word = fichero.nextLine(); 
 		    	String[] recorre;
 		    	
+		    	word.trim();
+		    	
 		    	if(word.charAt(0) == '*'){
+		    		//System.out.println(word);
 		    		if(fichero.hasNextLine()){
 		    			word = fichero.nextLine();
 		    		}
-		    	}
-		    		recorre = word.split("\\ ");	
+		    	}else{
+		    		recorre = word.split(" ");	
 		    		
 		    		switch(recorre[0]){
 			    		case "InsertaPersona" :
 			    			System.out.println(word);
 			    			break;
 			    		case "AsignaCoordinador" :
+			    			System.out.println(word);
 			    			break;
+			    		case "AsignaCargaDocente" :
+			    			System.out.println(word);
+			    			break;
+			    		case "AsignaGrupo" :
+			    			System.out.println(word);
+			    			break;
+			    		case "Matricula" :
+			    			System.out.println(word);
+			    			break;
+			    		case "Evalua" :
+			    			System.out.println(word);
+			    			break;
+			    		case "Expediente" :
+			    			System.out.println(word);
+			    			break;
+			    		case "ObtenerCalendarioClases" :
+			    			System.out.println(word);
+			    			break;
+			    			
 			    		default : 
 			    			System.out.println("Mal escrito.");
 			    			break;
 		    		}
-		    	// String[] auxiliar = word.split("\\*");
-		    	// String[] aux = auxiliar[3].split(":");
-		    	// String[] aux2 = auxiliar[4].split(":");
+		    		word = fichero.nextLine();
+			    	// String[] auxiliar = word.split("\\*");
+			    	// String[] aux = auxiliar[3].split(":");
+			    	// String[] aux2 = auxiliar[4].split(":");
+			    }
 		    }
 		  } catch (FileNotFoundException e){
 			  System.err.println("Error fichero: ejecucion.txt");
