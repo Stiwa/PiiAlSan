@@ -1,2 +1,6 @@
+<<<<<<< HEAD
 //Fichero de avisos
 xzvihbhbchbxhbsanti
+=======
+Comando incorrecto <IrtaPersona>
+>>>>>>> branch 'master' of https://github.com/santy117/PiiAlSan.git

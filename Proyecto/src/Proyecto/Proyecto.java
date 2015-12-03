@@ -28,10 +28,12 @@ public class Proyecto {
 		    		
 		    		switch(recorre[0]){
 			    		case "InsertaPersona" :
-			    			System.out.println(word);
+			    			//System.out.println(word);
+			    			Persona.InsertaPersona(word);
 			    			break;
 			    		case "AsignaCoordinador" :
 			    			System.out.println(word);
+			    			//Asignatura.AsignaCoordinador();
 			    			break;
 			    		case "AsignaCargaDocente" :
 			    			System.out.println(word);
@@ -53,7 +55,7 @@ public class Proyecto {
 			    			break;
 			    			
 			    		default : 
-			    			System.out.println("Mal escrito.");
+			    			System.out.println("Comando incorrecto <" +recorre[0] +">");
 			    			break;
 		    		}
 		    		word = fichero.nextLine();

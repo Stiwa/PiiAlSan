@@ -21,5 +21,8 @@ public class Persona {
 		this.Perfil = Perfil;
 	}
 	
+	public static void InsertaPersona(String datos){
+		System.out.println("funciona");
+	}
 
 }
