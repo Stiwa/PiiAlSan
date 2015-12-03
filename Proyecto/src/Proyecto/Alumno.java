@@ -7,6 +7,8 @@ public class Alumno extends Persona {  //Falta añadir interfaz comparable
 	
 	private GregorianCalendar FechaIngreso = new GregorianCalendar();
 	private LinkedList DocenciaRecibida = new LinkedList();
+	//AsignaturasSuperadas iba a ser una list pero lo vamos a tener que hacer como una clase nueva
+	
 	
 	public Alumno(){
 	}
