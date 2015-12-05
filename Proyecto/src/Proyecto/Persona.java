@@ -21,6 +21,15 @@ public class Persona {
 		this.Perfil = Perfil;
 	}
 	
+	public String getDNI(){
+		return DNI;
+	}
+	public String getNombre(){
+		return Nombre;
+	}
+	public String getApellidos(){
+		return Apellidos;
+	}
 	public static void InsertaPersona(String datos){
 		System.out.println("funciona");
 	}
