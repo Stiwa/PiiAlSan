@@ -3,10 +3,11 @@ package Proyecto;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.io.IOException;
 
 public class Proyecto {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		//Abre el fichero de ejecución. En caso de no existir, error
 		Scanner fichero = null;	
 		  try {
@@ -29,7 +30,7 @@ public class Proyecto {
 		    		switch(recorre[0]){
 			    		case "InsertaPersona" :
 			    			//System.out.println(word);
-			    			Persona.InsertaPersona(word);
+			    			Persona.InsertaPersona(word, recorre[1]);
 			    			break;
 			    		case "AsignaCoordinador" :
 			    			System.out.println(word);
@@ -55,7 +56,8 @@ public class Proyecto {
 			    			break;
 			    			
 			    		default : 
-			    			System.out.println("Comando incorrecto <" +recorre[0] +">");
+			    			//System.out.println("Comando incorrecto <" +recorre[0] +">");
+			    			Avisos.avisosFichero("Comando incorrecto <" +recorre[0] +">") ;
 			    			break;
 		    		}
 		    		word = fichero.nextLine();

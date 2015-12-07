@@ -21,8 +21,11 @@ public class Persona {
 		this.Perfil = Perfil;
 	}
 	
-	public static void InsertaPersona(String datos){
-		System.out.println("funciona");
+	public static void InsertaPersona(String datos, String perfil){ //En perfil recibimos el segundo elemento 
+																	//Del array de Strings, o sea, el tipo 
+		//System.out.println(perfil);
+		String tipo = perfil.trim();
+		
 	}
 
 }
