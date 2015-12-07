@@ -25,7 +25,19 @@ public class Persona {
 																	//Del array de Strings, o sea, el tipo 
 		//System.out.println(perfil);
 		String tipo = perfil.trim();
-		
+	}
+	
+	public String getDNI(){
+		return DNI;
+	}
+	public String getNombre(){
+		return Nombre;
+	}
+	public String getApellidos(){
+		return Apellidos;
+	}
+	public static void InsertaPersona(String datos){
+		System.out.println("funciona");
 	}
 
 }
