@@ -1,1 +1,1 @@
-Comando incorrecto <IrtaPersona>
+Comando incorrecto <InseaPersona>

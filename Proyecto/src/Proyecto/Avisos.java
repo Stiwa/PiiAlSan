@@ -11,18 +11,21 @@ import java.util.Scanner;
 public class Avisos {
 	
 	public static void avisosFichero(String comando) throws IOException{	
-		Scanner fichero = null;
+		Scanner fichero;
+		
 	  	try {
-	  		fichero = new Scanner(new File("avisos.txt")); 
+	  		File f = new File("avisos.txt");
+	  		fichero = new Scanner(f); 
+	  		BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
+	  		
 	  		if (fichero != null){
 	  			while(fichero.hasNextLine()){
 	  				fichero.nextLine();
 	  			}
 	  		}
-	  		File f = new File("avisos.txt");
-			BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
-			bufer.write(comando+"\n");
-			//bufer.newLine();
+	  		
+			bufer.write(comando);
+			bufer.newLine();
 			bufer.close();
 
 	  	} catch (FileNotFoundException e){
