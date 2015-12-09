@@ -8,8 +8,8 @@ import java.io.IOException;
 public class Proyecto {
 
 	public static void main(String[] args) throws IOException {
-		//Abre el fichero de ejecución. En caso de no existir, error
-		Scanner fichero = null;	
+		//Abre el fichero de ejecuciï¿½n. En caso de no existir, error
+		Scanner fichero=null;	
 		  try {
 		  	fichero = new Scanner(new File("ejecucion.txt"));
 		  	
@@ -57,7 +57,7 @@ public class Proyecto {
 			    			
 			    		default : 
 			    			//System.out.println("Comando incorrecto <" +recorre[0] +">");
-			    			Avisos.avisosFichero("Comando incorrecto <" +recorre[0] +">") ;
+			    			Avisos.avisosFichero("Comando incorrecto <" +recorre[0] +">") ;			
 			    			break;
 		    		}
 		    		word = fichero.nextLine();
