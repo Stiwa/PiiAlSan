@@ -16,7 +16,7 @@ public class Avisos {
 	  	try {
 	  		File f = new File("avisos.txt");
 	  		fichero = new Scanner(f); 
-	  		BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
+	  		BufferedWriter bufer = new BufferedWriter(new FileWriter(f, true));
 	  		
 	  		if (fichero != null){
 	  			while(fichero.hasNextLine()){
