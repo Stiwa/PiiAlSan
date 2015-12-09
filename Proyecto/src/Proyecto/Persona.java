@@ -1,5 +1,6 @@
 package Proyecto;
 
+import java.io.IOException;
 import java.util.GregorianCalendar;
 
 public class Persona {
@@ -21,10 +22,17 @@ public class Persona {
 		this.Perfil = Perfil;
 	}
 	
-	public static void InsertaPersona(String datos, String perfil){ //En perfil recibimos el segundo elemento 
+	public static void InsertaPersona(String datos, String perfil) throws IOException{ //En perfil recibimos el segundo elemento 
 																	//Del array de Strings, o sea, el tipo 
 		//System.out.println(perfil);
 		String tipo = perfil.trim();
+		if(tipo.equals("alumno")){
+		   	//InsertaAlumno(datos);
+		}else if(tipo.equals("profesor")){
+			//InsertaProfesor(datos);
+		}else
+			Avisos.avisosFichero("Campo perfil incorrecto: <" +perfil +">");
+		
 	}
 	
 	public String getDNI(){

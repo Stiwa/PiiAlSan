@@ -12,17 +12,24 @@ public class Avisos {
 	
 	public static void avisosFichero(String comando) throws IOException{	
 		Scanner fichero = null;
+
+
 	  	try {
+
 	  		fichero = new Scanner(new File("avisos.txt")); 
 	  		if (fichero != null){
 	  			
 	  				fichero.nextLine();
 	  			
 	  		}
+	  		
+
 	  		File f = new File("avisos.txt");
-			BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
-			bufer.write(comando+"\n");
-			//bufer.newLine();
+	  		BufferedWriter bufer = new BufferedWriter(new FileWriter(f, true));
+	  	
+			bufer.write(comando);
+			bufer.newLine();
+
 			bufer.close();
 
 	  	} catch (FileNotFoundException e){
