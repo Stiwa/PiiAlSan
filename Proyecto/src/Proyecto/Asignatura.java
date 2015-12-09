@@ -28,4 +28,11 @@ public class Asignatura {
 	}
 	//Aqui hay que poner el super?¿?¿?
 	
+	public int getIdAsignatura(){
+		return IdAsignatura;
+	}
+	public String getSiglas(){
+		return Siglas;
+	}
+	
 }

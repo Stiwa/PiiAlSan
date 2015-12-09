@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 
@@ -37,5 +38,59 @@ public class Avisos {
 	  	}
 		return;
 	}
+	
+	public static boolean ComprobarFecha(GregorianCalendar Fecha){
+		
+		//Comprobamos si la fecha introducida esta entre el minimo y el maximo
+		//permitido
+		GregorianCalendar FechaMaxima = null;
+		GregorianCalendar FechaMinima = null;
+		FechaMaxima.set(2020, 1, 1);
+		FechaMinima.set(1950, 1, 1);
+		try{
+			Fecha.setLenient(false);
+			Fecha.getTime();
+		} catch(Exception time){
+			return false;
+		}
+		if(Fecha.getTimeInMillis()-FechaMinima.getTimeInMillis()<0){
+			return false;  //la fecha introducida es menor que la minima
+		}
+		if(FechaMaxima.getTimeInMillis()-Fecha.getTimeInMillis()<0){
+			return false;  // la fecha introducida es mayor que la maxima
+		}
+		return true;
+		
+		
+	}
+	public static boolean ComprobarHorasAsig(int Horas, String TipoProfesor){
+		//Aqui depende de si el profesor es titular (20horas) o asocidado(15horas)
+		if (Horas<0){
+			return false;
+		}
+		if(TipoProfesor.equals("titular")){
+			if(Horas>20){
+				return false;
+			}
+			return true;
+		}
+		if (Horas>15){
+			return false;
+		}
+		
+		return true;
+	}
+	public static boolean ComprobarEdad(int edad){
+		int EdadMinima=15;
+		int EdadMaxima=65;
+		if(EdadMinima>edad){
+			return false;	
+		}
+		if(EdadMaxima<edad){
+			return false;
+		}
+		return true;
+	}
+	
 	
 }

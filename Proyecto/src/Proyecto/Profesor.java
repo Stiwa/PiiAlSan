@@ -1,14 +1,15 @@
 package Proyecto;
 
 import java.util.GregorianCalendar;
-import java.util.LinkedList;
+import java.util.LinkedHashMap;
+
 
 public class Profesor extends Persona{
 	
 	private String Departamento = new String();
 	private String Categoria = new String();
 	private int HorasAsignables;
-	private LinkedList DocenciaImpartida = new LinkedList();
+	private LinkedHashMap<Integer,Asignatura> DocenciaImpartida= new LinkedHashMap<Integer,Asignatura>();
 	
 	
 	public Profesor(){

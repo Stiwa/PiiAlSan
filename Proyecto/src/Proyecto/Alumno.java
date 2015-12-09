@@ -1,13 +1,15 @@
 package Proyecto;
 
 import java.util.GregorianCalendar;
-import java.util.LinkedList;
+import java.util.LinkedHashMap;
+
+
 
 public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	
 	private GregorianCalendar FechaIngreso = new GregorianCalendar();
-	private LinkedList DocenciaRecibida = new LinkedList();
-	//AsignaturasSuperadas iba a ser una list pero lo vamos a tener que hacer como una clase nueva
+	static LinkedHashMap<Integer,Asignatura> DocenciaRecibida = new LinkedHashMap<Integer, Asignatura>();
+	//AsiganturasSuperadas se puede hacer con un linkedhashmap o en una clase nueva
 	
 	
 	public Alumno(){
