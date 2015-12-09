@@ -11,6 +11,7 @@
 * 
 InsertPersona profesor 34567210J "J Antonio"  "Álvarez González" asociado "Ingeniería Telemática"  20
 InsertaPersona profesor 34567210J "J Antonio  Álvarez González"   asociado "Ingeniería Telemática"  20
+InsertaPersona proffffesor 34567210J "J Antonio  Álvarez González"   asociado "Ingeniería Telemática"  20
 *
 InsertaPersona profesor 34567210 " J Antonio"  "Álvarez González" asociado    10/02/1972   "Ingeniería Telemática"  20
 InsertaPersona profesor 34567210J "J Antonio"  "Álvarez González" asociado    10/02/2972   "Ingeniería Telemática"  20

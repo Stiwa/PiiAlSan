@@ -1,15 +1,9 @@
 //Fichero de avisos 
-Comando incorrecto <InsertPersona>
-Comando incorrecto <AsignaCooordinador>
-Comando incorrecto <AsignaCargaDocecnte>
-Comando incorrecto <asignaGrupo>
-Comando incorrecto <MatriCCula>
-Comando incorrecto <Evaluar>
-Comando incorrecto <Expedientes>
-Comando incorrecto <InsertPersona>
-Comando incorrecto <AsignaCooordinador>
-Comando incorrecto <AsignaCargaDocecnte>
-Comando incorrecto <asignaGrupo>
-Comando incorrecto <MatriCCula>
-Comando incorrecto <Evaluar>
-Comando incorrecto <Expedientes>
+Comando incorrecto: <InsertPersona>
+Campo perfil incorrecto: <proffffesor>
+Comando incorrecto: <AsignaCooordinador>
+Comando incorrecto: <AsignaCargaDocecnte>
+Comando incorrecto: <asignaGrupo>
+Comando incorrecto: <MatriCCula>
+Comando incorrecto: <Evaluar>
+Comando incorrecto: <Expedientes>

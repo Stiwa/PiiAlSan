@@ -56,8 +56,7 @@ public class Proyecto {
 			    			break;
 			    			
 			    		default : 
-			    			//System.out.println("Comando incorrecto <" +recorre[0] +">");
-			    			Avisos.avisosFichero("Comando incorrecto <" +recorre[0] +">") ;
+			    			Avisos.avisosFichero("Comando incorrecto: <" +recorre[0] +">") ;
 			    			break;
 		    		}
 		    		word = fichero.nextLine();

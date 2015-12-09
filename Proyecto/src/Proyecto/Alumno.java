@@ -20,9 +20,6 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		//el super al derivar de persona tiene que llevar dentro de el los parametros que recibe de persona
 		this.FechaIngreso= FechaIngreso;
 		
-		
-		
-		
 	}
 	
 
