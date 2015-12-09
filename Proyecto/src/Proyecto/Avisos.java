@@ -81,6 +81,7 @@ public class Avisos {
 		return true;
 	}
 	public static boolean ComprobarEdad(int edad){
+		//comprobacion de edad minima y maxima permitida
 		int EdadMinima=15;
 		int EdadMaxima=65;
 		if(EdadMinima>edad){

@@ -24,5 +24,5 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		
 	}
 	
-
+//xx
 }
