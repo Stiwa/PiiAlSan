@@ -31,6 +31,7 @@ public class Grupos {
 	public char getDia(){
 		return Dia;
 	}
+	//x
 	public int getHoraInicio(){
     SimpleDateFormat date = new SimpleDateFormat("HH");
 	String auxInic=date.format(HoraInicio);

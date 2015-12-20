@@ -12,7 +12,7 @@ public class Asignatura {
 	private float Nota;
 	private LinkedList<Integer> Prerrequisitos = new LinkedList<Integer>();
 	private LinkedList Grupos = new LinkedList();	
-	
+	//x
 	
 	
 	public Asignatura(){
