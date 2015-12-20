@@ -23,11 +23,22 @@ public class Persona {
 	}
 	
 	public static void InsertaPersona(String datos, String perfil) throws IOException{ //En perfil recibimos el segundo elemento 
-																	//Del array de Strings, o sea, el tipo 
-		//System.out.println(perfil);
+																					   //Del array de Strings, o sea, el tipo 
+		//Comprobamos que el numero de parametros sea el correcto
+		String[] arrayDatos = datos.trim().split("\"");
+		if(arrayDatos.length!=7 && arrayDatos.length!=5){
+			Avisos.avisosFichero("Numero de comandos incorrecto.");
+			return;
+		}
+		if(Avisos.ComprobarDNI(arrayDatos[1]) == false){
+			Avisos.avisosFichero("DNI incorrecto.");
+		}
+		
 		String tipo = perfil.trim();
 		if(tipo.equals("alumno")){
 		   	//InsertaAlumno(datos);
+			
+			
 		}else if(tipo.equals("profesor")){
 			//InsertaProfesor(datos);
 		}else
