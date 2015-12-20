@@ -10,7 +10,7 @@ public class Asignatura {
 	private String Siglas = new String();
 	private int Curso;
 	private float Nota;
-	private LinkedList Prerrequisitos = new LinkedList();
+	private LinkedList<Integer> Prerrequisitos = new LinkedList<Integer>();
 	private LinkedList Grupos = new LinkedList();	
 	
 	
@@ -19,14 +19,29 @@ public class Asignatura {
 		
 	}
 	
-	public Asignatura(int IdAsignatura,String Siglas,LinkedList<String> Prerrequisitos){
+	public Asignatura(int IdAsignatura,String Siglas,String Prerrequisitos){
+		this.IdAsignatura= IdAsignatura;
+		this.Siglas=Siglas;
+		
 		
 	}
-	public void AsignaturaCoord(int IdAsignatura,String Siglas,String Coordinador,LinkedList<String> Prerrequisitos){
+	public void AsignaturaCoord(int IdAsignatura,String Siglas,String Coordinador,String Prerrequisitos){
+		this.IdAsignatura=IdAsignatura;
+		this.Siglas=Siglas;
+		this.Coordinador=Coordinador;		
+		if(Prerrequisitos.length()>0){
+			String[] lista= Prerrequisitos.trim().split(",");
+			//en la lista de prerrequisitos debemos separarl
+			for(int i=0; i<lista.length; i++){
+			this.Prerrequisitos.add(Integer.parseInt(lista[i]));
+			}
+			
+			
+		}
+			
 		
 		
 	}
-	//Aqui hay que poner el super?¿?¿?
 	
 	public int getIdAsignatura(){
 		return IdAsignatura;
