@@ -16,12 +16,9 @@ public class Avisos {
 
 
 	  	try {
-
 	  		fichero = new Scanner(new File("avisos.txt")); 
 	  		if (fichero != null){
-	  			
-	  				fichero.nextLine();
-	  			
+	  				fichero.nextLine();	
 	  		}
 	  		
 
@@ -38,6 +35,26 @@ public class Avisos {
 	  	}
 		return;
 	}
+	
+	
+	public static boolean ComprobarDNI(String DNI){
+		DNI.trim();
+		if(DNI.length() != 9){
+			return false;
+		}
+		//Comprobamos caracter a caracter que todos son correctos en un DNI
+		char[] elementos = DNI.toCharArray();
+		if ('0' > elementos[8] && elementos[8] >'9') {
+			return false;
+		}
+		for(int i=0; i<DNI.length()-2; i++){
+			if('A' > elementos[i] || elementos[i] < 'Z'){
+				return false;
+			}
+		}	
+		return true;
+	}
+	
 	
 	public static boolean ComprobarFecha(GregorianCalendar Fecha){
 		

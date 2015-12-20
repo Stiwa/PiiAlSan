@@ -37,7 +37,7 @@ public class Profesor extends Persona{
 	}
 	@SuppressWarnings("unused")
 	public void AsignarCargaDocente(char grupo,int id,int idgrupo){
-		Integer a=new Integer(id);
+		Integer a = new Integer(id);
 		if(a==null){
 			return;
 		}
