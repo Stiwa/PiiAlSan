@@ -11,7 +11,7 @@ public class Asignatura {
 	private int Curso;
 	private float Nota;
 	private LinkedList Prerrequisitos = new LinkedList();
-	
+	private LinkedList Grupos = new LinkedList();	
 	
 	
 	
@@ -34,5 +34,7 @@ public class Asignatura {
 	public String getSiglas(){
 		return Siglas;
 	}
+
+	
 	
 }

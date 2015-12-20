@@ -15,3 +15,19 @@ Comando incorrecto <asignaGrupo>
 Comando incorrecto <MatriCCula>
 Comando incorrecto <Evaluar>
 Comando incorrecto <Expedientes>
+Comando incorrecto <<<<<<<<>
+Comando incorrecto <InsertPersona>
+Comando incorrecto <=======>
+Comando incorrecto <InsertPersona>
+Campo perfil incorrecto: <proffffesor>
+Comando incorrecto <>>>>>>>>
+Comando incorrecto <<<<<<<<>
+Comando incorrecto <InseaPersona>
+Comando incorrecto <=======>
+Comando incorrecto <>>>>>>>>
+Comando incorrecto <AsignaCooordinador>
+Comando incorrecto <AsignaCargaDocecnte>
+Comando incorrecto <asignaGrupo>
+Comando incorrecto <MatriCCula>
+Comando incorrecto <Evaluar>
+Comando incorrecto <Expedientes>
