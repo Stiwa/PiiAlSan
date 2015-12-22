@@ -27,7 +27,6 @@ public class Avisos {
 	  	
 			bufer.write(comando);
 			bufer.newLine();
-
 			bufer.close();
 
 	  	} catch (FileNotFoundException e){
@@ -39,16 +38,17 @@ public class Avisos {
 	
 	public static boolean ComprobarDNI(String DNI){
 		DNI.trim();
-		if(DNI.length() != 9){
+		
+		if(DNI.length() <9 || DNI.length() >9){
 			return false;
-		}
-		//Comprobamos caracter a caracter que todos son correctos en un DNI
+		}		
+		//Comprobamos caracter a caracter que todos son correctos en un DNI		
 		char[] elementos = DNI.toCharArray();
-		if ('0' > elementos[8] && elementos[8] >'9') {
+		if (elementos[DNI.length()-1] < 'A'  || elementos[DNI.length()-1] >'Z') {
 			return false;
 		}
-		for(int i=0; i<DNI.length()-2; i++){
-			if('A' > elementos[i] || elementos[i] < 'Z'){
+		for(int i=0; i<DNI.length()-1; i++){
+			if(elementos[i] < '0' || elementos[i] > '9'){
 				return false;
 			}
 		}	

@@ -2,12 +2,23 @@ package Proyecto;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 import java.io.IOException;
 
 public class Proyecto {
 
+
+	static LinkedHashMap<String, Alumno> mapAlumnos = new LinkedHashMap<String, Alumno>();
+	static LinkedHashMap<String, Profesor> mapProfesores = new LinkedHashMap<String, Profesor>();
+	static LinkedHashMap<Integer, Asignatura> mapAsignaturas = new LinkedHashMap<Integer, Asignatura>();
+	
+	
 	public static void main(String[] args) throws IOException {
+		//Cargamos en los mapas el contenido de los ficheros personas.txt y asignaturas.txt
+		//Persona.cargaPersonasAMapa("personas.txt");
+		//Asignaturas.cargaAsignaturasAMapa();
+		
 		//Abre el fichero de ejecuci�n. En caso de no existir, error
 		Scanner fichero=null;	
 		  try {
@@ -25,34 +36,33 @@ public class Proyecto {
 		    			word = fichero.nextLine();
 		    		}
 		    	}else{
-		    		recorre = word.split(" ");	
+		    		recorre = word.split("\\s+");	
 		    		
 		    		switch(recorre[0]){
 			    		case "InsertaPersona" :
-			    			//System.out.println(word);
 			    			Persona.InsertaPersona(word, recorre[1]);
 			    			break;
 			    		case "AsignaCoordinador" :
-			    			System.out.println(word);
+			    			//System.out.println(word);
 			    			//Asignatura.AsignaCoordinador();
 			    			break;
 			    		case "AsignaCargaDocente" :
-			    			System.out.println(word);
+			    			//System.out.println(word);
 			    			break;
 			    		case "AsignaGrupo" :
-			    			System.out.println(word);
+			    			//System.out.println(word);
 			    			break;
 			    		case "Matricula" :
-			    			System.out.println(word);
+			    			//System.out.println(word);
 			    			break;
 			    		case "Evalua" :
-			    			System.out.println(word);
+			    			//System.out.println(word);
 			    			break;
 			    		case "Expediente" :
-			    			System.out.println(word);
+			    			//System.out.println(word);
 			    			break;
 			    		case "ObtenerCalendarioClases" :
-			    			System.out.println(word);
+			    			//System.out.println(word);
 			    			break;
 			    			
 			    		default : 
@@ -69,7 +79,7 @@ public class Proyecto {
 			    }
 		    }
 		  } catch (FileNotFoundException e){
-			  System.err.println("Error fichero: ejecucion.txt");
+			  Avisos.avisosFichero("Error fichero: ejecucion.txt");
 			  System.exit(1);
 		  }
 		    fichero.close();
