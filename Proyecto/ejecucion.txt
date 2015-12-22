@@ -9,14 +9,14 @@
 * 	Numero de horas incorrecto
 *	OK
 * 
-InsertPersona profesor 34567210J "J Antonio"  "Álvarez González" asociado "Ingeniería Telemática"  20
-InsertaPersona profesor 34567210J "J Antonio  Álvarez González"   asociado "Ingeniería Telemática"  20
+InsertPersona profesor 34567210J "J Antonio"  "ï¿½lvarez Gonzï¿½lez" asociado "Ingenierï¿½a Telemï¿½tica"  20
+InsertaPersona profesor 34567210J "J Antonio  ï¿½lvarez Gonzï¿½lez"   asociado "Ingenierï¿½a Telemï¿½tica"  20
 *
-InsertaPersona profesor 34567210 " J Antonio"  "Álvarez González"  10/02/1972   asociado "Ingeniería Telemática"  20
-InsertaPersona profesor 34567210 " J Antonio"  "Álvarez González"  10/02/1972   asociado "Ingeniería Telemática"  20 
-InsertaPersona profesor 3456h210J "J Antonio"  "Álvarez González"   10/02/2972   asociado "Ingeniería Telemática"  20
-InsertaPersona profesor 34567210J  "J Antonio"  "Alvarez González"  10/02/1972   asociado "Ingeniería Telemática"  20
-InsertaPersona profesor 34567210J "J Antonio"  "Álvarez González"   10/02/1972   titular "Ingeniería Telemática"  20
+InsertaPersona profesor 34567210 " J Antonio"  "ï¿½lvarez Gonzï¿½lez"  10/02/1972   asociado "Ingenierï¿½a Telemï¿½tica"  20
+InsertaPersona profesor 34567210 " J Antonio"  "ï¿½lvarez Gonzï¿½lez"  10/02/1972   asociado "Ingenierï¿½a Telemï¿½tica"  20 
+InsertaPersona profesor 3456h210J "J Antonio"  "ï¿½lvarez Gonzï¿½lez"   10/02/2972   asociado "Ingenierï¿½a Telemï¿½tica"  20
+InsertaPersona profesor 34567210J  "J Antonio"  "Alvarez Gonzï¿½lez"  10/02/1972   asociado "Ingenierï¿½a Telemï¿½tica"  20
+InsertaPersona profesor 34567210J "J Antonio"  "ï¿½lvarez Gonzï¿½lez"   10/02/1972   titular "Ingenierï¿½a Telemï¿½tica"  20
 *
 ***************************************************************************************************************************************
 *      AsignaCoordinador persona asignatura   
@@ -41,7 +41,7 @@ AsignaCoordinador  33218765X P-I
 * 	   Tipo de grupo incorrecto
 * 	   Grupo inexistente
 * 	   Grupo ya asignado 
-* 	   Horas asignables superior al máximo
+* 	   Horas asignables superior al mï¿½ximo
 * 	   OK
 *          Se genera solape
 *
@@ -68,9 +68,9 @@ ObtenerCalendarioClases 37834521S calendarioProfesor.txt
 * 	    Fecha de ingreso incorrecta
 *	    OK
 *
-InsertaPersona alumno 56432001H  "Cristian "  "Alonso Pérez"  15/10/1997  
-InsertaPersona alumno 56432001H  "Cristian "  "Alonso Pérez"  15/10/1997    15/09/2115   
-InsertaPersona alumno 56432001H  "Cristian "  " Alonso Pérez"  15/10/1997   02/09/2015   
+InsertaPersona alumno 56432001H  "Cristian "  "Alonso Pï¿½rez"  15/10/1997  
+InsertaPersona alumno 56432001H  "Cristian "  "Alonso Pï¿½rez"  15/10/1997    15/09/2115   
+InsertaPersona alumno 56432001H  "Cristian "  " Alonso Pï¿½rez"  15/10/1997   02/09/2015   
 *
 **************************************************************************************
 *       AsignaGrupo alumno asignatura tipoGrupo grupo 
@@ -112,7 +112,7 @@ Matricula 56534219T P-I
 *	Numero de argumentos incorrecto
 *	Asignatura inexistente	
 *	Fichero	de notas inexistente
-*       Asignatura ya evaluada en ese curso académico
+*       Asignatura ya evaluada en ese curso acadï¿½mico
 *       **Por linea de notas:          notas.txt
 * 	Alumno inexistente: <dni>      56431122Y 3 4
 *	Alumno no matriculado: <dni>   56432001H 4 3	  
@@ -129,7 +129,7 @@ Evalua CAL-II 15/16 notas.txt
 *      Expediente alumno salida 
 *****************************************************************************************
 *      Avisos: 
-*            Expediente vacío
+*            Expediente vacï¿½o
 *            OK 
 *  
 Expediente 56432001H expedienteAlumno.txt 

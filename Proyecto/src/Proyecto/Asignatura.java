@@ -15,7 +15,9 @@ public class Asignatura {
 	//x
 	
 	
-	public Asignatura(){
+	public Asignatura(int idAsignatura,int idGrupo, char grupo){
+		this.IdAsignatura=idAsignatura;
+				
 		
 	}
 	
