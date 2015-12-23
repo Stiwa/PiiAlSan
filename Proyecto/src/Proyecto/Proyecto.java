@@ -16,7 +16,7 @@ public class Proyecto {
 	
 	public static void main(String[] args) throws IOException {
 		//Cargamos en los mapas el contenido de los ficheros personas.txt y asignaturas.txt
-		//Persona.cargaPersonasAMapa("personas.txt");
+		Persona.cargaPersonasAMapa("personas.txt");
 		//Asignaturas.cargaAsignaturasAMapa();
 		
 		//Abre el fichero de ejecuci�n. En caso de no existir, error
@@ -43,11 +43,9 @@ public class Proyecto {
 			    			Persona.InsertaPersona(word, recorre[1]);
 			    			break;
 			    		case "AsignaCoordinador" :
-			    			//System.out.println(word);
 			    			//Asignatura.AsignaCoordinador();
 			    			break;
 			    		case "AsignaCargaDocente" :
-			    			//System.out.println(word);
 			    			break;
 			    		case "AsignaGrupo" :
 			    			//System.out.println(word);

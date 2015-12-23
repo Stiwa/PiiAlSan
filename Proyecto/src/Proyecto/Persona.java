@@ -76,62 +76,60 @@ public class Persona {
 	}
 
 	
-	/*public static void cargaPersonasAMapa(String nombreArchivo) throws IOException{
+	
+	public static void cargaPersonasAMapa(String nombreArchivo) throws IOException{
 		
 		try {
-			Scanner entrada = new Scanner(new FileInputStream(nombreArchivo));
-			while(entrada.hasNextLine()){
-				
-				String perfil = entrada.nextLine().trim();	
-				String dni = entrada.nextLine().trim();
-				String nombre = entrada.nextLine().trim();
-				String apellidos = entrada.nextLine().trim();
-				
-				String aux[] = entrada.nextLine().split("/");
-				int dia = Integer.parseInt(aux[0]);
-				int mes = Integer.parseInt(aux[1]);
-				int anho = Integer.parseInt(aux[2]);
-				GregorianCalendar FechaNacimiento = new GregorianCalendar(dia, mes, anho);
-				
-				if(perfil.trim().equals("alumno")){
-					String aux1[] = entrada.nextLine().split("/");
-					int diaIng = Integer.parseInt(aux1[0]);
-					int mesIng = Integer.parseInt(aux1[1]);
-					int anhoIng = Integer.parseInt(aux1[2]);
-					GregorianCalendar fechaIng = new GregorianCalendar(diaIng, mesIng, anhoIng);
-					
-					//String asignaturasSuperadas = entrada.nextLine().trim();
-					//String docenciaRecibida = entrada.nextLine().trim();
-					Alumno nuevoAlumno = new Alumno(nombre.trim(), apellidos.trim(),dni.trim(), FechaNacimiento, fechaIng);
-					Proyecto.mapAlumnos.put(dni, nuevoAlumno);
-					
-				}else if(perfil.trim().equals("profesor")){
-					System.out.println("Profesor");
-				}
+			Scanner input = new Scanner(new FileInputStream(nombreArchivo));
 			
-				if(entrada.hasNextLine()){
-					String word = entrada.nextLine();
-					if (word == null){
-						if(entrada.hasNextLine() ){
-								entrada.nextLine();
-						}
-					}
+			while(input.hasNextLine()){
+				
+				if(input.nextLine().trim().equalsIgnoreCase("alumno")){
+					
+					//Variables que tienen todas las personas
+					String perfil = input.nextLine().trim();
+					String dni = input.nextLine().trim();
+					String nombre = input.nextLine().trim();
+					String apellidos = input.nextLine().trim();
+					
+					String aux[] = input.nextLine().split("/");
+					int dia = Integer.parseInt(aux[0]);
+					int mes = Integer.parseInt(aux[1]);
+					int anho = Integer.parseInt(aux[2]);
+					GregorianCalendar FechaNacimiento = new GregorianCalendar(dia, mes, anho);
+					
+					//Ahora vamos con las variables particulares de alumno y profesor
+					if(perfil.trim().equals("alumno")){
+						String aux1[] = input.nextLine().split("/");
+						int diaIng = Integer.parseInt(aux1[0]);
+						int mesIng = Integer.parseInt(aux1[1]);
+						int anhoIng = Integer.parseInt(aux1[2]);
+						GregorianCalendar fechaIng = new GregorianCalendar(diaIng, mesIng, anhoIng);
 						
-					if(word.trim().charAt(0) != '*'){
-						if(entrada.hasNextLine()){
-							entrada.nextLine();
-						}
-					}	
-					
+						//String asignaturasSuperadas = entrada.nextLine().trim();
+						//String docenciaRecibida = entrada.nextLine().trim();
+						Alumno nuevoAlumno = new Alumno(nombre.trim(), apellidos.trim(),dni.trim(), FechaNacimiento, fechaIng);
+						//Añade el nuevo alumno leido del fichero al mapa de alumnos
+						Proyecto.mapAlumnos.put(dni, nuevoAlumno);
+						
+					}else if(perfil.trim().equals("profesor")){
+						System.out.println("Profesor");
+					}
 				}
+				//Avanza hasta el siguiente asterisco que marca la nueva persona a cargar
 				
-			}
-			entrada.close();
-			
-		 }catch (FileNotFoundException e){
+				
+			}//Cierra el while
+					
+			input.close();
+				
+		}catch (FileNotFoundException e){
 			  Avisos.avisosFichero("Error fichero: " +nombreArchivo);
 			  System.exit(1);
-		 }
-	}*/
+		}
+	}
+	
+	
+	
 }
 
