@@ -5,7 +5,7 @@ import java.util.LinkedList;
 public class Asignatura {
 
 	private String Coordinador = new String();
-	private int IdAsignatura;
+	private static int IdAsignatura;
 	private String NombreAsignatura = new String();
 	private String Siglas = new String();
 	private int Curso;
@@ -45,13 +45,16 @@ public class Asignatura {
 		
 	}
 	
-	public int getIdAsignatura(){
+	public static int getIdAsignatura(){
 		return IdAsignatura;
 	}
 	public String getSiglas(){
 		return Siglas;
 	}
-
+	
+	public String getNombreAsignatura(){
+		return NombreAsignatura;
+	}
 	
 	
 }

@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 
 
 
-public class Alumno extends Persona {  //Falta añadir interfaz comparable
+public class Alumno extends Persona {  //Falta aï¿½adir interfaz comparable
 	
 	private GregorianCalendar FechaIngreso = new GregorianCalendar();
 	
@@ -36,6 +36,11 @@ public class Alumno extends Persona {  //Falta añadir interfaz comparable
 		super(Nombre, Apellidos,DNI, FechaNacimiento);
 	}
 	
+	public static void ObtenerAsignatura(Asignatura materia){
+		DocenciaRecibida.put(Asignatura.getIdAsignatura(), materia);
+		return;
+		
+	}
 	public static void InsertaAlumno(String[] linea) throws IOException{
 		
 		String aux[] = linea[5].split("/");
@@ -56,6 +61,7 @@ public class Alumno extends Persona {  //Falta añadir interfaz comparable
 		}
 		
 		Proyecto.mapAlumnos.put(linea[2], new Alumno(linea[3], linea[4], linea[2], fecha ,linea[1]) );
+		
 		
 	}
 }

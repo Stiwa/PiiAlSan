@@ -80,6 +80,7 @@ public class Proyecto {
 			  Avisos.avisosFichero("Error fichero: ejecucion.txt");
 			  System.exit(1);
 		  }
+		  
 		    fichero.close();
 	    return;
 	}
