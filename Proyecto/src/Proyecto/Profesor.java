@@ -3,6 +3,7 @@ package Proyecto;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 
@@ -28,6 +29,14 @@ public class Profesor extends Persona{
 	
 	
 	}
+	public Profesor(String DNI,String Nombre,String Apellidos,GregorianCalendar FechaNacimiento,String Categoria,String Departamento, int HorasAsignables){
+// ESTE CONSTRUCTOR DE PROFESOR ES EL DEL FICHERO DE EJECUCION PARA METERLO AL MAPA
+		super(Nombre,Apellidos,DNI,FechaNacimiento);
+	
+		this.Categoria=Categoria;
+		this.Departamento=Departamento;
+		this.HorasAsignables=HorasAsignables;
+	}
 	public void ObtenerCalendarioClases(String DNI,String Salida){
 	//	File f = new File();
 	// en que archivo debemos guardar el calendario de las clases del profesor?
@@ -35,6 +44,30 @@ public class Profesor extends Persona{
 	//Aqui hay que crear un for each con un mapa que recorra las docencias de cada profesor
 		return;
 	}
+	
+	
+public static void InsertaProfesor(String[] linea) throws IOException{
+		
+		
+		String aux[] = linea[5].split("/");
+		int dia = Integer.parseInt(aux[0]);
+		int mes = Integer.parseInt(aux[1]);
+		int anho = Integer.parseInt(aux[2]);
+		
+		GregorianCalendar fecha = new GregorianCalendar(dia, mes, anho);
+		int HorasAsignables=Integer.parseInt(linea[8]);
+		
+		
+		if(Avisos.ComprobarFecha(fecha) == false){
+			Avisos.avisosFichero("Fecha incorrecta");
+		}
+		
+		if(Proyecto.mapProfesores.get(linea[2]) != null){
+			Avisos.avisosFichero("Profesor ya existente");
+		}
+		
+		Proyecto.mapProfesores.put(linea[2], new Profesor(linea[2],linea[3],linea[4],fecha,linea[6],linea[7],HorasAsignables) );
+}
 	@SuppressWarnings("unused")
 	public void AsignarCargaDocente(char grupo,int id,int idgrupo){
 		Integer a = new Integer(id);

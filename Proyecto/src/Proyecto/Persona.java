@@ -56,10 +56,11 @@ public class Persona {
 		
 		tipo.trim();
 		if(tipo.equals("alumno")){
-		   //	Alumno.InsertaAlumno(linea);
+		//Alumno.InsertaAlumno(linea);
+			//NO SE METE NI ALUMNO NI PROFESOR EN EL MAPA PORQUE AL PARECER HAYA LGUN PROBLEMA CUANDO HACEMOS EL SPLIT EN LA LINEA DE EJECUCION
 		   	
 		}else if(tipo.equals("profesor")){
-			//Profesor.InsertaProfesor(datos);
+		//Profesor.InsertaProfesor(linea);
 		}else
 			Avisos.avisosFichero("Campo perfil incorrecto: <" +linea[1] +">");
 		
@@ -109,7 +110,7 @@ public class Persona {
 						//String asignaturasSuperadas = entrada.nextLine().trim();
 						//String docenciaRecibida = entrada.nextLine().trim();
 						Alumno nuevoAlumno = new Alumno(nombre.trim(), apellidos.trim(),dni.trim(), FechaNacimiento, fechaIng);
-						//Añade el nuevo alumno leido del fichero al mapa de alumnos
+						//Aï¿½ade el nuevo alumno leido del fichero al mapa de alumnos
 						Proyecto.mapAlumnos.put(dni, nuevoAlumno);
 						
 					}else if(perfil.trim().equals("profesor")){

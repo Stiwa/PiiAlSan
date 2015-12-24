@@ -40,11 +40,13 @@ public class Asignatura {
 			
 			
 		}
-			
-		
-		
+				
 	}
 	
+	public void AsignarCoordinador(String DNI,String Siglas){
+		this.Siglas=Siglas;
+		//Proyecto.mapProfesores.set(DNI,Siglas);
+	}
 	public static int getIdAsignatura(){
 		return IdAsignatura;
 	}
