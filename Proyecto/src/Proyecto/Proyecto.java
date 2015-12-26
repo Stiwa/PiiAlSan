@@ -18,7 +18,7 @@ public class Proyecto {
 	public static void main(String[] args) throws IOException {
 		//Cargamos en los mapas el contenido de los ficheros personas.txt y asignaturas.txt
 		Persona.cargaPersonasAMapa("personas.txt");
-		//Asignaturas.cargaAsignaturasAMapa();
+		//Asignatura.cargaAsignaturasAMapa("asignaturas.txt");
 		
 		//Abre el fichero de ejecucion. En caso de no existir, error
 		Scanner fichero=null;	
@@ -39,28 +39,29 @@ public class Proyecto {
 		    	}else{
 		    		recorre = word.split("\\s+");	
 		    		
-		    		switch(recorre[0]){
-			    		case "InsertaPersona" :
+		    		//El nombre del comando puede introducirse en mayuscula o minuscula. lo pasamos a minus para trabajar
+		    		switch(recorre[0].toLowerCase()){
+			    		case "insertapersona" :
 			    			Persona.InsertaPersona(word, recorre[1]);
 			    			break;
-			    		case "AsignaCoordinador" :
+			    		case "asignacoordinador" :
 			    			//Asignatura.AsignaCoordinador();
 			    			break;
-			    		case "AsignaCargaDocente" :
+			    		case "asignacargadocente" :
 			    			break;
-			    		case "AsignaGrupo" :
+			    		case "asignagrupo" :
 			    			//System.out.println(word);
 			    			break;
-			    		case "Matricula" :
+			    		case "matricula" :
 			    			//System.out.println(word);
 			    			break;
-			    		case "Evalua" :
+			    		case "evalua" :
 			    			//System.out.println(word);
 			    			break;
-			    		case "Expediente" :
+			    		case "expediente" :
 			    			//System.out.println(word);
 			    			break;
-			    		case "ObtenerCalendarioClases" :
+			    		case "obtenercalendarioclases" :
 			    			//System.out.println(word);
 			    			break;
 			    			

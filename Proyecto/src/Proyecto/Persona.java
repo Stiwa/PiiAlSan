@@ -34,36 +34,40 @@ public class Persona {
 		this.FechaNacimiento = FechaNacimiento;
 		this.Perfil = Perfil;
 	}
-	
-	public static void InsertaPersona(String datos, String perfil) throws IOException{ //En perfil recibimos el segundo elemento 
-																					   //Del array de Strings, o sea, el tipo 
-		
+	//En datos recibimos toda la linea del fichero de ejecucion. En perfil recibimos el el tipo (al/prof)
+	public static void InsertaPersona(String datos, String perfil) throws IOException{  
+																						
 		String[] arrayDatos = datos.trim().split("\"");
-		String[] linea = arrayDatos[0].trim().split("\\s+");
-		
-		
+		System.out.println(arrayDatos[0]);
+		System.out.println(arrayDatos[1]);
+		System.out.println(arrayDatos[2]);
+		System.out.println(arrayDatos[3]);
+		System.out.println(arrayDatos[4]);
+		String[] lineaDatos = arrayDatos[0].trim().split("\\s+");
+			
 		//Comprobamos que el numero de parametros sea el correcto
-		
 		if(arrayDatos.length!=7 && arrayDatos.length!=5){
 			Avisos.avisosFichero("Numero de parametros incorrecto");
 			return;
 		}
-		if(Avisos.ComprobarDNI(linea[2]) == false){
-			Avisos.avisosFichero("DNI incorrecto " +linea[2]);
+		
+		if(Avisos.ComprobarDNI(lineaDatos[2]) == false){
+			Avisos.avisosFichero("DNI incorrecto " +lineaDatos[2]);
+		}
+
+		String tipo = lineaDatos[1].trim();
+		
+		if(tipo.equals("alumno")){
+		//Alumno.InsertaAlumno(lineaDatos);
+		   	
+		}else {
+		//Profesor.InsertaProfesor(lineaDatos);
 		}
 		
-		String tipo = linea[1];
-		
-		tipo.trim();
-		if(tipo.equals("alumno")){
-		//Alumno.InsertaAlumno(linea);
-			//NO SE METE NI ALUMNO NI PROFESOR EN EL MAPA PORQUE AL PARECER HAYA LGUN PROBLEMA CUANDO HACEMOS EL SPLIT EN LA LINEA DE EJECUCION
-		   	
-		}else if(tipo.equals("profesor")){
-		//Profesor.InsertaProfesor(linea);
-		}else
-			Avisos.avisosFichero("Campo perfil incorrecto: <" +linea[1] +">");
-		
+		/* En la especificacion no se dice que se tenga en cuenta campo perfil incorrecto
+		   }else
+			Avisos.avisosFichero("Campo perfil incorrecto: <" +lineaDatos[1] +">");
+		*/
 	}
 	
 	public String getDNI(){

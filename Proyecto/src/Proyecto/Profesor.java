@@ -29,9 +29,10 @@ public class Profesor extends Persona{
 	
 	
 	}
+	
+// ESTE CONSTRUCTOR DE PROFESOR ES EL DEL FICHERO DE EJECUCION PARA METERLO AL MAPA
 	public Profesor(String DNI,String Nombre,String Apellidos,GregorianCalendar FechaNacimiento,String Categoria,
 			String Departamento, int HorasAsignables){
-// ESTE CONSTRUCTOR DE PROFESOR ES EL DEL FICHERO DE EJECUCION PARA METERLO AL MAPA
 		super(Nombre,Apellidos,DNI,FechaNacimiento);
 	
 		this.Categoria=Categoria;
@@ -85,7 +86,7 @@ public static void InsertaProfesor(String[] linea) throws IOException{
 		if(a==null){
 			return;
 		}
-		//aÃ±adimos a docenciaImpartida la carga docente.
+		//añadimos a docenciaImpartida la carga docente.
 		
 		
 	}

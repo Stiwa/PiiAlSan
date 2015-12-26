@@ -1,6 +1,10 @@
 package Proyecto;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.LinkedList;
+import java.util.Scanner;
 
 public class Asignatura {
 
@@ -24,10 +28,15 @@ public class Asignatura {
 	
 	public Asignatura(int IdAsignatura,String Siglas,String Prerrequisitos){
 		this.IdAsignatura= IdAsignatura;
-		this.Siglas=Siglas;
-		
-		
+		this.Siglas=Siglas;	
 	}
+	//Necesario para cargar las asignaturas a los mapas
+	public Asignatura(int IdAsignatura, String NombreAsignatura, String Siglas, int Curso, String Coordinador,
+			String Prerrequisitos, String gruposTeoria, String gruposPractica){
+		this.IdAsignatura= IdAsignatura;
+		this.Siglas=Siglas;	
+	}
+	
 	public void AsignaturaCoord(int IdAsignatura,String Siglas,String Coordinador,String Prerrequisitos){
 		this.IdAsignatura=IdAsignatura;
 		this.Siglas=Siglas;
@@ -58,7 +67,37 @@ public class Asignatura {
 	public String getNombreAsignatura(){
 		return NombreAsignatura;
 	}
-	
+	/*
+	public static void cargaAsignaturasAMapa(String nombreArchivo) throws IOException{
+
+		try{
+			Scanner input = new Scanner(new FileInputStream(nombreArchivo));
+			while(input.hasNextLine()){
+				String id = input.nextLine().trim();
+				String nombre = input.nextLine().trim();
+				String siglas = input.nextLine().trim();
+				String curso = input.nextLine().trim();
+				String coordinador = input.nextLine().trim();
+				String prerrequisitos = input.nextLine().trim();
+				String gruposA = input.nextLine().trim();
+				String gruposB = input.nextLine().trim();
+				
+				Asignatura a = new Asignatura(Integer.parseInt(id.trim()),nombre, siglas, Integer.parseInt(curso.trim()),
+						coordinador.trim(), prerrequisitos.trim(), gruposA.trim(), gruposB.trim());
+					
+				Proyecto.mapAsignaturas.put(Integer.parseInt(id.trim()), a);
+				
+				//Saltar el asterisco que divide
+				if(input.hasNextLine())
+					input.nextLine();
+			}
+			input.close();
+		}catch (FileNotFoundException e){
+			  Avisos.avisosFichero("Error fichero: " +nombreArchivo);
+			  System.exit(1);
+		}
+	}
+	*/
 	//Recibe un String de Asignaturas superadas. Comprueba que son correctas y las añade al mapa
 	public void CompruebaAsigSup(String AsigSup){
 		if(AsigSup.trim().length()!=0){
