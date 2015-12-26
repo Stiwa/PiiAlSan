@@ -6,6 +6,7 @@ import java.util.LinkedHashMap;
 import java.util.Scanner;
 import java.io.IOException;
 
+//Clase princial del proyecto.
 public class Proyecto {
 
 
@@ -19,7 +20,7 @@ public class Proyecto {
 		Persona.cargaPersonasAMapa("personas.txt");
 		//Asignaturas.cargaAsignaturasAMapa();
 		
-		//Abre el fichero de ejecuci�n. En caso de no existir, error
+		//Abre el fichero de ejecucion. En caso de no existir, error
 		Scanner fichero=null;	
 		  try {
 		  	fichero = new Scanner(new File("ejecucion.txt"));
@@ -63,9 +64,7 @@ public class Proyecto {
 			    			//System.out.println(word);
 			    			break;
 			    			
-			    		default : 
-
-			    			//System.out.println("Comando incorrecto <" +recorre[0] +">");
+			    		default :
 			    			Avisos.avisosFichero("Comando incorrecto <" +recorre[0] +">") ;			
 
 			    			break;

@@ -10,6 +10,7 @@ public class Asignatura {
 	private String Siglas = new String();
 	private int Curso;
 	private float Nota;
+	
 	private LinkedList<Integer> Prerrequisitos = new LinkedList<Integer>();
 	private LinkedList Grupos = new LinkedList();	
 	//x
@@ -56,6 +57,21 @@ public class Asignatura {
 	
 	public String getNombreAsignatura(){
 		return NombreAsignatura;
+	}
+	
+	//Recibe un String de Asignaturas superadas. Comprueba que son correctas y las añade al mapa
+	public void CompruebaAsigSup(String AsigSup){
+		if(AsigSup.trim().length()!=0){
+			//Primero divide el String en grupos (idAsig + año + nota)
+			String Asignaturas[] = AsigSup.trim().split(";");
+			
+			//Hace cada caso del array de Strings por separado dividiendo id, año y nota
+			for(int i= 0; i<Asignaturas.length; i++){
+				String[] aux2 = Asignaturas[i].trim().split(" ");
+				//Nota n = new Nota(Float.parseFloat(aux2[2]), aux2[1].trim());
+				//this.asignaturasSuperadas.put(Integer.parseInt(aux2[0].trim()), n);
+			}
+		}
 	}
 	
 	

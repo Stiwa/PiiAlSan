@@ -29,13 +29,24 @@ public class Profesor extends Persona{
 	
 	
 	}
-	public Profesor(String DNI,String Nombre,String Apellidos,GregorianCalendar FechaNacimiento,String Categoria,String Departamento, int HorasAsignables){
+	public Profesor(String DNI,String Nombre,String Apellidos,GregorianCalendar FechaNacimiento,String Categoria,
+			String Departamento, int HorasAsignables){
 // ESTE CONSTRUCTOR DE PROFESOR ES EL DEL FICHERO DE EJECUCION PARA METERLO AL MAPA
 		super(Nombre,Apellidos,DNI,FechaNacimiento);
 	
 		this.Categoria=Categoria;
 		this.Departamento=Departamento;
 		this.HorasAsignables=HorasAsignables;
+	}
+	//Necesario para cargar del fichero personas al mapa mapProfesores
+	public Profesor(String DNI,String Nombre,String Apellidos,GregorianCalendar FechaNacimiento,String Categoria,
+			String Departamento, int HorasAsignables, String DocenciaImpartida){
+
+		super(Nombre,Apellidos,DNI,FechaNacimiento);	
+		this.Categoria=Categoria;
+		this.Departamento=Departamento;
+		this.HorasAsignables=HorasAsignables;
+		//this.DocenciaImpartida = DocenciaImpartida;
 	}
 	public void ObtenerCalendarioClases(String DNI,String Salida){
 	//	File f = new File();

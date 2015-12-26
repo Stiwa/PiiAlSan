@@ -6,7 +6,7 @@ import java.util.LinkedHashMap;
 
 
 
-public class Alumno extends Persona {  //Falta aï¿½adir interfaz comparable
+public class Alumno extends Persona {  //Falta añadir interfaz comparable
 	
 	private GregorianCalendar FechaIngreso = new GregorianCalendar();
 	
@@ -29,12 +29,24 @@ public class Alumno extends Persona {  //Falta aï¿½adir interfaz comparable
 		this.FechaIngreso= FechaIngreso;
 		
 	}
-	
+	//Constructor necesario para cargar la lista de personas en los mapas
 	public Alumno(String Nombre, String Apellidos, String DNI, GregorianCalendar FechaNacimiento, 
-			GregorianCalendar FechaIngreso){
+			GregorianCalendar FechaIngreso, String AsignaturasSuperadas, String DocenciaRecibida){
 		
 		super(Nombre, Apellidos,DNI, FechaNacimiento);
+		this.FechaIngreso = FechaIngreso;
+		
+		//Asignatura.CompruebaAsigSup(AsignaturasSuperadas);
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	public static void ObtenerAsignatura(Asignatura materia){
 		DocenciaRecibida.put(Asignatura.getIdAsignatura(), materia);

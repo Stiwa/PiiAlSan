@@ -49,7 +49,7 @@ public class Persona {
 			return;
 		}
 		if(Avisos.ComprobarDNI(linea[2]) == false){
-			Avisos.avisosFichero("DNI incorrecto" +linea[2]);
+			Avisos.avisosFichero("DNI incorrecto " +linea[2]);
 		}
 		
 		String tipo = linea[1];
@@ -93,32 +93,43 @@ public class Persona {
 					String nombre = input.nextLine().trim();
 					String apellidos = input.nextLine().trim();
 					
-					String aux[] = input.nextLine().split("/");
-					int dia = Integer.parseInt(aux[0]);
-					int mes = Integer.parseInt(aux[1]);
-					int anho = Integer.parseInt(aux[2]);
-					GregorianCalendar FechaNacimiento = new GregorianCalendar(dia, mes, anho);
+					String aux = input.nextLine().trim();
+					GregorianCalendar FechaNacimiento = Util.PasarAGregorianCalendar(aux);
 					
 					//Ahora vamos con las variables particulares de alumno y profesor
 					if(perfil.trim().equals("alumno")){
-						String aux1[] = input.nextLine().split("/");
-						int diaIng = Integer.parseInt(aux1[0]);
-						int mesIng = Integer.parseInt(aux1[1]);
-						int anhoIng = Integer.parseInt(aux1[2]);
-						GregorianCalendar fechaIng = new GregorianCalendar(diaIng, mesIng, anhoIng);
+						String aux1 = input.nextLine().trim();
+						GregorianCalendar fechaIng = Util.PasarAGregorianCalendar(aux1);
 						
-						//String asignaturasSuperadas = entrada.nextLine().trim();
-						//String docenciaRecibida = entrada.nextLine().trim();
-						Alumno nuevoAlumno = new Alumno(nombre.trim(), apellidos.trim(),dni.trim(), FechaNacimiento, fechaIng);
-						//Aï¿½ade el nuevo alumno leido del fichero al mapa de alumnos
-						Proyecto.mapAlumnos.put(dni, nuevoAlumno);
+						String AsignaturasSuperadas = input.nextLine().trim();
+						String DocenciaRecibida = input.nextLine().trim();
+						
+						Alumno cargaAlumno = new Alumno(nombre.trim(), apellidos.trim(),dni.trim(), FechaNacimiento, fechaIng, 
+								AsignaturasSuperadas, DocenciaRecibida);
+						//Añade el nuevo alumno leido del fichero al mapa de alumnos
+						Proyecto.mapAlumnos.put(dni, cargaAlumno);
+						
+						//Para saltar el asterisco
+						if(input.hasNextLine()){
+							input.nextLine();
+						}
 						
 					}else if(perfil.trim().equals("profesor")){
-						System.out.println("Profesor");
+						String Categoria = input.nextLine().trim();
+						String Departamento = input.nextLine().trim();
+						int HorasAsignables = Integer.parseInt(input.nextLine().trim() );
+						String DocenciaImpartida = input.nextLine().trim();
+						
+						Profesor cargaProfesor = new Profesor(dni.trim(), nombre.trim(), apellidos.trim(), FechaNacimiento,
+								Categoria, Departamento, HorasAsignables, DocenciaImpartida);
+						//Carga profesor a mapa
+						Proyecto.mapProfesores.put(dni, cargaProfesor);
+						
+						if(input.hasNextLine()){
+							input.nextLine();
+						}
 					}
 				}
-				//Avanza hasta el siguiente asterisco que marca la nueva persona a cargar
-				
 				
 			}//Cierra el while
 					
