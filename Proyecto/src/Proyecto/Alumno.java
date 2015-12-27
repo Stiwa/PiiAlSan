@@ -5,7 +5,6 @@ import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 
 
-
 public class Alumno extends Persona {  //Falta añadir interfaz comparable
 	
 	private GregorianCalendar FechaIngreso = new GregorianCalendar();
@@ -40,40 +39,34 @@ public class Alumno extends Persona {  //Falta añadir interfaz comparable
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
 	public static void ObtenerAsignatura(Asignatura materia){
 		DocenciaRecibida.put(Asignatura.getIdAsignatura(), materia);
 		return;
 		
 	}
-	public static void InsertaAlumno(String[] linea) throws IOException{
+	
 		
-		String aux[] = linea[5].split("/");
-		int dia = Integer.parseInt(aux[0]);
-		int mes = Integer.parseInt(aux[1]);
-		int anho = Integer.parseInt(aux[2]);
+	public static void InsertaAlumno(String[] arrayDatos) throws IOException{
 		
-		GregorianCalendar fecha = new GregorianCalendar(dia, mes, anho);
+		String linea1[] = arrayDatos[0].split("\\s+");
+		String auxFecha[] = arrayDatos[4].trim().split("\\s+");	
 		
-		//Aqui hay que comprobar la segunda de las fechas (ingreso) (preguntar si obligatoria)
+		if(arrayDatos.length!=5 ||linea1.length!=3|| auxFecha.length!=2){
+			Avisos.avisosFichero("Numero de parametros incorrecto");
+			return;
+		}
 		
-		if(Avisos.ComprobarFecha(fecha) == false){
+		GregorianCalendar fecha2 = Util.PasarAGregorianCalendar(auxFecha[0].trim());
+		//Aqui hay que comprobar la segunda de las fechas (ingreso), pero me da null pointer exception
+		/*
+		if(Avisos.ComprobarFecha(fecha2) == false){
 			Avisos.avisosFichero("Fecha incorrecta");
 		}
-		
-		if(Proyecto.mapAlumnos.get(linea[2]) != null){
+		 */	
+		if(Proyecto.mapAlumnos.get(arrayDatos[2]) != null){
 			Avisos.avisosFichero("Alumno ya existente");
-		}
-		
-		Proyecto.mapAlumnos.put(linea[2], new Alumno(linea[3], linea[4], linea[2], fecha ,linea[1]) );
-		
-		
+		}	
+		Proyecto.mapAlumnos.put(arrayDatos[2], new Alumno(arrayDatos[3], arrayDatos[4], arrayDatos[2], fecha2 ,arrayDatos[1]) );
+			
 	}
 }

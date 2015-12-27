@@ -71,9 +71,6 @@ public class Proyecto {
 			    			break;
 		    		}
 		    		word = fichero.nextLine();
-			    	// String[] auxiliar = word.split("\\*");
-			    	// String[] aux = auxiliar[3].split(":");
-			    	// String[] aux2 = auxiliar[4].split(":");
 			    }
 		    }
 		  } catch (FileNotFoundException e){
@@ -82,6 +79,7 @@ public class Proyecto {
 		  }
 		  
 		    fichero.close();
+		   // Util.MapaAFichero("personas.txt");
 	    return;
 	}
 //xx

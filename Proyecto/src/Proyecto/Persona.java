@@ -38,11 +38,7 @@ public class Persona {
 	public static void InsertaPersona(String datos, String perfil) throws IOException{  
 																						
 		String[] arrayDatos = datos.trim().split("\"");
-		System.out.println(arrayDatos[0]);
-		System.out.println(arrayDatos[1]);
-		System.out.println(arrayDatos[2]);
-		System.out.println(arrayDatos[3]);
-		System.out.println(arrayDatos[4]);
+		
 		String[] lineaDatos = arrayDatos[0].trim().split("\\s+");
 			
 		//Comprobamos que el numero de parametros sea el correcto
@@ -52,13 +48,13 @@ public class Persona {
 		}
 		
 		if(Avisos.ComprobarDNI(lineaDatos[2]) == false){
-			Avisos.avisosFichero("DNI incorrecto " +lineaDatos[2]);
+			Avisos.avisosFichero("DNI incorrecto");
 		}
 
-		String tipo = lineaDatos[1].trim();
+		String tipo = perfil.trim();
 		
 		if(tipo.equals("alumno")){
-		//Alumno.InsertaAlumno(lineaDatos);
+		Alumno.InsertaAlumno(arrayDatos);
 		   	
 		}else {
 		//Profesor.InsertaProfesor(lineaDatos);
