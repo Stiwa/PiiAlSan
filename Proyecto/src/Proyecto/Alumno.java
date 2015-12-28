@@ -47,7 +47,7 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		
 	}
 	
-		
+		/*
 	public static void InsertaAlumno(String[] arrayDatos) throws IOException{
 		
 		String linea1[] = arrayDatos[0].split("\\s+");
@@ -56,22 +56,21 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		if(arrayDatos.length!=5 ||linea1.length!=3|| auxFecha.length!=2){
 			Avisos.avisosFichero("Numero de parametros incorrecto");
 			return;
-		}
-		
+		}	
 		GregorianCalendar fecha2 = Util.PasarAGregorianCalendar(auxFecha[0].trim());
 		//Aqui hay que comprobar la segunda de las fechas (ingreso), pero me da null pointer exception
-		/*
+		
 		if(Avisos.ComprobarFecha(fecha2) == false){
 			Avisos.avisosFichero("Fecha incorrecta");
 		}
-		 */	
+		 
 		if(Proyecto.mapAlumnos.get(arrayDatos[2]) != null){
 			Avisos.avisosFichero("Alumno ya existente");
 		}	
 		Proyecto.mapAlumnos.put(arrayDatos[2], new Alumno(arrayDatos[3], arrayDatos[4], arrayDatos[2], fecha2 ,arrayDatos[1]) );
 			
 	}
-	
+	*/
 	public String aString(){
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
 		return super.toString()+"\n"+sdf.format(FechaIngreso.getTime())+"\n";

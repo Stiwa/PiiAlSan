@@ -86,6 +86,12 @@ public class Proyecto {
 		    	System.out.println(mapAlumnos.get(key));
 		    	
 		    }
+		    keys = mapProfesores.keySet();
+		    System.out.println("Profesores\n");
+		    for(String key:keys){
+		    	System.out.println(mapProfesores.get(key));
+		    	
+		    }
 		   Util.MapaAFichero("personas.txt");
 	    return;
 	}

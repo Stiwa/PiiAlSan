@@ -57,7 +57,7 @@ public class Profesor extends Persona{
 		return;
 	}
 	
-	
+	/*
 public static void InsertaProfesor(String[] linea) throws IOException{
 		
 		
@@ -80,6 +80,7 @@ public static void InsertaProfesor(String[] linea) throws IOException{
 		
 		Proyecto.mapProfesores.put(linea[2], new Profesor(linea[2],linea[3],linea[4],fecha,linea[6],linea[7],HorasAsignables) );
 }
+*/
 	@SuppressWarnings("unused")
 	public void AsignarCargaDocente(char grupo,int id,int idgrupo){
 		Integer a = new Integer(id);
