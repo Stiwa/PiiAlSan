@@ -18,7 +18,7 @@ public class Proyecto {
 	public static void main(String[] args) throws IOException {
 		//Cargamos en los mapas el contenido de los ficheros personas.txt y asignaturas.txt
 		Persona.cargaPersonasAMapa("personas.txt");
-		//Asignatura.cargaAsignaturasAMapa("asignaturas.txt");
+		Asignatura.cargaAsignaturasAMapa("asignaturas.txt");
 		
 		//Abre el fichero de ejecucion. En caso de no existir, error
 		Scanner fichero=null;	

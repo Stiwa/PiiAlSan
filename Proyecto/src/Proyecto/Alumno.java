@@ -77,3 +77,4 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		return super.toString()+"\n"+sdf.format(FechaIngreso.getTime());
 	}
 }
+

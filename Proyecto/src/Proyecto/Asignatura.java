@@ -67,7 +67,7 @@ public class Asignatura {
 	public String getNombreAsignatura(){
 		return NombreAsignatura;
 	}
-	/*
+	
 	public static void cargaAsignaturasAMapa(String nombreArchivo) throws IOException{
 
 		try{
@@ -97,7 +97,7 @@ public class Asignatura {
 			  System.exit(1);
 		}
 	}
-	*/
+	
 	//Recibe un String de Asignaturas superadas. Comprueba que son correctas y las añade al mapa
 	public void CompruebaAsigSup(String AsigSup){
 		if(AsigSup.trim().length()!=0){

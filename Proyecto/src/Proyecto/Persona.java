@@ -76,8 +76,8 @@ public class Persona {
 	public String getApellidos(){
 		return Apellidos;
 	}
-
 	
+
 	
 	public static void cargaPersonasAMapa(String nombreArchivo) throws IOException{
 		

@@ -43,9 +43,3 @@ CD
 1 L 9 11; 2 M 11 13
 1 L 12 14; 2 M 15 17; 3 X 11 13; 4 X 16 18
 *
-18
-Redes de Ordenadores
-RO
-2
-27654321D
-9
