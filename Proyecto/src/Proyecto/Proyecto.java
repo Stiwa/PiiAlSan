@@ -79,7 +79,7 @@ public class Proyecto {
 		  }
 		  
 		    fichero.close();
-		   // Util.MapaAFichero("personas.txt");
+		   Util.MapaAFichero("personas.txt");
 	    return;
 	}
 //xx

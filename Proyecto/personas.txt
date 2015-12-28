@@ -1,17 +1,17 @@
 profesor
 33218765X
 Carlos
-Pérez Sáchez
+Perez Sachez
 07/09/1966
 titular
-Ingeniería Telemática
+Ingenieria Telematica
 14
 
 *
 alumno
 53456789J
 Mauro
-Alonso Domínguez
+Alonso Dominguez
 08/01/1996
 01/09/2014
 1 14/15 6.8; 9 14/15 5.5
@@ -20,7 +20,7 @@ Alonso Domínguez
 alumno
 51567824V
 Susana
-Prieto Vázquez
+Prieto Vazquez
 28/5/1994
 03/09/2012
 1 12/13 7.6; 9 12/13 6.2; 12 13/14 5.8; 18 13/14 7.2
@@ -28,18 +28,18 @@ Prieto Vázquez
 *
 profesor
 37834521S
-José
-Casas Domínguez
+Jose
+Casas Dominguez
 17/11/1972
 asociado
-Matemática Aplicada
+Matematica Aplicada
 10
 8 A 1; 8 A 2; 8 B 1; 8 B 2; 8 B 3
 *
 alumno
 56534219T
-María Luisa
-Castro Antón
+Maria Luisa
+Castro Anton
 11/11/1997
 02/09/2015
 
@@ -47,7 +47,7 @@ Castro Antón
 *
 profesor
 45632109M
-José
-Carbajal Martínez
+Jose
+Carbajal Martinez
 17/08/1970
 titular

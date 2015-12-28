@@ -1,13 +1,15 @@
 package Proyecto;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 
 
-public class Alumno extends Persona {  //Falta añadir interfaz comparable
+public class Alumno extends Persona {  //Falta aï¿½adir interfaz comparable
 	
 	private GregorianCalendar FechaIngreso = new GregorianCalendar();
+	private String AsignaturasSuperadas;
 	
 	static LinkedHashMap<Integer,Asignatura> DocenciaRecibida = new LinkedHashMap<Integer, Asignatura>();
 	//static LinkedHashMap<Integer,Nota> AsignaturasSuperadas = new LinkedHashMap<Integer, Asignatura>();
@@ -68,5 +70,10 @@ public class Alumno extends Persona {  //Falta añadir interfaz comparable
 		}	
 		Proyecto.mapAlumnos.put(arrayDatos[2], new Alumno(arrayDatos[3], arrayDatos[4], arrayDatos[2], fecha2 ,arrayDatos[1]) );
 			
+	}
+	
+	public String aString(){
+		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
+		return super.toString()+"\n"+sdf.format(FechaIngreso.getTime());
 	}
 }

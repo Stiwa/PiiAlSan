@@ -29,3 +29,53 @@ DNI incorrecto
 DNI incorrecto
 Numero de parametros incorrecto
 Alumno ya existente
+Comando incorrecto <InsertPersona>
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Alumno ya existente
+Comando incorrecto <InsertPersona>
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Alumno ya existente
+Comando incorrecto <InsertPersona>
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Alumno ya existente
+Comando incorrecto <InsertPersona>
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Alumno ya existente
+Comando incorrecto <InsertPersona>
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Alumno ya existente
+Comando incorrecto <InsertPersona>
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Alumno ya existente
+Comando incorrecto <InsertPersona>
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Alumno ya existente
+Comando incorrecto <InsertPersona>
+Comando incorrecto <InsertPersona>
+Comando incorrecto <InsertPersona>
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Alumno ya existente

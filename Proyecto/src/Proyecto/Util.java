@@ -1,6 +1,7 @@
 package Proyecto;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.GregorianCalendar;
@@ -26,14 +27,30 @@ public class Util {
   
  
  //METODO PARA ESCRIBIR LOS MAPAS ALUMNO, PROFESOR Y ASIGNATURA A FICHEROS .TXT
-/* public static void MapaAFichero(String nomFich) throws IOException {
- 
-  BufferedWriter output = new BufferedWriter(new FileWriter(nomFich));
+public static void MapaAFichero(String nomFich) throws IOException {
+  File f=new File(nomFich);
+  BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
   Set<String> keys = Proyecto.mapAlumnos.keySet();
+  for(String key:keys){
+	bufer.write("\n*"+"\nalumno "+Proyecto.mapAlumnos.get(key).aString());
+	  
+  }
+  bufer.close();
+ // Set<String> keys1 = Proyecto.mapProfesores.keySet();
+ // for(String key:keys1){
+//	  if(Proyecto.mapAlumnos.get(key).equals("Profesor")){
+//		  bufer.write("Profesor : "+Proyecto.mapProfesores.get(key));
+//	  }
+ 
+		  
+  
+		  
+	  
+	
+  }
   
  
   
  }
- */
  
-}
+ 

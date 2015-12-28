@@ -3,6 +3,7 @@ package Proyecto;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -106,7 +107,7 @@ public class Persona {
 						
 						Alumno cargaAlumno = new Alumno(nombre.trim(), apellidos.trim(),dni.trim(), FechaNacimiento, fechaIng, 
 								AsignaturasSuperadas, DocenciaRecibida);
-						//Añade el nuevo alumno leido del fichero al mapa de alumnos
+						//Aï¿½ade el nuevo alumno leido del fichero al mapa de alumnos
 						Proyecto.mapAlumnos.put(dni, cargaAlumno);
 						
 						//Para saltar el asterisco
@@ -140,7 +141,11 @@ public class Persona {
 			  System.exit(1);
 		}
 	}
-	
+	public String toString(){
+		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
+		return DNI+"\n"+Nombre+"\n"+Apellidos+"\n"+sdf.format(FechaNacimiento.getTime());
+		
+	}
 	
 	
 }
