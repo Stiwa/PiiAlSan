@@ -44,8 +44,6 @@ public static void MapaAFichero(String nomFich) throws IOException {
  
 		  
   
-		  
-	  
 	
   }
   
