@@ -47,15 +47,28 @@ public class Persona {
 			Avisos.avisosFichero("Numero de parametros incorrecto");
 			return;
 		}
+		String nombre=arrayDatos[1].trim();
+		String apellidos=arrayDatos[3].trim();
+		String perfil2=lineaDatos[1].trim();
+		String dni=lineaDatos[2].trim();
 		
-		if(Avisos.ComprobarDNI(lineaDatos[2]) == false){
+		
+		if(Avisos.ComprobarDNI(dni) == false){
 			Avisos.avisosFichero("DNI incorrecto");
 		}
 
-		String tipo = perfil.trim();
 		
-		if(tipo.equals("alumno")){
-		Alumno.InsertaAlumno(arrayDatos);
+		if(perfil2.equals("alumno")){
+		String[] lineaDatos2=arrayDatos[4].trim().split("\\s+");
+		if(lineaDatos2.length!=2){
+			Avisos.avisosFichero("Numero de parametros incorrecto");
+			return;
+		}
+		GregorianCalendar fechaNac= Util.PasarAGregorianCalendar(lineaDatos2[0].trim());
+		GregorianCalendar fechaIng=Util.PasarAGregorianCalendar(lineaDatos2[1].trim());
+		
+		Proyecto.mapAlumnos.put(dni, new Alumno(nombre, apellidos, dni, 
+			fechaNac, perfil2, fechaIng));
 		   	
 		}else {
 		//Profesor.InsertaProfesor(lineaDatos);
@@ -86,19 +99,18 @@ public class Persona {
 			
 			while(input.hasNextLine()){
 				
-				if(input.nextLine().trim().equalsIgnoreCase("alumno")){
+				
 					
 					//Variables que tienen todas las personas
 					String perfil = input.nextLine().trim();
 					String dni = input.nextLine().trim();
 					String nombre = input.nextLine().trim();
 					String apellidos = input.nextLine().trim();
-					
 					String aux = input.nextLine().trim();
 					GregorianCalendar FechaNacimiento = Util.PasarAGregorianCalendar(aux);
 					
 					//Ahora vamos con las variables particulares de alumno y profesor
-					if(perfil.trim().equals("alumno")){
+						if(perfil.trim().equals("alumno")){
 						String aux1 = input.nextLine().trim();
 						GregorianCalendar fechaIng = Util.PasarAGregorianCalendar(aux1);
 						
@@ -115,7 +127,8 @@ public class Persona {
 							input.nextLine();
 						}
 						
-					}else if(perfil.trim().equals("profesor")){
+					}
+						if(perfil.trim().equals("profesor")){
 						String Categoria = input.nextLine().trim();
 						String Departamento = input.nextLine().trim();
 						int HorasAsignables = Integer.parseInt(input.nextLine().trim() );
@@ -132,7 +145,7 @@ public class Persona {
 					}
 				}
 				
-			}//Cierra el while
+			//Cierra el while
 					
 			input.close();
 				

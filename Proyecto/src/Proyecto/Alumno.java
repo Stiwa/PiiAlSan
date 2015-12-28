@@ -74,7 +74,7 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	
 	public String aString(){
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
-		return super.toString()+"\n"+sdf.format(FechaIngreso.getTime());
+		return super.toString()+"\n"+sdf.format(FechaIngreso.getTime())+"\n";
 	}
 }
 

@@ -32,11 +32,11 @@ public static void MapaAFichero(String nomFich) throws IOException {
   BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
   Set<String> keys = Proyecto.mapAlumnos.keySet();
   for(String key:keys){
-	bufer.write("\n*"+"\nalumno "+Proyecto.mapAlumnos.get(key).aString());
+	bufer.write("*"+"\nalumno\n"+Proyecto.mapAlumnos.get(key).aString());
 	  
   }
+  keys=Proyecto.mapProfesores.keySet();
   bufer.close();
- // Set<String> keys1 = Proyecto.mapProfesores.keySet();
  // for(String key:keys1){
 //	  if(Proyecto.mapAlumnos.get(key).equals("Profesor")){
 //		  bufer.write("Profesor : "+Proyecto.mapProfesores.get(key));

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
+import java.util.Set;
 import java.io.IOException;
 
 //Clase princial del proyecto.
@@ -79,6 +80,12 @@ public class Proyecto {
 		  }
 		  
 		    fichero.close();
+		    //Imprime los alumnos por pantalla de prueba
+		    Set<String>keys= mapAlumnos.keySet();
+		    for(String key:keys){
+		    	System.out.println(mapAlumnos.get(key));
+		    	
+		    }
 		   Util.MapaAFichero("personas.txt");
 	    return;
 	}
