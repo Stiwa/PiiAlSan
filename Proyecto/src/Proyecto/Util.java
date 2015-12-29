@@ -27,28 +27,28 @@ public class Util {
   
  
  //METODO PARA ESCRIBIR LOS MAPAS ALUMNO, PROFESOR Y ASIGNATURA A FICHEROS .TXT
-public static void MapaAFichero(String nomFich) throws IOException {
-  File f=new File(nomFich);
-  BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
-  Set<String> keys = Proyecto.mapAlumnos.keySet();
-  for(String key:keys){
-	bufer.write("*"+"\nalumno\n"+Proyecto.mapAlumnos.get(key).aString());
-	  
-  }
-  keys=Proyecto.mapProfesores.keySet();
-  bufer.close();
- // for(String key:keys1){
-//	  if(Proyecto.mapAlumnos.get(key).equals("Profesor")){
-//		  bufer.write("Profesor : "+Proyecto.mapProfesores.get(key));
-//	  }
- 
-		  
-  
-	
-  }
-  
- 
-  
- }
+	public static void MapaAFichero(String nomFich) throws IOException {
+		  File f=new File(nomFich);
+		  BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
+		  if(nomFich.equalsIgnoreCase("personas.txt")){
+			  Set<String> clave = Proyecto.mapAlumnos.keySet();
+			  for(String key:clave){
+				bufer.write("*"+"\nalumno\n"+Proyecto.mapAlumnos.get(key).aString());
+				  
+			  }
+			  clave=Proyecto.mapProfesores.keySet();
+			  for(String key:clave){
+					  bufer.write("*"+"\nProfesor\n"+Proyecto.mapProfesores.get(key).aString());
+			  }
+		  }
+		  else if(nomFich.equalsIgnoreCase("asignaturas.txt")){
+			  Set<Integer> clave = Proyecto.mapAsignaturas.keySet();
+			  for(Integer key:clave){
+				  bufer.write("*"+"\n"+Proyecto.mapAsignaturas.get(key).aString());
+			  }
+		  }
+		  bufer.close();	  
+	}
+}
  
  

@@ -55,23 +55,43 @@ public class Persona {
 		
 		if(Avisos.ComprobarDNI(dni) == false){
 			Avisos.avisosFichero("DNI incorrecto");
+			return;
 		}
 
 		
 		if(perfil2.equals("alumno")){
-		String[] lineaDatos2=arrayDatos[4].trim().split("\\s+");
-		if(lineaDatos2.length!=2){
-			Avisos.avisosFichero("Numero de parametros incorrecto");
-			return;
-		}
-		GregorianCalendar fechaNac= Util.PasarAGregorianCalendar(lineaDatos2[0].trim());
-		GregorianCalendar fechaIng=Util.PasarAGregorianCalendar(lineaDatos2[1].trim());
-		
-		Proyecto.mapAlumnos.put(dni, new Alumno(nombre, apellidos, dni, 
-			fechaNac, perfil2, fechaIng));
+			String[] lineaDatos2=arrayDatos[4].trim().split("\\s+");
+			if(lineaDatos2.length!=2){
+				Avisos.avisosFichero("Numero de parametros incorrecto");
+				return;
+			}
+			GregorianCalendar fechaNac= Util.PasarAGregorianCalendar(lineaDatos2[0].trim());
+			GregorianCalendar fechaIng=Util.PasarAGregorianCalendar(lineaDatos2[1].trim());
+			
+			Proyecto.mapAlumnos.put(dni, new Alumno(nombre, apellidos, dni, 
+				fechaNac, perfil2, fechaIng));
 		   	
 		}else {
-		//Profesor.InsertaProfesor(lineaDatos);
+			String[] lineaDatos2=arrayDatos[4].trim().split("\\s+");
+			if(lineaDatos2.length!=2){
+				Avisos.avisosFichero("Numero de parametros incorrecto");
+				return;
+			}
+			GregorianCalendar fechaNac= Util.PasarAGregorianCalendar(lineaDatos2[0].trim());
+			String categoria = lineaDatos2[1].trim();
+			String[] lineaDatos3 = arrayDatos[5].trim().split("\\s+");
+			String departamento = lineaDatos3[0];
+			String[] lineaDatos4 = arrayDatos[6].trim().split("\\s+");
+			int horasAsignables = Integer.parseInt(lineaDatos4[0]);
+			
+			Proyecto.mapProfesores.put(dni, new Profesor(nombre, apellidos, dni, 
+				fechaNac, perfil2, categoria, departamento, horasAsignables));
+			
+		
+				
+		//	Proyecto.mapProfesores.put(dni, new Profesor(nombre, apellidos, dni, fechaNac, categoria,
+		//			departamento, horasAsignables) );
+			
 		}
 		
 		/* En la especificacion no se dice que se tenga en cuenta campo perfil incorrecto

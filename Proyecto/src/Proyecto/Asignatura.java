@@ -5,11 +5,12 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Asignatura {
 
 	private String Coordinador = new String();
-	private static int IdAsignatura;
+	private int IdAsignatura;
 	private String NombreAsignatura = new String();
 	private String Siglas = new String();
 	private int Curso;
@@ -34,7 +35,11 @@ public class Asignatura {
 	public Asignatura(int IdAsignatura, String NombreAsignatura, String Siglas, int Curso, String Coordinador,
 			String Prerrequisitos, String gruposTeoria, String gruposPractica){
 		this.IdAsignatura= IdAsignatura;
+		this.NombreAsignatura = NombreAsignatura;
 		this.Siglas=Siglas;	
+		this.Curso = Curso;
+		this.Coordinador = Coordinador;
+		
 	}
 	
 	public void AsignaturaCoord(int IdAsignatura,String Siglas,String Coordinador,String Prerrequisitos){
@@ -46,18 +51,48 @@ public class Asignatura {
 			//en la lista de prerrequisitos debemos separarl
 			for(int i=0; i<lista.length; i++){
 			this.Prerrequisitos.add(Integer.parseInt(lista[i]));
-			}
-			
-			
+			}		
 		}
 				
 	}
 	
-	public void AsignarCoordinador(String DNI,String Siglas){
-		this.Siglas=Siglas;
-		//Proyecto.mapProfesores.set(DNI,Siglas);
+	public static void AsignaCoordinador(String [] arrayDatos) throws IOException{
+
+		if(Proyecto.mapProfesores.get(arrayDatos[1])==null){
+			Avisos.avisosFichero("Profesor inexistente");
+			return;
+		}
+		
+		if(Avisos.ComprobarSiglasExistentes(arrayDatos[2]) == false){
+			Avisos.avisosFichero("Asignatura Inexistente");
+			return;
+		}
+		/*
+		if(Avisos.EsTitular(arrayDatos[1]) == false){
+			Avisos.avisosFichero("Profesor no titular");
+			return;
+		}
+		
+		if(Avisos.numeroAsignaturasCoordinadas(arrayDatos[1] != 2){
+			Avisos.avisosFichero("Profesor ya es coordinador de 2 materias");
+			return;
+		}
+		*/
+		
+		//Encontrar el id de la asignatura correspondiente a las siglas
+		Set<Integer> clave = Proyecto.mapAsignaturas.keySet();
+		Asignatura asignatura=null;
+		for(int key:clave){
+			if(Proyecto.mapAsignaturas.get(key).getSiglas().equals(arrayDatos[2])){
+				asignatura = Proyecto.mapAsignaturas.get(key);
+				break;
+			}
+		}
+		Proyecto.mapAsignaturas.get(asignatura).setCoordinador(arrayDatos[1]);
+		
 	}
-	public static int getIdAsignatura(){
+	
+	public int getIdAsignatura(){
 		return IdAsignatura;
 	}
 	public String getSiglas(){
@@ -66,6 +101,9 @@ public class Asignatura {
 	
 	public String getNombreAsignatura(){
 		return NombreAsignatura;
+	}
+	public void setCoordinador(String Coordinador){
+		this.Coordinador = Coordinador;
 	}
 	
 	public static void cargaAsignaturasAMapa(String nombreArchivo) throws IOException{
@@ -81,6 +119,7 @@ public class Asignatura {
 				String prerrequisitos = input.nextLine().trim();
 				String gruposA = input.nextLine().trim();
 				String gruposB = input.nextLine().trim();
+						
 				
 				Asignatura a = new Asignatura(Integer.parseInt(id.trim()),nombre, siglas, Integer.parseInt(curso.trim()),
 						coordinador.trim(), prerrequisitos.trim(), gruposA.trim(), gruposB.trim());
@@ -90,7 +129,7 @@ public class Asignatura {
 				//Saltar el asterisco que divide
 				if(input.hasNextLine())
 					input.nextLine();
-			}
+				}
 			input.close();
 		}catch (FileNotFoundException e){
 			  Avisos.avisosFichero("Error fichero: " +nombreArchivo);
@@ -111,6 +150,12 @@ public class Asignatura {
 				//this.asignaturasSuperadas.put(Integer.parseInt(aux2[0].trim()), n);
 			}
 		}
+	}
+	
+	public String aString(){
+			
+			return IdAsignatura+"\n"+NombreAsignatura +"\n" +Siglas +"\n" +Curso +"\n" +Coordinador
+					+"\n"+Prerrequisitos +"\n";
 	}
 	
 	

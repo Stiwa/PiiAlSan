@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 
@@ -57,7 +58,7 @@ public class Profesor extends Persona{
 		return;
 	}
 	
-	
+	/*
 public static void InsertaProfesor(String[] linea) throws IOException{
 		
 		
@@ -80,6 +81,7 @@ public static void InsertaProfesor(String[] linea) throws IOException{
 		
 		Proyecto.mapProfesores.put(linea[2], new Profesor(linea[2],linea[3],linea[4],fecha,linea[6],linea[7],HorasAsignables) );
 }
+*/
 	@SuppressWarnings("unused")
 	public void AsignarCargaDocente(char grupo,int id,int idgrupo){
 		Integer a = new Integer(id);
@@ -89,6 +91,11 @@ public static void InsertaProfesor(String[] linea) throws IOException{
 		//añadimos a docenciaImpartida la carga docente.
 		
 		
+	}
+	
+	public String aString(){
+		
+		return (super.toString()+"\n"+Categoria +"\n" +Departamento +"\n" +HorasAsignables +"\n");
 	}
 
 }
