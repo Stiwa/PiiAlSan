@@ -46,7 +46,7 @@ public class Proyecto {
 			    			Persona.InsertaPersona(word, recorre[1]);
 			    			break;
 			    		case "asignacoordinador" :
-			    			//Asignatura.AsignaCoordinador();
+			    			Asignatura.AsignaCoordinador(recorre);
 			    			break;
 			    		case "asignacargadocente" :
 			    			break;
@@ -93,6 +93,7 @@ public class Proyecto {
 		    	
 		    }
 		   Util.MapaAFichero("personas.txt");
+		   Util.MapaAFichero("asignaturas.txt");
 	    return;
 	}
 //xx

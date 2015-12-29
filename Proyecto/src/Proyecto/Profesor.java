@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 
@@ -90,6 +91,11 @@ public static void InsertaProfesor(String[] linea) throws IOException{
 		//añadimos a docenciaImpartida la carga docente.
 		
 		
+	}
+	
+	public String aString(){
+		
+		return (super.toString()+"\n"+Categoria +"\n" +Departamento +"\n" +HorasAsignables +"\n");
 	}
 
 }

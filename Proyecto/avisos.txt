@@ -156,3 +156,139 @@ DNI incorrecto
 DNI incorrecto
 DNI incorrecto
 Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Profesor inexistente
+Asignatura Inexistente
+Asignatura Inexistente
+Asignatura Inexistente
+Asignatura Inexistente
+Numero de parametros incorrecto
+Comando incorrecto <InsertPersona>
+Numero de parametros incorrecto
+DNI incorrecto
+DNI incorrecto
+DNI incorrecto
+Profesor inexistente
+Asignatura Inexistente
+Asignatura Inexistente
+Asignatura Inexistente
+Asignatura Inexistente
+Numero de parametros incorrecto

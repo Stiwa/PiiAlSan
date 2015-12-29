@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
+import java.util.Set;
 
 
 public class Avisos {
@@ -109,6 +110,28 @@ public class Avisos {
 		}
 		return true;
 	}
+	
+	public static boolean ComprobarSiglasExistentes(String siglas){
+		
+		int contador = 0;
+	    Set<Integer> clave= Proyecto.mapAsignaturas.keySet();
+	    for(Integer key:clave){
+	    	
+	    	if(siglas.equals(Proyecto.mapAsignaturas.get(siglas)) ){
+	    		contador++;
+	    	}
+	    	
+	    }
+	    if(contador == 0){
+	    	return false;
+	    }
+		
+		
+		return true;
+	}
+	
+	
+	
 	
 	
 }

@@ -30,15 +30,22 @@ public class Util {
 	public static void MapaAFichero(String nomFich) throws IOException {
 		  File f=new File(nomFich);
 		  BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
-		  Set<String> keys = Proyecto.mapAlumnos.keySet();
-		  for(String key:keys){
-			bufer.write("*"+"\nalumno\n"+Proyecto.mapAlumnos.get(key).aString());
-			  
+		  if(nomFich.equalsIgnoreCase("personas.txt")){
+			  Set<String> clave = Proyecto.mapAlumnos.keySet();
+			  for(String key:clave){
+				bufer.write("*"+"\nalumno\n"+Proyecto.mapAlumnos.get(key).aString());
+				  
+			  }
+			  clave=Proyecto.mapProfesores.keySet();
+			  for(String key:clave){
+					  bufer.write("*"+"\nProfesor\n"+Proyecto.mapProfesores.get(key).aString());
+			  }
 		  }
-		  keys=Proyecto.mapProfesores.keySet();
-		  for(String key:keys){
-				  bufer.write("*\nProfesor\n"+Proyecto.mapProfesores.get(key));
-				  //Falta el .aString en profesor. Hay que crearlo
+		  else if(nomFich.equalsIgnoreCase("asignaturas.txt")){
+			  Set<Integer> clave = Proyecto.mapAsignaturas.keySet();
+			  for(Integer key:clave){
+				  bufer.write("*"+"\n"+Proyecto.mapAsignaturas.get(key).aString());
+			  }
 		  }
 		  bufer.close();	  
 	}

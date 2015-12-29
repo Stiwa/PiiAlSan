@@ -11,7 +11,7 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	private GregorianCalendar FechaIngreso = new GregorianCalendar();
 	private String AsignaturasSuperadas;
 	
-	static LinkedHashMap<Integer,Asignatura> DocenciaRecibida = new LinkedHashMap<Integer, Asignatura>();
+	LinkedHashMap<Integer,Asignatura> DocenciaRecibida = new LinkedHashMap<Integer, Asignatura>();
 	//static LinkedHashMap<Integer,Nota> AsignaturasSuperadas = new LinkedHashMap<Integer, Asignatura>();
 	
 	
@@ -40,13 +40,13 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		//Asignatura.CompruebaAsigSup(AsignaturasSuperadas);
 	}
 	
-	
-	public static void ObtenerAsignatura(Asignatura materia){
+	/*
+	public void ObtenerAsignatura(Asignatura materia){
 		DocenciaRecibida.put(Asignatura.getIdAsignatura(), materia);
 		return;
 		
 	}
-	
+	*/
 		/*
 	public static void InsertaAlumno(String[] arrayDatos) throws IOException{
 		
