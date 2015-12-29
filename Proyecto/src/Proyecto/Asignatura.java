@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Asignatura {
 
-	private String Coordinador = new String();
+	private static String Coordinador = new String();
 	private int IdAsignatura;
 	private String NombreAsignatura = new String();
 	private String Siglas = new String();
@@ -67,17 +67,18 @@ public class Asignatura {
 			Avisos.avisosFichero("Asignatura Inexistente");
 			return;
 		}
-		/*
+		
+		//no funciona la funcion estitular
 		if(Avisos.EsTitular(arrayDatos[1]) == false){
 			Avisos.avisosFichero("Profesor no titular");
 			return;
 		}
-		
-		if(Avisos.numeroAsignaturasCoordinadas(arrayDatos[1] != 2){
+		//no se como comprobar si funciona bien
+		if(Avisos.numeroAsignaturasCoordinadas(arrayDatos[1])!=2){
 			Avisos.avisosFichero("Profesor ya es coordinador de 2 materias");
 			return;
 		}
-		*/
+		
 		
 		//Encontrar el id de la asignatura correspondiente a las siglas
 		Set<Integer> clave = Proyecto.mapAsignaturas.keySet();
@@ -101,6 +102,9 @@ public class Asignatura {
 	
 	public String getNombreAsignatura(){
 		return NombreAsignatura;
+	}
+	public static String getCoordinador(){
+		return Coordinador;
 	}
 	public void setCoordinador(String Coordinador){
 		this.Coordinador = Coordinador;
@@ -137,13 +141,13 @@ public class Asignatura {
 		}
 	}
 	
-	//Recibe un String de Asignaturas superadas. Comprueba que son correctas y las añade al mapa
+	//Recibe un String de Asignaturas superadas. Comprueba que son correctas y las aï¿½ade al mapa
 	public void CompruebaAsigSup(String AsigSup){
 		if(AsigSup.trim().length()!=0){
-			//Primero divide el String en grupos (idAsig + año + nota)
+			//Primero divide el String en grupos (idAsig + aï¿½o + nota)
 			String Asignaturas[] = AsigSup.trim().split(";");
 			
-			//Hace cada caso del array de Strings por separado dividiendo id, año y nota
+			//Hace cada caso del array de Strings por separado dividiendo id, aï¿½o y nota
 			for(int i= 0; i<Asignaturas.length; i++){
 				String[] aux2 = Asignaturas[i].trim().split(" ");
 				//Nota n = new Nota(Float.parseFloat(aux2[2]), aux2[1].trim());

@@ -110,6 +110,17 @@ public class Avisos {
 		}
 		return true;
 	}
+	public static boolean EsTitular(String arrayDatos){
+		
+		//no funciona porque asignatura.getcoordinador esta vacia y no se por que
+		System.out.println("\n\n"+Asignatura.getCoordinador()+"\n\n\n");
+			if(Asignatura.getCoordinador().equalsIgnoreCase(arrayDatos)){
+			return true;
+			
+			}
+	return false;
+		
+	}
 	
 	public static boolean ComprobarSiglasExistentes(String siglas){
 		
@@ -129,7 +140,20 @@ public class Avisos {
 		
 		return true;
 	}
-	
+	public static int numeroAsignaturasCoordinadas(String arrayDatos){
+		int contador=0;
+		Set<Integer> clave= Proyecto.mapAsignaturas.keySet();
+	    for(Integer key:clave){
+	    	
+	    	if(arrayDatos.equals(Proyecto.mapAsignaturas.get(arrayDatos)) ){
+	    		contador++;
+	    	}
+	    	
+	    }
+
+		return contador;
+		
+	}
 	
 	
 	

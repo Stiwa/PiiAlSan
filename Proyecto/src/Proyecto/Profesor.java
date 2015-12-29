@@ -12,7 +12,7 @@ import java.util.LinkedHashMap;
 public class Profesor extends Persona{
 	
 	private String Departamento = new String();
-	private String Categoria = new String();
+	private static String Categoria = new String();
 	private int HorasAsignables;
 	private LinkedHashMap<Integer,Asignatura> DocenciaImpartida= new LinkedHashMap<Integer,Asignatura>();
 	
@@ -58,6 +58,10 @@ public class Profesor extends Persona{
 		return;
 	}
 	
+	public static String getCategoria(){
+		return Categoria;
+		
+	}
 	/*
 public static void InsertaProfesor(String[] linea) throws IOException{
 		
@@ -88,7 +92,7 @@ public static void InsertaProfesor(String[] linea) throws IOException{
 		if(a==null){
 			return;
 		}
-		//añadimos a docenciaImpartida la carga docente.
+		//aï¿½adimos a docenciaImpartida la carga docente.
 		
 		
 	}
