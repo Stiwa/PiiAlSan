@@ -33,7 +33,6 @@ public class Proyecto {
 		    	word.trim();
 		    	
 		    	if(word.charAt(0) == '*'){
-		    		//System.out.println(word);
 		    		if(fichero.hasNextLine()){
 		    			word = fichero.nextLine();
 		    		}
@@ -54,8 +53,7 @@ public class Proyecto {
 			    			//System.out.println(word);
 			    			break;
 			    		case "matricula" :
-			    		Alumno.Matricula(recorre);
-			    			
+			    			Alumno.Matricula(recorre);	
 			    			break;
 			    		case "evalua" :
 			    			//System.out.println(word);
