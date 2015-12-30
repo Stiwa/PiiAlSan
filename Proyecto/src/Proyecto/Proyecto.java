@@ -46,7 +46,7 @@ public class Proyecto {
 			    			Persona.InsertaPersona(word, recorre[1]);
 			    			break;
 			    		case "asignacoordinador" :
-			    			Asignatura.AsignaCoordinador(recorre);
+			    			//Asignatura.AsignaCoordinador(recorre);
 			    			break;
 			    		case "asignacargadocente" :
 			    			break;
@@ -54,7 +54,8 @@ public class Proyecto {
 			    			//System.out.println(word);
 			    			break;
 			    		case "matricula" :
-			    			//System.out.println(word);
+			    		//	Alumno.Matricula(recorre);
+			    			
 			    			break;
 			    		case "evalua" :
 			    			//System.out.println(word);
@@ -81,7 +82,7 @@ public class Proyecto {
 		  
 		    fichero.close();
 		    //Imprime los alumnos por pantalla de prueba
-		    Set<String>keys= mapAlumnos.keySet();
+		  /*  Set<String>keys= mapAlumnos.keySet();
 		    for(String key:keys){
 		    	System.out.println(mapAlumnos.get(key));
 		    	
@@ -91,7 +92,7 @@ public class Proyecto {
 		    for(String key:keys){
 		    	System.out.println(mapProfesores.get(key));
 		    	
-		    }
+		    }*/
 		   Util.MapaAFichero("personas.txt");
 		   Util.MapaAFichero("asignaturas.txt");
 	    return;

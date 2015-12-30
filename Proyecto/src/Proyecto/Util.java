@@ -49,6 +49,26 @@ public class Util {
 		  }
 		  bufer.close();	  
 	}
+	
+	
+	public static int PasarSiglasAId(String siglas){
+		
+		Set<Integer> keys = Proyecto.mapAsignaturas.keySet();
+		Asignatura asignatura = null;
+		for(int key:keys){
+			if(Proyecto.mapAsignaturas.get(key).getSiglas().equalsIgnoreCase(siglas)){
+				asignatura = Proyecto.mapAsignaturas.get(key);
+				break;
+			}
+		}
+		if(asignatura == null){
+			return 0;
+		}
+		return asignatura.getIdAsignatura();
+		
+	}
+	
+	
 }
  
  

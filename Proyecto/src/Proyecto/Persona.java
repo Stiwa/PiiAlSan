@@ -139,7 +139,7 @@ public class Persona {
 						
 						Alumno cargaAlumno = new Alumno(nombre.trim(), apellidos.trim(),dni.trim(), FechaNacimiento, fechaIng, 
 								AsignaturasSuperadas, DocenciaRecibida);
-						//Aï¿½ade el nuevo alumno leido del fichero al mapa de alumnos
+						//Añade el nuevo alumno leido del fichero al mapa de alumnos
 						Proyecto.mapAlumnos.put(dni, cargaAlumno);
 						
 						//Para saltar el asterisco

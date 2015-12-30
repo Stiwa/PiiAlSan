@@ -121,12 +121,11 @@ public class Avisos {
 	return false;
 		
 	}
-	
+	/*
 	public static boolean ComprobarSiglasExistentes(String siglas){
 		
 		int contador = 0;
 	    Set<Integer> clave= Proyecto.mapAsignaturas.keySet();
-	    for(Integer key:clave){
 	    	
 	    	if(siglas.equals(Proyecto.mapAsignaturas.get(siglas)) ){
 	    		contador++;
@@ -139,17 +138,18 @@ public class Avisos {
 		
 		
 		return true;
-	}
+	}*/
 	public static int numeroAsignaturasCoordinadas(String arrayDatos){
 		int contador=0;
 		Set<Integer> clave= Proyecto.mapAsignaturas.keySet();
 	    for(Integer key:clave){
 	    	
-	    	if(arrayDatos.equals(Proyecto.mapAsignaturas.get(arrayDatos)) ){
+	    	if(arrayDatos.equals(Proyecto.mapAsignaturas.get(key)) ){
 	    		contador++;
 	    	}
 	    	
 	    }
+	    System.out.println("EL CONTADOR ES: "+contador);
 
 		return contador;
 		
