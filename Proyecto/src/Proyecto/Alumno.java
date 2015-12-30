@@ -11,7 +11,7 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	
 	private GregorianCalendar FechaIngreso = new GregorianCalendar();
 	private String AsignaturasSuperadas;
-	private String DocenciaRecibida;
+	private String DocenciaRecibida="";
 	//static LinkedHashMap<Integer,Nota> AsignaturasSuperadas = new LinkedHashMap<Integer, Asignatura>();
 	
 	
@@ -44,11 +44,13 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	}
 	
 	public String aString(){
+
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
 		return super.toString()+"\n"+sdf.format(FechaIngreso.getTime())+"\n";
 	}
 	
-/*	public static void Matricula(String[] arrayDatos) throws IOException{
+	
+	public static void Matricula(String[] arrayDatos) throws IOException{
 		
 		if(arrayDatos.length != 3){
 			Avisos.avisosFichero("Numero de parametros incorrecto");
@@ -63,30 +65,26 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
     		return;
     	}
 	    int idSiglas = Util.PasarSiglasAId(siglas);
-    	if(idSiglas == 0){
-    		Avisos.avisosFichero("Asignatura inexistente");
+	    if(Proyecto.mapAsignaturas.get(idSiglas)==null){
+	    	Avisos.avisosFichero("Asignatura inexistente");
     		return;
-    	}  
-  
-    	if(docencia != null){
-    		String[] arrayDocencia = docencia.trim().split(";");
-    	}
-  
-    	
-    		for(int i=0; i<arrayDocencia.length; i++){
-    			String arrayStringDocencia[];
-    			arrayStringDocencia = arrayDocencia[i].trim().split(" ");
-    			if(idSiglas == Integer.parseInt(arrayStringDocencia[0])){
-    				Avisos.avisosFichero("Ya es alumno de la asignatura indicada");
-    			}
+	    }
+	    System.out.println("DOCENCIA RECIBIDA:  "+Proyecto.mapAlumnos.get(dni).getDocenciaRecibida());
+	    if(!Avisos.ComprobarMatricula(Proyecto.mapAlumnos.get(dni).getDocenciaRecibida(),idSiglas)){
+ 	
+    			Avisos.avisosFichero("Ya es alumno de la asignatura indicada");
+    			return;
+	    }
+		}
     			
-    		}
-    	}
+    		
+ 	}
+	
 
 		
 		
-	}*/
 	
 	
-}
+	
+
 

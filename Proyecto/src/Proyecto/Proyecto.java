@@ -46,7 +46,7 @@ public class Proyecto {
 			    			Persona.InsertaPersona(word, recorre[1]);
 			    			break;
 			    		case "asignacoordinador" :
-			    			//Asignatura.AsignaCoordinador(recorre);
+			    			Asignatura.AsignaCoordinador(recorre);
 			    			break;
 			    		case "asignacargadocente" :
 			    			break;
@@ -54,7 +54,7 @@ public class Proyecto {
 			    			//System.out.println(word);
 			    			break;
 			    		case "matricula" :
-			    		//	Alumno.Matricula(recorre);
+			    		Alumno.Matricula(recorre);
 			    			
 			    			break;
 			    		case "evalua" :

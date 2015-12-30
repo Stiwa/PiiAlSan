@@ -155,6 +155,23 @@ public class Avisos {
 		
 	}
 	
+	public static boolean ComprobarMatricula(String DocenciaRecibida, int idAsignatura){
+		boolean retorno=true;
+		
+		if(DocenciaRecibida.length()==0){
+			return retorno;
+		}
+		String[] aux=DocenciaRecibida.trim().split(";");
+		for(int i=0;i<aux.length;i++){
+			String[] aux2= aux[i].trim().split(" ");
+			if(Integer.parseInt(aux2[0])==idAsignatura){
+				retorno=false;
+				break;
+			}
+		}
+		return retorno;
+	}
+	
 	
 	
 	

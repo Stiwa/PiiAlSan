@@ -56,7 +56,7 @@ public class Asignatura {
 				
 	}
 	
-	/*
+	
 	public static void AsignaCoordinador(String [] arrayDatos) throws IOException{
 
 		if(Proyecto.mapProfesores.get(arrayDatos[1])==null){
@@ -64,37 +64,31 @@ public class Asignatura {
 			return;
 		}
 		
-		/*if(Avisos.ComprobarSiglasExistentes(arrayDatos[2].trim()) == false){
+		if(Proyecto.mapAsignaturas.get(Util.PasarSiglasAId(arrayDatos[2].trim()))==null){
 			Avisos.avisosFichero("Asignatura Inexistente");
 			return;
-		}*/
+		} 
 		
 		//no funciona la funcion estitular
-		/*if(Avisos.EsTitular(arrayDatos[1]) == false){
+		if(Avisos.EsTitular(arrayDatos[1]) == false){
 			Avisos.avisosFichero("Profesor no titular");
 			return;
-		}*/
+		}
 		
 		//no se como comprobar si funciona bien
-		/*if(Avisos.numeroAsignaturasCoordinadas(arrayDatos[1])!=2){
+		if(Avisos.numeroAsignaturasCoordinadas(arrayDatos[1])!=2){
 			Avisos.avisosFichero("Profesor ya es coordinador de 2 materias");
 			return;
 		}
-		*/
+		
 		
 		//Encontrar el id de la asignatura correspondiente a las siglas
-		/*Set<Integer> clave = Proyecto.mapAsignaturas.keySet();
-		Asignatura asignatura=null;
-		for(int key:clave){
-			if(Proyecto.mapAsignaturas.get(key).getSiglas().equals(arrayDatos[2])){
-				asignatura = Proyecto.mapAsignaturas.get(key);
-				break;
-			}
-		}
-		Proyecto.mapAsignaturas.get(asignatura).setCoordinador(arrayDatos[1]);
+		
+		Proyecto.mapAsignaturas.get(Util.PasarSiglasAId(arrayDatos[2].trim())).setCoordinador(arrayDatos[1]);
+		
 		
 	}
-	*/
+	
 
 	public int getIdAsignatura(){
 		return IdAsignatura;
