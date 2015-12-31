@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
+import java.util.Set;
 
 
 public class Profesor extends Persona{
@@ -62,40 +63,36 @@ public class Profesor extends Persona{
 		return Categoria;
 		
 	}
+
 	/*
-public static void InsertaProfesor(String[] linea) throws IOException{
-		
-		
-		String aux[] = linea[5].split("/");
-		int dia = Integer.parseInt(aux[0]);
-		int mes = Integer.parseInt(aux[1]);
-		int anho = Integer.parseInt(aux[2]);
-		
-		GregorianCalendar fecha = new GregorianCalendar(dia, mes, anho);
-		int HorasAsignables=Integer.parseInt(linea[8]);
-		
-		
-		if(Avisos.ComprobarFecha(fecha) == false){
-			Avisos.avisosFichero("Fecha incorrecta");
-		}
-		
-		if(Proyecto.mapProfesores.get(linea[2]) != null){
-			Avisos.avisosFichero("Profesor ya existente");
-		}
-		
-		Proyecto.mapProfesores.put(linea[2], new Profesor(linea[2],linea[3],linea[4],fecha,linea[6],linea[7],HorasAsignables) );
-}
-*/
-	@SuppressWarnings("unused")
-	public void AsignarCargaDocente(char grupo,int id,int idgrupo){
-		Integer a = new Integer(id);
-		if(a==null){
+	public void AsignaCargaDocente(String[] arrayDatos) throws IOException{
+		String dni = arrayDatos[0].trim();
+		if(Proyecto.mapProfesores.get(arrayDatos[1])==null){
+			Avisos.avisosFichero("Profesor inexistente");
 			return;
 		}
-		//a�adimos a docenciaImpartida la carga docente.
+		String siglas = arrayDatos[1].trim();
+		Util.PasarSiglasAId(siglas);
+		if(Proyecto.mapAsignaturas.get(Util.PasarSiglasAId(arrayDatos[2].trim()))==null){
+			Avisos.avisosFichero("Asignatura Inexistente");
+			return;
+		} 
+		String tipoGrupo = arrayDatos[2].trim();
+		if(!tipoGrupo.equalsIgnoreCase("A") && !tipoGrupo.equalsIgnoreCase("B")){
+			Avisos.avisosFichero("Tipo de grupo incorrecto");
+		}
+		int idGrupo = Integer.parseInt(arrayDatos[3].trim());
+		
+		Set<String> keys = Proyecto.mapProfesores.keySet();
 		
 		
+		Proyecto.mapProfesores.get(dni).getSiglas().equalsIgnoreCase(siglas
+				
+		
+		
+		return;
 	}
+	*/
 	
 	public String aString(){
 		
