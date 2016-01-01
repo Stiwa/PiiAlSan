@@ -43,6 +43,7 @@ public class Asignatura {
 	}
 	
 	public void AsignaturaCoord(int IdAsignatura,String Siglas,String Coordinador,String Prerrequisitos){
+		//Esta funcion vamos a usarla?????
 		this.IdAsignatura=IdAsignatura;
 		this.Siglas=Siglas;
 		this.Coordinador=Coordinador;		
@@ -69,13 +70,13 @@ public class Asignatura {
 			return;
 		} 
 		
-		//no funciona la funcion estitular
+		//nos da un profesor no titular de mas
 		if(Avisos.EsTitular(arrayDatos[1]) == false){
 			Avisos.avisosFichero("Profesor no titular");
 			return;
 		}
 		
-		//no se como comprobar si funciona bien
+		//estoy 99% seguro de que funciona bien porque a adri le salia el mismo aviso en la misma linea que a mi
 		if(Avisos.numeroAsignaturasCoordinadas(arrayDatos[1])!=2){
 			Avisos.avisosFichero("Profesor ya es coordinador de 2 materias");
 			return;

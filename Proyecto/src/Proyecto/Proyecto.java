@@ -62,7 +62,7 @@ public class Proyecto {
 			    			//System.out.println(word);
 			    			break;
 			    		case "obtenercalendarioclases" :
-			    			//System.out.println(word);
+			    			Persona.ObtenerCalendarioClases(recorre);
 			    			break;
 			    			
 			    		default :
