@@ -48,6 +48,7 @@ public class Proyecto {
 			    			Asignatura.AsignaCoordinador(recorre);
 			    			break;
 			    		case "asignacargadocente" :
+			    			//Profesor.AsignaCargaDocente(recorre);
 			    			break;
 			    		case "asignagrupo" :
 			    			//System.out.println(word);

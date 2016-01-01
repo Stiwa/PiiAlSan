@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
+import java.util.Set;
 
 
 public class Profesor extends Persona{
@@ -55,18 +56,39 @@ public class Profesor extends Persona{
 		return Categoria;
 		
 	}
-	
-	@SuppressWarnings("unused")
-	public void AsignarCargaDocente(char grupo,int id,int idgrupo){
-		Integer a = new Integer(id);
-		if(a==null){
-			return;
+
+	public void AsignaCargaDocente(String[] arrayDatos) throws IOException{
+		String dni = arrayDatos[0].trim();
+		if(Proyecto.mapProfesores.get(arrayDatos[1])==null){
+			Avisos.avisosFichero("Profesor inexistente");
+
 		}
 		//anhadimos a docenciaImpartida la carga docente.
+
+		String siglas = arrayDatos[1].trim();
+		Util.PasarSiglasAId(siglas);
+		if(Proyecto.mapAsignaturas.get(Util.PasarSiglasAId(arrayDatos[2].trim()))==null){
+			Avisos.avisosFichero("Asignatura Inexistente");
+			return;
+		} 
+		String tipoGrupo = arrayDatos[2].trim();
+		if(!tipoGrupo.equalsIgnoreCase("A") && !tipoGrupo.equalsIgnoreCase("B")){
+			Avisos.avisosFichero("Tipo de grupo incorrecto");
+		}
+		int idGrupo = Integer.parseInt(arrayDatos[3].trim());
+		
+		Set<String> keys = Proyecto.mapProfesores.keySet();
+
 		
 		
+	//	Proyecto.mapProfesores.get(dni).getSiglas().equalsIgnoreCase(siglas);
+				
+		
+		
+		return;
 	}
 	
+
 	public void ObtenerClasesProfesor(String Fichero){
 		//	File f = new File();
 		//	BufferedWriter salida = new BufferedWriter(new FileWriter(f));
