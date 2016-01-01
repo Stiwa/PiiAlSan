@@ -165,7 +165,7 @@ public class Persona {
 					}
 				}
 				
-			//Cierra el while
+			//Cierra el while.
 					
 			input.close();
 				

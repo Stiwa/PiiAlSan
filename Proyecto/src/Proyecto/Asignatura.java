@@ -18,7 +18,7 @@ public class Asignatura {
 	
 	private LinkedList<Integer> Prerrequisitos = new LinkedList<Integer>();
 	private LinkedList Grupos = new LinkedList();	
-	//x
+	//xx
 	
 	
 	public Asignatura(int idAsignatura,int idGrupo, char grupo){

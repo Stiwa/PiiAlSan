@@ -135,6 +135,7 @@ public class Avisos {
 	    if(contador == 0){
 	    	return false;
 	    }
+	    x
 		
 		
 		return true;

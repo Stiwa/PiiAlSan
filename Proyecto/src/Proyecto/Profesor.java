@@ -62,7 +62,7 @@ public class Profesor extends Persona{
 		if(a==null){
 			return;
 		}
-		//a�adimos a docenciaImpartida la carga docente.
+		//anhadimos a docenciaImpartida la carga docente.
 		
 		
 	}

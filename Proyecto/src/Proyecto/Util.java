@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.GregorianCalendar;
 import java.util.Set;
 
-//Clase donde vamos a implementar pequeños metodos que pueden usarse desde las diferentes clases del proyecto
+//Clase donde vamos a implementar pequeños metodos que pueden usarse desde las diferentes clases del proyecto.
 public class Util {
 
  

@@ -30,7 +30,7 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		this.FechaIngreso= FechaIngreso;
 		
 	}
-	//Constructor necesario para cargar la lista de personas en los mapas
+	//Constructor necesario para cargar la lista de personas en los mapas.
 	public Alumno(String Nombre, String Apellidos, String DNI, GregorianCalendar FechaNacimiento, 
 			GregorianCalendar FechaIngreso, String AsignaturasSuperadas, String DocenciaRecibida){
 		
