@@ -1,17 +1,17 @@
 profesor 
 33218765A
 Carlos 
-PÃ©rez SÃ¡chez 
+Perez Sanchez 
 07/09/1966 
 titular 
-IngenierÃ­a TelemÃ¡tica 
+Ingenieria Telematica 
 14
 12 A 1 
 *
 alumno 
 53456789M 
 Mauro  
-Alonso DomÃ­nguez 
+Alonso Dominguez 
 08/01/1996 
 01/09/2014 
 8 14/15 6.8; 9 14/15 5.5 
@@ -20,7 +20,7 @@ Alonso DomÃ­nguez
 alumno
 51567824F
 Susana
-Prieto VÃ¡zquez
+Prieto Vazquez
 28/5/1994
 03/09/2012
 8 12/13 7.6; 9 12/13 6.2; 12 13/14 5.8; 18 13/14 7.2
@@ -28,18 +28,18 @@ Prieto VÃ¡zquez
 *
 profesor
 37834521G
-JosÃ©
-Casas DomÃ­nguez
+Jose
+Casas Dominguez
 17/11/1972
 asociado
-MatemÃ¡tica Aplicada
+Matematica Aplicada
 10
 8 A 1; 8 A 2; 8 B 1; 8 B 2; 8 B 3
 *
 alumno
 56534219N
-MarÃ­a Luisa
-Castro AntÃ³n
+Maria Luisa
+Castro Anton
 11/11/1997
 02/09/2015
   
@@ -48,9 +48,9 @@ Castro AntÃ³n
 profesor
 45632109V
 SofÃ­a
-Carbajal MartÃ­nez
+Carbajal Martinez
 17/08/1970
 titular
-TeorÃ­a de la SeÃ±al y Comunicaciones
+Teoria de la Senhal y Comunicaciones
 15
 9 A 1 

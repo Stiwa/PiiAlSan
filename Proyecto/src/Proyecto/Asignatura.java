@@ -3,6 +3,7 @@ package Proyecto;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 import java.util.Set;
@@ -17,13 +18,22 @@ public class Asignatura {
 	private float Nota;
 	
 	private LinkedList<Integer> Prerrequisitos = new LinkedList<Integer>();
-	private LinkedList Grupos = new LinkedList();	
+	
+	private ArrayList<Grupos> Grupos = new ArrayList<Grupos>();	
 	//xx
+	
+	public Asignatura(){
+		
+	}
+	//Constructor necesario cuando cargamos del fichero de personas a mapa
+	public Asignatura (int idAsignatura){
+		this.IdAsignatura = idAsignatura;
+	}
 	
 	
 	public Asignatura(int idAsignatura,int idGrupo, char grupo){
-		this.IdAsignatura=idAsignatura;
-				
+		this.IdAsignatura=idAsignatura;	
+		Grupos.add(new Grupos(grupo, idGrupo));
 		
 	}
 	
@@ -108,6 +118,7 @@ public class Asignatura {
 		this.Coordinador = Coordinador;
 	}
 	
+	//Comprobado
 	public static void cargaAsignaturasAMapa(String nombreArchivo) throws IOException{
 
 		try{
@@ -154,10 +165,16 @@ public class Asignatura {
 		}
 	}
 	
-	public String aString(){
+	public String toString(){
 			
 			return IdAsignatura+"\n"+NombreAsignatura +"\n" +Siglas +"\n" +Curso +"\n" +Coordinador
 					+"\n"+Prerrequisitos +"\n";
+	}
+	public ArrayList<Grupos> getGrupos() {
+		return Grupos;
+	}
+	public void setGrupos(ArrayList<Grupos> grupos) {
+		Grupos = grupos;
 	}
 	
 	

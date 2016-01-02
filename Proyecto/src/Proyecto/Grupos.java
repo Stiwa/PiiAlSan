@@ -10,6 +10,10 @@ public class Grupos {
 	private Calendar HoraInicio= Calendar.getInstance();
 	private Calendar HoraFin= Calendar.getInstance();
 	
+	public Grupos (char TipoGrupo, int IdGrupo){
+		this.TipoGrupo = TipoGrupo;
+		this.IdGrupo = IdGrupo;
+	}
 	
 	public Grupos(char TipoGrupo, int IdGrupo, char Dia, String HoraInicio, String HoraFin){
 		int Horainic=Integer.parseInt(HoraInicio);
@@ -48,5 +52,9 @@ public class Grupos {
 		String auxFin=date2.format(HoraFin);
 		return (Integer.parseInt(auxFin)-Integer.parseInt(auxInic));
 				
+	}
+	
+	public String toString(){
+		return (Integer.toString(IdGrupo) +" " +TipoGrupo);
 	}
 }

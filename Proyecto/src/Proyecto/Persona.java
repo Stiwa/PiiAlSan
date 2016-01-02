@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 
@@ -13,13 +14,13 @@ public class Persona {
 	private String Nombre = new String();
 	private String Apellidos = new String();
 	private String DNI = new String();
-	private GregorianCalendar FechaNacimiento = new GregorianCalendar();
+	private Calendar FechaNacimiento = Calendar.getInstance();
 	private String Perfil = new String();
 	
 	protected Persona(){
 	}
 	
-	protected Persona(String Nombre, String Apellidos, String DNI, GregorianCalendar FechaNacimiento){
+	protected Persona(String Nombre, String Apellidos, String DNI, Calendar FechaNacimiento){
 		
 		this.Nombre = Nombre;
 		this.Apellidos = Apellidos;
@@ -27,7 +28,7 @@ public class Persona {
 		this.FechaNacimiento = FechaNacimiento;
 	}
 	
-	protected Persona(String Nombre, String Apellidos, String DNI, GregorianCalendar FechaNacimiento, String Perfil){
+	protected Persona(String Nombre, String Apellidos, String DNI, Calendar FechaNacimiento, String Perfil){
 		
 		this.Nombre = Nombre;
 		this.Apellidos = Apellidos;
@@ -44,7 +45,7 @@ public class Persona {
 			
 		//Comprobamos que el numero de parametros sea el correcto
 		if(arrayDatos.length!=7 && arrayDatos.length!=5){
-			Avisos.avisosFichero("Numero de parametros incorrecto");
+			Avisos.avisosFichero("Numero de argumentos incorrecto");
 			return;
 		}
 		String nombre=arrayDatos[1].trim();
@@ -65,8 +66,27 @@ public class Persona {
 				Avisos.avisosFichero("Numero de parametros incorrecto");
 				return;
 			}
-			GregorianCalendar fechaNac= Util.PasarAGregorianCalendar(lineaDatos2[0].trim());
-			GregorianCalendar fechaIng=Util.PasarAGregorianCalendar(lineaDatos2[1].trim());
+			Calendar fechaNac= Util.PasarACalendar(lineaDatos2[0].trim());
+			if(!Avisos.ComprobarFecha(fechaNac)){
+				Avisos.avisosFichero("Fecha incorrecta");
+				return;
+			}
+			
+			Calendar fechaIng=Util.PasarACalendar(lineaDatos2[1].trim());
+			if(!Avisos.ComprobarFecha(fechaIng)){
+				Avisos.avisosFichero("Fecha incorrecta");
+				return;
+			}
+			
+			if(!Avisos.ComprobarFechaIngreso(fechaNac, fechaIng)){
+				Avisos.avisosFichero("Fecha ingreso incorrecta");
+				return;
+			}
+			
+			if(Proyecto.mapAlumnos.get(dni) != null){
+				Avisos.avisosFichero("Alumno ya existente");
+				return;
+			}
 			
 			Proyecto.mapAlumnos.put(dni, new Alumno(nombre, apellidos, dni, 
 				fechaNac, perfil2, fechaIng));
@@ -74,30 +94,37 @@ public class Persona {
 		}else {
 			String[] lineaDatos2=arrayDatos[4].trim().split("\\s+");
 			if(lineaDatos2.length!=2){
-				Avisos.avisosFichero("Numero de parametros incorrecto");
+				Avisos.avisosFichero("Numero de argumentos incorrecto");
 				return;
 			}
-			GregorianCalendar fechaNac= Util.PasarAGregorianCalendar(lineaDatos2[0].trim());
+				Calendar fechaNac= Util.PasarACalendar(lineaDatos2[0].trim());
+			
+			if(!Avisos.ComprobarFecha(fechaNac)){
+				Avisos.avisosFichero("Fecha incorrecta");
+				return;
+			}
 			String categoria = lineaDatos2[1].trim();
 			String[] lineaDatos3 = arrayDatos[5].trim().split("\\s+");
 			String departamento = lineaDatos3[0];
 			String[] lineaDatos4 = arrayDatos[6].trim().split("\\s+");
 			int horasAsignables = Integer.parseInt(lineaDatos4[0]);
 			
+			if(!Avisos.ComprobarHorasAsig(horasAsignables, categoria)){
+				Avisos.avisosFichero("Numero de horas incorrecto");
+				return;
+			}
+			
+			if(Proyecto.mapProfesores.get(dni) != null){
+				Avisos.avisosFichero("Profesor ya existente");
+				return;
+			}
+			
+			
 			Proyecto.mapProfesores.put(dni, new Profesor(nombre, apellidos, dni, 
 				fechaNac, perfil2, categoria, departamento, horasAsignables));
 			
-		
-				
-		//	Proyecto.mapProfesores.put(dni, new Profesor(nombre, apellidos, dni, fechaNac, categoria,
-		//			departamento, horasAsignables) );
-			
 		}
 		
-		/* En la especificacion no se dice que se tenga en cuenta campo perfil incorrecto
-		   }else
-			Avisos.avisosFichero("Campo perfil incorrecto: <" +lineaDatos[1] +">");
-		*/
 	}
 	
 	public String getDNI(){
@@ -111,15 +138,13 @@ public class Persona {
 	}
 	
 
-	
+	//Comprobado
 	public static void cargaPersonasAMapa(String nombreArchivo) throws IOException{
 		
 		try {
 			Scanner input = new Scanner(new FileInputStream(nombreArchivo));
 			
 			while(input.hasNextLine()){
-				
-				
 					
 					//Variables que tienen todas las personas
 					String perfil = input.nextLine().trim();
@@ -127,12 +152,12 @@ public class Persona {
 					String nombre = input.nextLine().trim();
 					String apellidos = input.nextLine().trim();
 					String aux = input.nextLine().trim();
-					GregorianCalendar FechaNacimiento = Util.PasarAGregorianCalendar(aux);
+					Calendar FechaNacimiento = Util.PasarACalendar(aux);
 					
 					//Ahora vamos con las variables particulares de alumno y profesor
 						if(perfil.trim().equals("alumno")){
 						String aux1 = input.nextLine().trim();
-						GregorianCalendar fechaIng = Util.PasarAGregorianCalendar(aux1);
+						Calendar fechaIng = Util.PasarACalendar(aux1);
 						
 						String AsignaturasSuperadas = input.nextLine().trim();
 						String DocenciaRecibida = input.nextLine().trim();

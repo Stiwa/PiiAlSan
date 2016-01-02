@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.Set;
@@ -15,14 +16,12 @@ public class Avisos {
 	public static void avisosFichero(String comando) throws IOException{	
 		Scanner fichero = null;
 
-
 	  	try {
 	  		fichero = new Scanner(new File("avisos.txt")); 
 	  		if (fichero != null){
 	  				fichero.nextLine();	
 	  		}
 	  		
-
 	  		File f = new File("avisos.txt");
 	  		BufferedWriter bufer = new BufferedWriter(new FileWriter(f, true));
 	  	
@@ -57,12 +56,12 @@ public class Avisos {
 	}
 	
 	
-	public static boolean ComprobarFecha(GregorianCalendar Fecha){
+	public static boolean ComprobarFecha(Calendar Fecha){
 		
 		//Comprobamos si la fecha introducida esta entre el minimo y el maximo
 		//permitido
-		GregorianCalendar FechaMaxima = null;
-		GregorianCalendar FechaMinima = null;
+		Calendar FechaMaxima = Calendar.getInstance();
+		Calendar FechaMinima = Calendar.getInstance();
 		FechaMaxima.set(2020, 1, 1);
 		FechaMinima.set(1950, 1, 1);
 		try{
@@ -78,9 +77,21 @@ public class Avisos {
 			return false;  // la fecha introducida es mayor que la maxima
 		}
 		return true;
-		
-		
 	}
+	
+	public static boolean ComprobarFechaIngreso(Calendar fechaNac, Calendar fechaIng){
+		
+		int edadMinima = 15;
+		int edadMaxima = 65;
+		
+		double diferenciaFechas = fechaIng.getTimeInMillis()-fechaNac.getTimeInMillis();
+		double difEnAños = diferenciaFechas/(3600*1000*24*365);
+		if(edadMinima>difEnAños || edadMaxima<difEnAños){
+			return false;
+		}
+		return true;
+	}
+	
 	public static boolean ComprobarHorasAsig(int Horas, String TipoProfesor){
 		//Aqui depende de si el profesor es titular (20horas) o asocidado(15horas)
 		if (Horas<0){
@@ -155,25 +166,6 @@ public class Avisos {
 		return contador;
 		
 	}
-	
-	public static boolean ComprobarMatricula(String DocenciaRecibida, int idAsignatura){
-		boolean retorno=true;
 		
-		if(DocenciaRecibida.length()==0){
-			return retorno;
-		}
-		String[] aux=DocenciaRecibida.trim().split(";");
-		for(int i=0;i<aux.length;i++){
-			String[] aux2= aux[i].trim().split(" ");
-			if(Integer.parseInt(aux2[0])==idAsignatura){
-				retorno=false;
-				break;
-			}
-		}
-		return retorno;
-	}
-	
-	
-	
 	
 }
