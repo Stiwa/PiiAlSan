@@ -56,7 +56,7 @@ public class Profesor extends Persona{
 		return Categoria;
 		
 	}
-
+/*
 	public void AsignaCargaDocente(String[] arrayDatos) throws IOException{
 		String dni = arrayDatos[0].trim();
 		if(Proyecto.mapProfesores.get(arrayDatos[1])==null){
@@ -81,13 +81,13 @@ public class Profesor extends Persona{
 
 		
 		
-	//	Proyecto.mapProfesores.get(dni).getSiglas().equalsIgnoreCase(siglas);
+		Proyecto.mapProfesores.get(dni).getSiglas();
 				
 		
 		
 		return;
 	}
-	
+	*/
 
 	public void ObtenerClasesProfesor(String Fichero){
 		//	File f = new File();
