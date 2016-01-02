@@ -71,12 +71,12 @@ public class Persona {
 				Avisos.avisosFichero("Fecha incorrecta");
 				return;
 			}
-			
-			Calendar fechaIng=Util.PasarACalendar(lineaDatos2[1].trim());
+			Calendar fechaIng = Util.PasarACalendar(lineaDatos2[1].trim());
+			/*
 			if(!Avisos.ComprobarFecha(fechaIng)){
 				Avisos.avisosFichero("Fecha incorrecta");
 				return;
-			}
+			}*/
 			
 			if(!Avisos.ComprobarFechaIngreso(fechaNac, fechaIng)){
 				Avisos.avisosFichero("Fecha ingreso incorrecta");
@@ -199,22 +199,7 @@ public class Persona {
 			  System.exit(1);
 		}
 	}
-	public static void ObtenerCalendarioClases(String[] arrayDatos) throws IOException{
-		String dniProf=arrayDatos[1].trim();
-		String nombrefichero=arrayDatos[2].trim();
-		if(arrayDatos.length!=3){
-			Avisos.avisosFichero("Numero de comandos Incorrecto");
-			return;
-		}
-		if(Proyecto.mapProfesores.get(dniProf)==null){
-			Avisos.avisosFichero("Profesor inexistente");
-			return;
-		}
-		//solo falta crear un metodo en la clase profesor que se llame obtenerClasesProfesor que
-		//recorre la lista docencia impartida para obtener las clases y los grupos y despues se llama a la funcion asi:
-		// Proyecto.mapProfesores.get(dniProf).ObtenerClasesProfesor(nombrefichero);
-		return;
-	}
+	
 	public String toString(){
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
 		return DNI+"\n"+Nombre+"\n"+Apellidos+"\n"+sdf.format(FechaNacimiento.getTime());

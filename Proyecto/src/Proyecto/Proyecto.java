@@ -39,6 +39,8 @@ public class Proyecto {
 		    	}else{
 		    		recorre = word.split("\\s+");	
 		    		
+		    		Avisos.avisosFichero("\n" +word);
+		    		
 		    		//El nombre del comando puede introducirse en mayuscula o minuscula. lo pasamos a minus para trabajar
 		    		switch(recorre[0].toLowerCase()){
 			    		case "insertapersona" :
@@ -48,7 +50,7 @@ public class Proyecto {
 			    			Asignatura.AsignaCoordinador(recorre);
 			    			break;
 			    		case "asignacargadocente" :
-			    			//Profesor.AsignaCargaDocente(recorre);
+			    			Profesor.AsignaCargaDocente(recorre);
 			    			break;
 			    		case "asignagrupo" :
 			    			//System.out.println(word);
@@ -63,7 +65,7 @@ public class Proyecto {
 			    			// System.out.println(word);
 			    			break;
 			    		case "obtenercalendarioclases" :
-			    			Persona.ObtenerCalendarioClases(recorre);
+			    			//Profesor.ObtenerCalendarioClases(recorre);
 			    			break;
 			    			
 			    		default :
@@ -92,8 +94,8 @@ public class Proyecto {
 		    	System.out.println(mapProfesores.get(key));
 		    	
 		    }*/
-		   Util.MapaAFichero("personas.txt");
-		   Util.MapaAFichero("asignaturas.txt");
+		//   Util.MapaAFichero("personas.txt");
+		//   Util.MapaAFichero("asignaturas.txt");
 	    return;
 	}
 //xx

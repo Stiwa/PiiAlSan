@@ -6,21 +6,20 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Asignatura {
 
-	private static String Coordinador = new String();
+	private String Coordinador = new String();
 	private int IdAsignatura;
 	private String NombreAsignatura = new String();
 	private String Siglas = new String();
 	private int Curso;
-	private float Nota;
+	
 	
 	private LinkedList<Integer> Prerrequisitos = new LinkedList<Integer>();
 	
 	private ArrayList<Grupos> Grupos = new ArrayList<Grupos>();	
-	//xx
+	
 	
 	public Asignatura(){
 		
@@ -49,6 +48,26 @@ public class Asignatura {
 		this.Siglas=Siglas;	
 		this.Curso = Curso;
 		this.Coordinador = Coordinador;
+		if(Prerrequisitos.length() != 0){
+			String[] aux = Prerrequisitos.trim().split(";");
+			for (int i=0; i<aux.length; i++){
+				this.Prerrequisitos.add(Integer.parseInt(aux[i].trim()));
+			}
+		}
+		if(gruposTeoria.length() != 0){
+			String[] aux = gruposTeoria.trim().split(";");
+			for (int i=0; i<aux.length; i++){
+				String[] aux2 = aux[i].trim().split("\\s+");
+				Grupos.add(new Grupos('A', Integer.parseInt(aux2[0]), aux2[1].trim().charAt(0), aux2[2], aux2[3]));
+			}
+		}
+		if(gruposPractica.length() != 0){
+			String[] aux = gruposPractica.trim().split(";");
+			for (int i=0; i<aux.length; i++){
+				String[] aux2 = aux[i].trim().split("\\s+");
+				Grupos.add(new Grupos('B', Integer.parseInt(aux2[0]), aux2[1].trim().charAt(0), aux2[2], aux2[3]));
+			}
+		}
 		
 	}
 	
@@ -80,14 +99,12 @@ public class Asignatura {
 			return;
 		} 
 		
-		//nos da un profesor no titular de mas
-		if(Avisos.EsTitular(arrayDatos[1]) == false){
+		if(Avisos.EsTitular(arrayDatos[1].trim()) == false){
 			Avisos.avisosFichero("Profesor no titular");
 			return;
 		}
 		
-		//estoy 99% seguro de que funciona bien porque a adri le salia el mismo aviso en la misma linea que a mi
-		if(Avisos.numeroAsignaturasCoordinadas(arrayDatos[1])!=2){
+		if(Avisos.numeroAsignaturasCoordinadas(arrayDatos[1])>=2){
 			Avisos.avisosFichero("Profesor ya es coordinador de 2 materias");
 			return;
 		}
@@ -111,7 +128,7 @@ public class Asignatura {
 	public String getNombreAsignatura(){
 		return NombreAsignatura;
 	}
-	public static String getCoordinador(){
+	public String getCoordinador(){
 		return Coordinador;
 	}
 	public void setCoordinador(String Coordinador){
@@ -150,7 +167,7 @@ public class Asignatura {
 		}
 	}
 	
-	//Recibe un String de Asignaturas superadas. Comprueba que son correctas y las a�ade al mapa
+	//Recibe un String de Asignaturas superadas. Comprueba que son correctas y las anhade al mapa
 	public void CompruebaAsigSup(String AsigSup){
 		if(AsigSup.trim().length()!=0){
 			//Primero divide el String en grupos (idAsig + a�o + nota)

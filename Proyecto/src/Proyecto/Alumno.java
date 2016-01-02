@@ -2,8 +2,8 @@ package Proyecto;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -11,9 +11,9 @@ import java.util.Set;
 public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	
 	private Calendar FechaIngreso = Calendar.getInstance();
-	private String AsignaturasSuperadas;
+	//private String AsignaturasSuperadas;
 	private LinkedHashMap<Integer, Asignatura> DocenciaRecibida = new LinkedHashMap<Integer, Asignatura>();
-	//static LinkedHashMap<Integer,Nota> AsignaturasSuperadas = new LinkedHashMap<Integer, Asignatura>();
+	private LinkedHashMap<Integer, Notas> AsignaturasSuperadas = new LinkedHashMap<Integer, Notas>();
 	
 	
 	public Alumno(){
@@ -37,6 +37,19 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		
 		super(Nombre, Apellidos,DNI, FechaNacimiento);
 		this.FechaIngreso = FechaIngreso;
+		
+		
+		if(AsignaturasSuperadas.length() !=0){
+			String grupoDatos[] = AsignaturasSuperadas.split(";");
+			for(int i=0;i<grupoDatos.length;i++){
+				String PartesDatos[]=grupoDatos[i].trim().split("\\s+");
+				this.AsignaturasSuperadas.put(Integer.parseInt(PartesDatos[0].trim()),new Notas(Float.parseFloat(PartesDatos[2])
+						,PartesDatos[1]));
+				
+			}
+		}
+		
+		
 		
 		if(DocenciaRecibida.length()!=0){
 			String grupoDatos[] = DocenciaRecibida.split(";");
@@ -69,22 +82,45 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		
 	}
 	
-	/*
+	
 	public String DocenciaRecibidaToString(){
 		String docencia ="";
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		boolean ponPuntoComa = false;
 		Set<Integer> clave = DocenciaRecibida.keySet();
 		for(int key:clave){
-			
+			ArrayList<Grupos> Grupos = DocenciaRecibida.get(key).getGrupos();
+			for(int i=0; i<Grupos.size(); i++){
+				if(ponPuntoComa)
+					docencia += ";";
+				docencia += key +" " +Grupos.get(i).getTipoGrupo() +" " +Integer.toString(Grupos.get(i).getIdGrupo());
+				ponPuntoComa = true;
+			}
 		}
+		
 		return docencia;
 	}
-	*/
+	
+	public String AsignaturasSuperadasToString(){
+		String AsigSup = "";
+		boolean ponPuntoComa = false;
+		Set<Integer> clave = AsignaturasSuperadas.keySet();
+		for(int key:clave){
+			if(ponPuntoComa)
+				AsigSup += ";";
+			
+			AsigSup += Integer.toString(key) +" " +AsignaturasSuperadas.get(key).getAnhoAcademico() 
+					+" " +AsignaturasSuperadas.get(key).getNota();
+			ponPuntoComa = true;
+		}
+		return AsigSup;
+	}
+	
 	
 	public String toString(){
 
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
-		return (super.toString()+"\n"+sdf.format(FechaIngreso.getTime())+"\n");
+		return (super.toString()+"\n"+sdf.format(FechaIngreso.getTime())+"\n" 
+				+AsignaturasSuperadasToString() +"\n" +DocenciaRecibidaToString() +"\n");
 	}
 	
 	
@@ -107,7 +143,6 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	    	Avisos.avisosFichero("Asignatura inexistente");
     		return;
 	    }
-	    System.out.println("DOCENCIA RECIBIDA:  "+Proyecto.mapAlumnos.get(dni).DocenciaRecibida.values());
 	    /*
 	    if(!ComprobarMatricula(Proyecto.mapAlumnos.get(dni).DocenciaRecibida.values(),idSiglas)){
  	
@@ -116,7 +151,7 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	    }*/
 	    
 	}   
-	/*
+	
 	public boolean ComprobarMatricula(int idAsignatura){
 		boolean retorno=true;
 		
@@ -127,7 +162,7 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	
 		return retorno;
 	}
-	*/
+	
     		
  }
 	

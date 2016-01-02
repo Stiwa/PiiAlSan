@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -84,12 +84,43 @@ public class Avisos {
 		int edadMinima = 15;
 		int edadMaxima = 65;
 		
+		System.out.println(fechaIng.DAY_OF_MONTH +"/" +fechaIng.MONTH +"/" +fechaIng.YEAR);
+		System.out.println(fechaNac.DAY_OF_MONTH +"/" +fechaNac.MONTH +"/" +fechaNac.YEAR);
+		
 		double diferenciaFechas = fechaIng.getTimeInMillis()-fechaNac.getTimeInMillis();
 		double difEnAños = diferenciaFechas/(3600*1000*24*365);
-		if(edadMinima>difEnAños || edadMaxima<difEnAños){
-			return false;
+		
+		System.out.println(fechaIng.getTimeInMillis());
+		System.out.println(fechaNac.getTimeInMillis());
+		if(edadMinima<difEnAños && edadMaxima>difEnAños){
+			return true;
 		}
-		return true;
+		return false;
+	}
+	
+	public static boolean ComprobarGrupoAsignado(int IdAsignatura, int IdGrupo, char TipoGrupo ){
+		boolean retorno = false;
+		Set<String> clave = Proyecto.mapProfesores.keySet();
+		//Cogemos todos los profesores 
+		for(String key:clave){
+			ArrayList<Asignatura> asignaturas = new ArrayList<Asignatura> 
+			(Proyecto.mapProfesores.get(key).getDocenciaImpartida().values() );
+			//cogemos las asignaturas que imparte cada profesor
+			for (int i=0; i<asignaturas.size(); i++){
+				ArrayList<Grupos> grupos = new ArrayList<Grupos>(asignaturas.get(i).getGrupos());
+				//Cogemos los grupos pertenecientes a cada asignatura
+				for(int j=0; j<grupos.size(); j++){
+					if(grupos.get(j).getIdGrupo() == IdGrupo && grupos.get(j).getTipoGrupo() == TipoGrupo){
+						//Comparamos si el grupo que queremos asignar esta ya asignado a algun profesor
+						retorno = true;
+						break;
+					}
+				}
+				if(!retorno) break;
+			}
+			if(!retorno) break;
+		}	
+		return retorno;
 	}
 	
 	public static boolean ComprobarHorasAsig(int Horas, String TipoProfesor){
@@ -122,13 +153,8 @@ public class Avisos {
 		return true;
 	}
 	public static boolean EsTitular(String arrayDatos){
-		
-		//no funciona porque asignatura.getcoordinador esta vacia y no se por que
-		System.out.println("\n\n"+Asignatura.getCoordinador()+"\n\n\n");
-			if(Asignatura.getCoordinador().equalsIgnoreCase(arrayDatos)){
-			return true;
-			
-			}
+			if(Proyecto.mapProfesores.get(arrayDatos).getCategoria().equals("titular"))
+				return true;
 	return false;
 		
 	}
@@ -146,25 +172,34 @@ public class Avisos {
 	    if(contador == 0){
 	    	return false;
 	    }
-	    x
-		
 		
 		return true;
 	}*/
 	public static int numeroAsignaturasCoordinadas(String arrayDatos){
 		int contador=0;
 		Set<Integer> clave= Proyecto.mapAsignaturas.keySet();
-	    for(Integer key:clave){
-	    	
-	    	if(arrayDatos.equals(Proyecto.mapAsignaturas.get(key)) ){
+	    for(Integer key:clave){	
+	    	if(arrayDatos.trim().equals(Proyecto.mapAsignaturas.get(key).getCoordinador()) ){
 	    		contador++;
 	    	}
 	    	
 	    }
-	    System.out.println("EL CONTADOR ES: "+contador);
 
 		return contador;
 		
+	}
+	
+	public static boolean ExistenciaGrupo(ArrayList<Grupos> grupos, char tipoGrupo, int idGrupo){
+		boolean retorno = false;
+		
+		for(int i=0; i<grupos.size(); i++){
+			if(tipoGrupo == grupos.get(i).getTipoGrupo() && idGrupo == grupos.get(i).getIdGrupo()){
+				retorno = true;
+				break;
+			}
+		}
+		
+		return retorno;
 	}
 		
 	

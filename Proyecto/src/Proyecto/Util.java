@@ -19,8 +19,7 @@ public class Util {
 		  int mes = Integer.parseInt(auxCalendar[1].trim());
 		  int anho = Integer.parseInt(auxCalendar[2].trim());
 		  Calendar c = Calendar.getInstance();
-		  c.set(anho, mes, dia);
-		  
+		  c.set(anho, mes, dia);	  
 		  return c;
 	}
 
