@@ -62,7 +62,7 @@ public class Proyecto {
 			    			//Asignatura.evalua(recorre);
 			    			break;
 			    		case "expediente" :
-			    			// System.out.println(word);
+			    			// Alumno.expediente(recorre);
 			    			break;
 			    		case "obtenercalendarioclases" :
 			    			//Profesor.ObtenerCalendarioClases(recorre);

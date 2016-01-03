@@ -1,5 +1,8 @@
 package Proyecto;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -8,7 +11,7 @@ import java.util.LinkedHashMap;
 import java.util.Set;
 
 
-public class Alumno extends Persona {  //Falta a�adir interfaz comparable
+public class Alumno extends Persona implements Comparable {  
 	
 	private Calendar FechaIngreso = Calendar.getInstance();
 	//private String AsignaturasSuperadas;
@@ -236,6 +239,9 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	public LinkedHashMap<Integer, Asignatura> getDocenciaRecibida(){
 		return DocenciaRecibida;
 	}
+	public LinkedHashMap<Integer, Notas> getAsignaturasSuperadas(){
+		return AsignaturasSuperadas;
+	}
 	public boolean horarioSolapeAlumno(int horaInicio, int horaFin, char dia) {
 		boolean retorno= false;
 		Set<Integer> claves = DocenciaRecibida.keySet();
@@ -264,14 +270,41 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	return retorno;
 	}
 	
-    		
+    public static void ObtenerExpediente(String[] arrayDatos) throws IOException{
+
+		if(arrayDatos.length != 3){
+			Avisos.avisosFichero("Numero de parametros incorrecto");
+			return;
+		}
+		String dni = arrayDatos[1].trim();
+		String output = arrayDatos[2].trim();		
+    	if(Proyecto.mapAlumnos.get(dni) == null){
+    		Avisos.avisosFichero("Alumno inexistente");
+    		return;
+    	}	
+    	if(Proyecto.mapAlumnos.get(dni).getAsignaturasSuperadas() == null){
+    		Avisos.avisosFichero("Expediente vacio");
+    		return;
+    	}
+    	Proyecto.mapAlumnos.get(dni).cargaExpediente(output);
+    	Avisos.avisosFichero("OK");
+    	
+    }
+	private void cargaExpediente(String output) throws IOException {
+		  File f=new File(output);
+		  BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
+		  Set<Integer> clave = AsignaturasSuperadas.keySet();
+		  for(int key:clave){
+				AsignaturasSuperadas.get(key).setCurso(Proyecto.mapAsignaturas.get(key).getCurso());
+				AsignaturasSuperadas.get(key).setNombreAsig(Proyecto.mapAsignaturas.get(key).getNombreAsignatura());
+			}
+		  
+		  bufer.close();	  
+	}
+	//Necesario implementar metodo abstracto de la interfaz comparable
+	public int compareTo(Object o) {
+		return 0;
+	}
+	
  }
 	
-
-		
-		
-	
-	
-	
-
-

@@ -113,7 +113,10 @@ public class Asignatura {
 		Avisos.avisosFichero("OK");
 	}
 	
-
+	public int getCurso(){
+		return Curso;
+	}
+	
 	public int getIdAsignatura(){
 		return IdAsignatura;
 	}
