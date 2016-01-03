@@ -36,22 +36,26 @@ public class Grupos {
 	}
 	public int getHoraInicio(){
     SimpleDateFormat date = new SimpleDateFormat("HH");
-	String auxInic=date.format(HoraInicio);
+	String auxInic = date.format(HoraInicio.getTime());
 	return Integer.parseInt(auxInic);
 	}
 	public int getHoraFin(){
 		SimpleDateFormat date1 = new SimpleDateFormat("HH");
-			String auxFin=date1.format(HoraFin);
+			String auxFin = date1.format(HoraFin.getTime());
 			return Integer.parseInt(auxFin);		
 		}
 	public int getDuracion(){
 		SimpleDateFormat date2 = new SimpleDateFormat("HH");
-		String auxInic=date2.format(HoraInicio);
-		String auxFin=date2.format(HoraFin);
+		String auxInic = date2.format(HoraInicio.getTime());
+		String auxFin = date2.format(HoraFin.getTime());
 		return (Integer.parseInt(auxFin)-Integer.parseInt(auxInic));
 				
 	}
 	public String toString(){
 		return (Integer.toString(IdGrupo) +" " +TipoGrupo);
+	}
+	
+	public String ficheroAsignaturas(){
+		return (Integer.toString(IdGrupo) +" " +Dia +" " +Integer.toString(getHoraInicio()) +" " +Integer.toString(getHoraFin()));
 	}
 }

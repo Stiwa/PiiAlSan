@@ -190,33 +190,40 @@ public class Asignatura {
 	public String toString(){
 			
 			return IdAsignatura+"\n"+NombreAsignatura +"\n" +Siglas +"\n" +Curso +"\n" +Coordinador
-					+"\n";
+					+"\n" +PrerrequisitosToString() +"\n" +gruposToString() +"\n";
 	}
-	/*
+	
 	public String PrerrequisitosToString(){
 		String prerrequisitos ="";
 		boolean ponPuntoComa = false;
 		for(int i = 0; i<Prerrequisitos.size(); i++){
 			if(ponPuntoComa)
 				prerrequisitos += ";";
-			Prerrequisitos p=lista.get(i);
-			bufer.write(p.salidaFichero());			
-		}
-		
-		Set<Integer> clave = Prerrequisitos.keySet();
-		for(int key:clave){
-			ArrayList<Grupos> Grupos = DocenciaRecibida.get(key).getGrupos();
-			for(int i=0; i<Grupos.size(); i++){
+			prerrequisitos += 	Integer.toString(Prerrequisitos.get(i));	
+			ponPuntoComa = true;
+		}	
+		return prerrequisitos;
+	}
+	
+	public String gruposToString(){
+		String aux = "";
+		String aux2 = "";
+		boolean ponPuntoComa = false;
+		boolean ponPuntoComa2 = false;		
+		for(int i=0; i<Grupos.size(); i++){
+			if(Grupos.get(i).getTipoGrupo() == 'A'){
 				if(ponPuntoComa)
-					prerrequisitos += ";";
-				prerrequisitos += key +" " +Grupos.get(i).getTipoGrupo() +" " +Integer.toString(Grupos.get(i).getIdGrupo());
+					aux += "; ";
+				aux += Grupos.get(i).ficheroAsignaturas();
 				ponPuntoComa = true;
 			}
+			else{
+				if(ponPuntoComa2)
+					aux2 += "; ";
+				aux2 += Grupos.get(i).ficheroAsignaturas();
+				ponPuntoComa2 = true;
+			}
 		}
-		
-		return prerrequisitos;
-	}*/
-	
-	
-	
+		return (aux +"\n" +aux2);
+	}
 }

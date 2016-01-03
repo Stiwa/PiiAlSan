@@ -89,14 +89,20 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		Set<Integer> clave = DocenciaRecibida.keySet();
 		for(int key:clave){
 			ArrayList<Grupos> Grupos = DocenciaRecibida.get(key).getGrupos();
+			if(Grupos.size() == 0){
+				if(ponPuntoComa)
+					docencia += "; " +key;
+				else 
+					docencia += key; 
+			}
 			for(int i=0; i<Grupos.size(); i++){
 				if(ponPuntoComa)
-					docencia += ";";
+					docencia += "; ";
 				docencia += key +" " +Grupos.get(i).getTipoGrupo() +" " +Integer.toString(Grupos.get(i).getIdGrupo());
 				ponPuntoComa = true;
 			}
-		}
-		
+			
+		}	
 		return docencia;
 	}
 	
@@ -150,14 +156,10 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 			return;
 		}
 		//Anhadir a la docencia recibida
-		Proyecto.mapAlumnos.get(dni).MatriculaAlAlumno(new Asignatura(idSiglas));
+		Proyecto.mapAlumnos.get(dni).getDocenciaRecibida().put(idSiglas, new Asignatura(idSiglas));
 		Avisos.avisosFichero("OK");   
 	}   
 	
-	public void MatriculaAlAlumno(Asignatura a){
-		DocenciaRecibida.put(a.getIdAsignatura(), a);
-		return;
-	}
 	//Comprobaciones necesarias en alumnos porque necesitan la docencia recibida de cada objeto Alumno
 	public boolean ComprobarSiMatriculado(int idAsignatura){
 		boolean retorno=true;
@@ -168,14 +170,16 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		return retorno;
 	}
 	public boolean ComprobarSiAprobado(int idAsignatura){
-		boolean retorno=false;
+		boolean retorno=true;
 		if(AsignaturasSuperadas.get(idAsignatura) == null){
-			retorno = true;
+			retorno = false;
 			return retorno;
 		}
 		return retorno;
 	}
-	
+	public LinkedHashMap<Integer, Asignatura> getDocenciaRecibida(){
+		return DocenciaRecibida;
+	}
 	
     		
  }

@@ -123,6 +123,12 @@ public class Profesor extends Persona{
 			Avisos.avisosFichero("Grupo ya asignado");
 			return;
 		}
+		
+		if(Avisos.ComprobarHorasAsigSuperiorAlMax()){
+			Avisos.avisosFichero("Horas asignables superior al máximo");
+			return;
+		}
+		
 		Avisos.avisosFichero("OK");
 
 		/*
@@ -186,6 +192,19 @@ public class Profesor extends Persona{
 
 	public LinkedHashMap<Integer, Asignatura> getDocenciaImpartida(){
 		return DocenciaImpartida;
+	}
+	
+	public boolean comprobarGrupo(int IdGrupo, char TipoGrupo, int IdAsignatura){
+		if(DocenciaImpartida.get(IdAsignatura) == null){
+			return false;
+		}
+		ArrayList<Grupos> grupos = new ArrayList<Grupos>(DocenciaImpartida.get(IdAsignatura).getGrupos());
+		for(int i=0; i<grupos.size(); i++){
+			if(grupos.get(i).getIdGrupo() == IdGrupo && grupos.get(i).getTipoGrupo() == (TipoGrupo)){
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

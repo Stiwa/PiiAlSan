@@ -101,14 +101,8 @@ public class Avisos {
 			(Proyecto.mapProfesores.get(key).getDocenciaImpartida().values() );
 			//cogemos las asignaturas que imparte cada profesor
 			for (int i=0; i<asignaturas.size(); i++){
-				ArrayList<Grupos> grupos = new ArrayList<Grupos>(asignaturas.get(i).getGrupos());
-				//Cogemos los grupos pertenecientes a cada asignatura
-				for(int j=0; j<grupos.size(); j++){
-					if(grupos.get(j).getIdGrupo() == IdGrupo && grupos.get(j).getTipoGrupo() == TipoGrupo){
-						//Comparamos si el grupo que queremos asignar esta ya asignado a algun profesor
-						retorno = true;
-						break;
-					}
+				if(Proyecto.mapProfesores.get(key).comprobarGrupo(IdGrupo, TipoGrupo, IdAsignatura)){
+					retorno = true;
 				}
 				if(!retorno) break;
 			}
@@ -201,6 +195,10 @@ public class Avisos {
 				retorno = false;;
 			}
 		}
+		return retorno;
+	}
+	public static boolean ComprobarHorasAsigSuperiorAlMax(){
+		boolean retorno = true;
 		return retorno;
 	}
 	
