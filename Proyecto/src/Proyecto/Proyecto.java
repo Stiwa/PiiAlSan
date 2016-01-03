@@ -53,13 +53,13 @@ public class Proyecto {
 			    			Profesor.AsignaCargaDocente(recorre);
 			    			break;
 			    		case "asignagrupo" :
-			    			//System.out.println(word);
+			    			Alumno.asignarGrupo(recorre);
 			    			break;
 			    		case "matricula" :
 			    			Alumno.Matricula(recorre);	
 			    			break;
 			    		case "evalua" :
-			    			//System.out.println(word);
+			    			//Asignatura.evalua(recorre);
 			    			break;
 			    		case "expediente" :
 			    			// System.out.println(word);

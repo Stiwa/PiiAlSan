@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.LinkedHashMap;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -198,15 +199,46 @@ public class Avisos {
 		return retorno;
 	}
 	public static boolean ComprobarHorasAsigSuperiorAlMax(Profesor p,Asignatura a,int idGrupo,char tipoGrupo){
+
 		boolean retorno = true;
-		int horas=a.getGrupo(idGrupo, tipoGrupo).getDuracion();
-		if(!p.ComprobarHorasAsignables(horas)){
+		int horasNuevas=a.getGrupo(idGrupo, tipoGrupo).getDuracion();
+		if(!p.ComprobarHorasAsignables(horasNuevas)){
 			retorno=false;
 		}
 		
 		
 		return retorno;
 		
+	}
+	public static boolean comprobarTipoGrupo(String tipoGrupo){
+		boolean retorno= false;
+		if(tipoGrupo.equalsIgnoreCase("A")||tipoGrupo.equalsIgnoreCase("B")){
+			
+			retorno= true;
+		}
+		return retorno;
+	}
+
+
+	public static boolean haySolapeEnAlumno(Alumno alumno, Asignatura asignatura, char tipoGrupo, int idGrupo) {
+		boolean retorno=false;
+		if(alumno.horarioSolapeAlumno(asignatura.getGrupo(idGrupo, tipoGrupo).getHoraInicio(), asignatura.getGrupo(idGrupo, tipoGrupo).getHoraFin(), 
+				asignatura.getGrupo(idGrupo, tipoGrupo).getDia())){
+			
+		
+			retorno= true;
+		}
+		return retorno;
+	}
+
+
+	public static boolean haySolapeEnProfesor(Profesor profesor, Asignatura asignatura, int idGrupo, char tipoGrupo) {
+		boolean retorno= true;
+		if(profesor.horarioSolapeProfesor(asignatura.getGrupo(idGrupo, tipoGrupo).getHoraInicio(),asignatura.getGrupo(idGrupo, tipoGrupo).getHoraFin(),
+				asignatura.getGrupo(idGrupo, tipoGrupo).getDia())){
+			retorno=true;
+		}
+		return retorno;
 	}
 	
 	

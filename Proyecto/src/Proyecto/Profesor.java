@@ -85,6 +85,9 @@ public class Profesor extends Persona{
 		return Categoria;
 		
 	}
+	public int getHorasAsignables(){
+		return HorasAsignables;
+	}
 
 	
 	public static void AsignaCargaDocente(String[] arrayDatos) throws IOException{
@@ -130,20 +133,32 @@ public class Profesor extends Persona{
 			return;
 		}
 		
-		Avisos.avisosFichero("OK");
-
-		/*
-		mapaProfesores.get(comando[1]).addDocencia(Asignatura.siglasToIdentificador(mapaAsignaturas, comando[3]), Integer.parseInt(comando[4]),
-				comando[3].toCharArray()[0]);
+		if(Avisos.haySolapeEnProfesor(Proyecto.mapProfesores.get(dni),Proyecto.mapAsignaturas.get(idSiglas),idGrupo,tipoGrupo.toCharArray()[0])){
+			Avisos.avisosFichero("Se genera solape");
+			return;
+		}
 		
-		Proyecto.mapProfesores.get(dni).anhadeDocencia()
-				
-		*/
+
+		
+		Proyecto.mapProfesores.get(dni).anhadeDocencia(idSiglas,idGrupo,
+				tipoGrupo.toCharArray()[0]);
+
+		Avisos.avisosFichero("OK");		
+		
 		
 		return;
 	}
 	
 
+	public void anhadeDocencia(int idSiglas, int idGrupo, char tipoGrupo) {
+		if(DocenciaImpartida.get(idSiglas)!=null){
+			DocenciaImpartida.get(idSiglas).anhadeGrupo(idGrupo, tipoGrupo);
+		}
+		else
+			DocenciaImpartida.put(idSiglas, new Asignatura(idSiglas, idGrupo, tipoGrupo));
+		return;
+		
+	}
 	public void ObtenerClasesProfesor(String Fichero){
 		//	File f = new File();
 		//	BufferedWriter salida = new BufferedWriter(new FileWriter(f));
@@ -210,21 +225,54 @@ public class Profesor extends Persona{
 	
 	public boolean ComprobarHorasAsignables(int horasNuevaAsig){
 		boolean retorno=true;
-		int horas=0;
+		int horasYaAsignadas=0;
 		Set<Integer>claves=DocenciaImpartida.keySet();
 		for(int key:claves){
-			ArrayList<Grupos> Grupos = DocenciaImpartida.get(key).getGrupos();
+			ArrayList<Grupos> GruposProf = DocenciaImpartida.get(key).getGrupos();
+			ArrayList<Grupos> grupos = Proyecto.mapAsignaturas.get(key).getGrupos();
 			
-			for(int i=0; i<Grupos.size(); i++){
-				horas += Grupos.get(i).getDuracion();
+			for(int i=0; i<GruposProf.size(); i++){
+				for(int j=0; j<grupos.size();j++){
+					if(grupos.get(j).getIdGrupo()==GruposProf.get(i).getIdGrupo()&&
+					grupos.get(j).getTipoGrupo()==GruposProf.get(i).getTipoGrupo()){
 				
+						horasYaAsignadas = (horasYaAsignadas + grupos.get(j).getDuracion());
+					}
+				}
 			}
-			
+
 		}
-		if((horas+horasNuevaAsig)>this.HorasAsignables){
+		if((horasYaAsignadas+horasNuevaAsig)>this.HorasAsignables){
 			retorno=false;
 		}
 		return retorno;
+	}
+	public boolean horarioSolapeProfesor(int horaInicio, int horaFin, char dia) {
+		boolean retorno= false;
+		Set<Integer> claves = DocenciaImpartida.keySet();
+		for(int key:claves){
+			ArrayList<Grupos> gruposProfesor = DocenciaImpartida.get(key).getGrupos();
+			ArrayList<Grupos> grupos = Proyecto.mapAsignaturas.get(key).getGrupos();
+			for(int i=0; i<gruposProfesor.size(); i++){
+				for(int j=0; j<grupos.size(); j++){
+					if(gruposProfesor.get(i).getTipoGrupo()==grupos.get(j).getTipoGrupo()&&gruposProfesor.get(i).getIdGrupo()==grupos.get(j)
+							.getIdGrupo()){
+						if(grupos.get(j).getDia()!=dia)
+							continue;
+						else{
+							if(horaInicio-grupos.get(j).getHoraFin()<0 || grupos.get(j).getHoraInicio()==horaInicio){
+								retorno = true;
+								break;
+							}
+						}
+					}
+				}
+			}
+			if(retorno==true){
+				break;		
+			}
+		}
+	return retorno;
 	}
 
 }

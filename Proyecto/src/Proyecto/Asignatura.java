@@ -148,6 +148,24 @@ public class Asignatura {
 		return Prerrequisitos;
 	}
 	
+	public boolean comprobarGrupo(int idGrupo, char tipoGrupo, int idSiglas){
+		if(Proyecto.mapAsignaturas.get(idSiglas)==null)
+			return false;
+		if(Proyecto.mapAsignaturas.get(idSiglas).comprobarTipoGrupo(tipoGrupo,idGrupo))
+			return true;
+		return false;
+	}
+	public boolean comprobarTipoGrupo(char tipoGrupo,int idGrupo) {
+		boolean retorno = false;
+		for(int i=0; i<Grupos.size(); i++){
+			if(Grupos.get(i).getTipoGrupo()==tipoGrupo&& Grupos.get(i).getIdGrupo()==idGrupo){
+				retorno = true;
+				break;
+			}
+		}
+		return retorno;
+		// TODO Auto-generated method stub
+	}
 	//Comprobado
 	public static void cargaAsignaturasAMapa(String nombreArchivo) throws IOException{
 
@@ -233,5 +251,9 @@ public class Asignatura {
 			}
 		}
 		return (aux +"\n" +aux2);
+	}
+	public void anhadeGrupo(int idGrupo, char tipoGrupo) {
+		Grupos.add(new Grupos(tipoGrupo,idGrupo));
+		
 	}
 }

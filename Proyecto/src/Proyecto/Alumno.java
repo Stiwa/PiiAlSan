@@ -177,8 +177,91 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		}
 		return retorno;
 	}
+	public static void asignarGrupo(String[] arrayDatos)throws IOException{
+		if(arrayDatos.length!=5){
+			Avisos.avisosFichero("Numero de comandos incorrecto");
+			return;
+		}
+		String siglas = arrayDatos[2].trim();
+		String dni = arrayDatos[1].trim();
+		String tipoGrupo=arrayDatos[3].trim();
+		String idGrupo= arrayDatos[4].trim();
+		int idSiglas = Util.PasarSiglasAId(siglas);
+		
+		if(Proyecto.mapAlumnos.get(dni)==null){
+			Avisos.avisosFichero("Alumno inexistente");
+			return;
+		}
+		if(Proyecto.mapAsignaturas.get(idSiglas)==null){
+			Avisos.avisosFichero("Asignatura inexistente");
+			return;
+		}
+		
+		if(!Proyecto.mapAlumnos.get(dni).ComprobarSiMatriculado(Proyecto.mapAsignaturas.get(idSiglas).getIdAsignatura())){
+			Avisos.avisosFichero("Alumno no matriculado");
+			return;
+		} 
+		
+		if(!Avisos.comprobarTipoGrupo(tipoGrupo)){
+			Avisos.avisosFichero("Tipo de grupo incorrecto");
+			return;
+		} 
+		
+		if(!Proyecto.mapAsignaturas.get(idSiglas).comprobarGrupo(Integer.parseInt(idGrupo),
+				tipoGrupo.toCharArray()[0],idSiglas)){
+			Avisos.avisosFichero("Grupo Inexistente");
+			return;
+		}
+		
+		
+		if(Avisos.haySolapeEnAlumno(Proyecto.mapAlumnos.get(dni), Proyecto.mapAsignaturas.get(idSiglas),
+				tipoGrupo.toCharArray()[0], Integer.parseInt(idGrupo))){
+			Avisos.avisosFichero("Se genera solape");
+			return;
+		} 
+		
+		
+		Proyecto.mapAlumnos.get(dni).asignarGrupo(Proyecto.mapAsignaturas.get(idSiglas),
+		tipoGrupo.toCharArray()[0], Integer.parseInt(idGrupo));
+		
+		Avisos.avisosFichero("OK");
+		
+	}
+	
+	public void asignarGrupo(Asignatura asignatura, char tipoGrupo, int idGrupo) {
+		DocenciaRecibida.get(asignatura.getIdAsignatura()).anhadeGrupo(idGrupo, tipoGrupo);
+		return;
+		
+	}
 	public LinkedHashMap<Integer, Asignatura> getDocenciaRecibida(){
 		return DocenciaRecibida;
+	}
+	public boolean horarioSolapeAlumno(int horaInicio, int horaFin, char dia) {
+		boolean retorno= false;
+		Set<Integer> claves = DocenciaRecibida.keySet();
+		for(int key:claves){
+			ArrayList<Grupos> gruposAlumno = DocenciaRecibida.get(key).getGrupos();
+			ArrayList<Grupos> grupos = Proyecto.mapAsignaturas.get(key).getGrupos();
+			for(int i=0; i<gruposAlumno.size(); i++){
+				for(int j=0; j<grupos.size(); j++){
+					if(gruposAlumno.get(i).getTipoGrupo()==grupos.get(j).getTipoGrupo()&&gruposAlumno.get(i).getIdGrupo()==grupos.get(j)
+							.getIdGrupo()){
+						if(grupos.get(j).getDia()!=dia)
+							continue;
+						else{
+							if(horaInicio-grupos.get(j).getHoraFin()<0 || grupos.get(j).getHoraInicio()==horaInicio){
+								retorno = true;
+								break;
+							}
+						}
+					}
+				}
+			}
+			if(retorno==true){
+				break;		
+			}
+		}
+	return retorno;
 	}
 	
     		
