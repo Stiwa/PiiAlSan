@@ -124,8 +124,9 @@ public class Profesor extends Persona{
 			return;
 		}
 		
-		if(Avisos.ComprobarHorasAsigSuperiorAlMax()){
-			Avisos.avisosFichero("Horas asignables superior al máximo");
+		if(!Avisos.ComprobarHorasAsigSuperiorAlMax(Proyecto.mapProfesores.get(dni),Proyecto.mapAsignaturas.get(idSiglas),idGrupo,
+				tipoGrupo.toCharArray()[0])){
+			Avisos.avisosFichero("Horas asignables superior al maximo");
 			return;
 		}
 		
@@ -205,6 +206,25 @@ public class Profesor extends Persona{
 			}
 		}
 		return false;
+	}
+	
+	public boolean ComprobarHorasAsignables(int horasNuevaAsig){
+		boolean retorno=true;
+		int horas=0;
+		Set<Integer>claves=DocenciaImpartida.keySet();
+		for(int key:claves){
+			ArrayList<Grupos> Grupos = DocenciaImpartida.get(key).getGrupos();
+			
+			for(int i=0; i<Grupos.size(); i++){
+				horas += Grupos.get(i).getDuracion();
+				
+			}
+			
+		}
+		if((horas+horasNuevaAsig)>this.HorasAsignables){
+			retorno=false;
+		}
+		return retorno;
 	}
 
 }

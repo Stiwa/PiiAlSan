@@ -136,6 +136,14 @@ public class Asignatura {
 	public void setGrupos(ArrayList<Grupos> grupos) {
 		Grupos = grupos;
 	}
+	public Grupos getGrupo(int idGrupo,char tipoGrupo){
+		for(int i=0;i<Grupos.size();i++){
+			if(Grupos.get(i).getIdGrupo()==idGrupo && Grupos.get(i).getTipoGrupo()==tipoGrupo){
+				return Grupos.get(i);
+			}
+		}
+		return null;
+	}
 	public LinkedList<Integer> getPrerrequisitos(){
 		return Prerrequisitos;
 	}

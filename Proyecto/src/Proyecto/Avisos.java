@@ -197,9 +197,17 @@ public class Avisos {
 		}
 		return retorno;
 	}
-	public static boolean ComprobarHorasAsigSuperiorAlMax(){
+	public static boolean ComprobarHorasAsigSuperiorAlMax(Profesor p,Asignatura a,int idGrupo,char tipoGrupo){
 		boolean retorno = true;
+		int horas=a.getGrupo(idGrupo, tipoGrupo).getDuracion();
+		if(!p.ComprobarHorasAsignables(horas)){
+			retorno=false;
+		}
+		
+		
 		return retorno;
+		
 	}
+	
 	
 }
