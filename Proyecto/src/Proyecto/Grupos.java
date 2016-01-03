@@ -14,7 +14,6 @@ public class Grupos {
 		this.TipoGrupo = TipoGrupo;
 		this.IdGrupo = IdGrupo;
 	}
-	
 	public Grupos(char TipoGrupo, int IdGrupo, char Dia, String HoraInicio, String HoraFin){
 		int Horainic=Integer.parseInt(HoraInicio);
 		int Horafinal=Integer.parseInt(HoraFin);
@@ -25,7 +24,7 @@ public class Grupos {
 		this.HoraFin.set(2010, 3, 3,Horafinal,0,0);
 		this.HoraInicio.set(2010, 3, 3,Horainic, 0, 0);
 	}
-	
+
 	public char getTipoGrupo(){
 		return TipoGrupo;
 	}
@@ -35,7 +34,6 @@ public class Grupos {
 	public char getDia(){
 		return Dia;
 	}
-	//x
 	public int getHoraInicio(){
     SimpleDateFormat date = new SimpleDateFormat("HH");
 	String auxInic=date.format(HoraInicio);
@@ -53,7 +51,6 @@ public class Grupos {
 		return (Integer.parseInt(auxFin)-Integer.parseInt(auxInic));
 				
 	}
-	
 	public String toString(){
 		return (Integer.toString(IdGrupo) +" " +TipoGrupo);
 	}

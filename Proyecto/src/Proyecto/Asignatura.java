@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
+import java.util.Set;
 
 public class Asignatura {
 
@@ -15,11 +16,8 @@ public class Asignatura {
 	private String Siglas = new String();
 	private int Curso;
 	
-	
 	private LinkedList<Integer> Prerrequisitos = new LinkedList<Integer>();
-	
 	private ArrayList<Grupos> Grupos = new ArrayList<Grupos>();	
-	
 	
 	public Asignatura(){
 		
@@ -29,11 +27,9 @@ public class Asignatura {
 		this.IdAsignatura = idAsignatura;
 	}
 	
-	
 	public Asignatura(int idAsignatura,int idGrupo, char grupo){
 		this.IdAsignatura=idAsignatura;	
-		Grupos.add(new Grupos(grupo, idGrupo));
-		
+		Grupos.add(new Grupos(grupo, idGrupo));	
 	}
 	
 	public Asignatura(int IdAsignatura,String Siglas,String Prerrequisitos){
@@ -114,7 +110,7 @@ public class Asignatura {
 		
 		Proyecto.mapAsignaturas.get(Util.PasarSiglasAId(arrayDatos[2].trim())).setCoordinador(arrayDatos[1]);
 		
-		
+		Avisos.avisosFichero("OK");
 	}
 	
 
@@ -133,6 +129,15 @@ public class Asignatura {
 	}
 	public void setCoordinador(String Coordinador){
 		this.Coordinador = Coordinador;
+	}
+	public ArrayList<Grupos> getGrupos() {
+		return Grupos;
+	}
+	public void setGrupos(ArrayList<Grupos> grupos) {
+		Grupos = grupos;
+	}
+	public LinkedList<Integer> getPrerrequisitos(){
+		return Prerrequisitos;
 	}
 	
 	//Comprobado
@@ -185,14 +190,33 @@ public class Asignatura {
 	public String toString(){
 			
 			return IdAsignatura+"\n"+NombreAsignatura +"\n" +Siglas +"\n" +Curso +"\n" +Coordinador
-					+"\n"+Prerrequisitos +"\n";
+					+"\n";
 	}
-	public ArrayList<Grupos> getGrupos() {
-		return Grupos;
-	}
-	public void setGrupos(ArrayList<Grupos> grupos) {
-		Grupos = grupos;
-	}
+	/*
+	public String PrerrequisitosToString(){
+		String prerrequisitos ="";
+		boolean ponPuntoComa = false;
+		for(int i = 0; i<Prerrequisitos.size(); i++){
+			if(ponPuntoComa)
+				prerrequisitos += ";";
+			Prerrequisitos p=lista.get(i);
+			bufer.write(p.salidaFichero());			
+		}
+		
+		Set<Integer> clave = Prerrequisitos.keySet();
+		for(int key:clave){
+			ArrayList<Grupos> Grupos = DocenciaRecibida.get(key).getGrupos();
+			for(int i=0; i<Grupos.size(); i++){
+				if(ponPuntoComa)
+					prerrequisitos += ";";
+				prerrequisitos += key +" " +Grupos.get(i).getTipoGrupo() +" " +Integer.toString(Grupos.get(i).getIdGrupo());
+				ponPuntoComa = true;
+			}
+		}
+		
+		return prerrequisitos;
+	}*/
+	
 	
 	
 }

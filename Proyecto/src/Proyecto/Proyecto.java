@@ -82,20 +82,9 @@ public class Proyecto {
 		  }
 		  
 		    fichero.close();
-		    //Imprime los alumnos por pantalla de prueba
-		  /*  Set<String>keys= mapAlumnos.keySet();
-		    for(String key:keys){
-		    	System.out.println(mapAlumnos.get(key));
-		    	
-		    }
-		    keys = mapProfesores.keySet();
-		    System.out.println("Profesores\n");
-		    for(String key:keys){
-		    	System.out.println(mapProfesores.get(key));
-		    	
-		    }*/
-		//   Util.MapaAFichero("personas.txt");
-		//   Util.MapaAFichero("asignaturas.txt");
+		
+		    //Util.MapaAFichero("personas.txt");
+		    //Util.MapaAFichero("asignaturas.txt");
 	    return;
 	}
 //xx

@@ -70,6 +70,7 @@ public class Avisos {
 		} catch(Exception time){
 			return false;
 		}
+		
 		if(Fecha.getTimeInMillis()-FechaMinima.getTimeInMillis()<0){
 			return false;  //la fecha introducida es menor que la minima
 		}
@@ -79,20 +80,13 @@ public class Avisos {
 		return true;
 	}
 	
+	//Comprobado
 	public static boolean ComprobarFechaIngreso(Calendar fechaNac, Calendar fechaIng){
 		
 		int edadMinima = 15;
 		int edadMaxima = 65;
-		
-		System.out.println(fechaIng.DAY_OF_MONTH +"/" +fechaIng.MONTH +"/" +fechaIng.YEAR);
-		System.out.println(fechaNac.DAY_OF_MONTH +"/" +fechaNac.MONTH +"/" +fechaNac.YEAR);
-		
-		double diferenciaFechas = fechaIng.getTimeInMillis()-fechaNac.getTimeInMillis();
-		double difEnAños = diferenciaFechas/(3600*1000*24*365);
-		
-		System.out.println(fechaIng.getTimeInMillis());
-		System.out.println(fechaNac.getTimeInMillis());
-		if(edadMinima<difEnAños && edadMaxima>difEnAños){
+		double difEnAnhos = fechaIng.getTimeInMillis()/1000/60/60/24/365-fechaNac.getTimeInMillis()/1000/60/60/24/365;
+		if(edadMinima<difEnAnhos && edadMaxima>difEnAnhos){
 			return true;
 		}
 		return false;
@@ -121,8 +115,7 @@ public class Avisos {
 			if(!retorno) break;
 		}	
 		return retorno;
-	}
-	
+	}	
 	public static boolean ComprobarHorasAsig(int Horas, String TipoProfesor){
 		//Aqui depende de si el profesor es titular (20horas) o asocidado(15horas)
 		if (Horas<0){
@@ -201,6 +194,14 @@ public class Avisos {
 		
 		return retorno;
 	}
-		
+	public static boolean comprobarPrerrequisitos(Asignatura asig, Alumno al){
+		boolean retorno = true;
+		for(int i=0; i<asig.getPrerrequisitos().size(); i++){
+			if(!al.ComprobarSiAprobado(asig.getPrerrequisitos().get(i))){
+				retorno = false;;
+			}
+		}
+		return retorno;
+	}
 	
 }

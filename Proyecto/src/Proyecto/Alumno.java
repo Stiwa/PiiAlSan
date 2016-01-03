@@ -122,18 +122,16 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 		return (super.toString()+"\n"+sdf.format(FechaIngreso.getTime())+"\n" 
 				+AsignaturasSuperadasToString() +"\n" +DocenciaRecibidaToString() +"\n");
 	}
-	
-	
+
 	public static void Matricula(String[] arrayDatos) throws IOException{
 		
 		if(arrayDatos.length != 3){
 			Avisos.avisosFichero("Numero de parametros incorrecto");
 			return;
 		}
-		
 		String dni = arrayDatos[1].trim();
 		String siglas = arrayDatos[2].trim();
-
+		
     	if(Proyecto.mapAlumnos.get(dni) == null){
     		Avisos.avisosFichero("Alumno inexistente");
     		return;
@@ -142,26 +140,42 @@ public class Alumno extends Persona {  //Falta a�adir interfaz comparable
 	    if(Proyecto.mapAsignaturas.get(idSiglas)==null){
 	    	Avisos.avisosFichero("Asignatura inexistente");
     		return;
+	    } 
+	    if(Proyecto.mapAlumnos.get(dni).ComprobarSiMatriculado(idSiglas)){
+	    	Avisos.avisosFichero("Ya es alumno de la asignatura indicada");
+	    	return;
 	    }
-	    /*
-	    if(!ComprobarMatricula(Proyecto.mapAlumnos.get(dni).DocenciaRecibida.values(),idSiglas)){
- 	
-    			Avisos.avisosFichero("Ya es alumno de la asignatura indicada");
-    			return;
-	    }*/
-	    
+		if(!Avisos.comprobarPrerrequisitos(Proyecto.mapAsignaturas.get(idSiglas), Proyecto.mapAlumnos.get(dni))){
+			Avisos.avisosFichero("No cumple requisitos");
+			return;
+		}
+		//Anhadir a la docencia recibida
+		Proyecto.mapAlumnos.get(dni).MatriculaAlAlumno(new Asignatura(idSiglas));
+		Avisos.avisosFichero("OK");   
 	}   
 	
-	public boolean ComprobarMatricula(int idAsignatura){
+	public void MatriculaAlAlumno(Asignatura a){
+		DocenciaRecibida.put(a.getIdAsignatura(), a);
+		return;
+	}
+	//Comprobaciones necesarias en alumnos porque necesitan la docencia recibida de cada objeto Alumno
+	public boolean ComprobarSiMatriculado(int idAsignatura){
 		boolean retorno=true;
-		
 		if(DocenciaRecibida.get(idAsignatura) == null){
 			retorno = false;
 			return retorno;
 		}
-	
 		return retorno;
 	}
+	public boolean ComprobarSiAprobado(int idAsignatura){
+		boolean retorno=false;
+		if(AsignaturasSuperadas.get(idAsignatura) == null){
+			retorno = true;
+			return retorno;
+		}
+		return retorno;
+	}
+	
 	
     		
  }

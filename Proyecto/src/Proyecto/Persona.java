@@ -63,17 +63,18 @@ public class Persona {
 		if(perfil2.equals("alumno")){
 			String[] lineaDatos2=arrayDatos[4].trim().split("\\s+");
 			if(lineaDatos2.length!=2){
-				Avisos.avisosFichero("Numero de parametros incorrecto");
+				Avisos.avisosFichero("Numero de argumentos incorrecto");
 				return;
 			}
-			Calendar fechaNac= Util.PasarACalendar(lineaDatos2[0].trim());
+			
+			Calendar fechaNac= Util.PasarACalendar(lineaDatos2[0]);
 			if(!Avisos.ComprobarFecha(fechaNac)){
 				Avisos.avisosFichero("Fecha incorrecta");
 				return;
 			}
 			Calendar fechaIng = Util.PasarACalendar(lineaDatos2[1].trim());
-			/*
-			if(!Avisos.ComprobarFecha(fechaIng)){
+			
+			/*if(!Avisos.ComprobarFecha(fechaIng)){
 				Avisos.avisosFichero("Fecha incorrecta");
 				return;
 			}*/
@@ -90,6 +91,7 @@ public class Persona {
 			
 			Proyecto.mapAlumnos.put(dni, new Alumno(nombre, apellidos, dni, 
 				fechaNac, perfil2, fechaIng));
+			Avisos.avisosFichero("OK");
 		   	
 		}else {
 			String[] lineaDatos2=arrayDatos[4].trim().split("\\s+");
@@ -122,7 +124,7 @@ public class Persona {
 			
 			Proyecto.mapProfesores.put(dni, new Profesor(nombre, apellidos, dni, 
 				fechaNac, perfil2, categoria, departamento, horasAsignables));
-			
+			Avisos.avisosFichero("OK");
 		}
 		
 	}

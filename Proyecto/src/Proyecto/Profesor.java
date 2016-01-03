@@ -113,7 +113,6 @@ public class Profesor extends Persona{
 			return;
 		}
 		int idGrupo = Integer.parseInt(arrayDatos[4].trim());
-		System.out.println(idGrupo +"\n" +tipoGrupo.charAt(0));
 		
 		if(!Avisos.ExistenciaGrupo(Proyecto.mapAsignaturas.get(idSiglas).getGrupos(), tipoGrupo.charAt(0), idGrupo )) {
 			Avisos.avisosFichero("Grupo Inexistente");
