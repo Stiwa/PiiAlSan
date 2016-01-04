@@ -39,6 +39,11 @@ public class Notas implements Comparable<Notas> {
 			return 1;
 		return 0;
 	}	
-
 	
+}
+//Similar al de practica (vuelos)
+class comparaPorNombre implements Comparator<Notas>{
+	public int compare(Notas nota1, Notas nota2){
+		return nota1.getNombre().compareTo(nota2.getNombre());
+	}
 }

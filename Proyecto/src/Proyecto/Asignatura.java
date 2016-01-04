@@ -246,24 +246,24 @@ public class Asignatura {
 		}
 		String siglas = arrayDatos[1].trim();
 		String cursoAcademico = arrayDatos[2].trim();
-		String output = arrayDatos[3].trim();
+		String ficheroNotas = arrayDatos[3].trim();
 		int idSiglas = Util.PasarSiglasAId(siglas);
 		if(Proyecto.mapAsignaturas.get(idSiglas) == null){
 			Avisos.avisosFichero("Asignatura inexistente");
 			return;
 		}
-		if(!Avisos.compruebaExistenciaFichero(output)){
+		if(!Avisos.compruebaExistenciaFichero(ficheroNotas)){
 			Avisos.avisosFichero("Fichero de notas inexistente");
 			return;
 		}
-		/*
-		if(!Avisos.comprobarAsignaturaYaEvaluada(idSiglas, output, cursoAcademico)){
+		if(Avisos.comprobarAsignaturaYaEvaluada(idSiglas, ficheroNotas, cursoAcademico)){
 			Avisos.avisosFichero("Asignatura ya evaluada en ese curso academico");
 			return;
 		}
-		*/
-		//Avisos: asignatura ya evaluada este curso, alumno no existente, alumno no matriculado , nota A/B incorrecta
-		
+		//Hay que comprobar el fichero de notas
+		Avisos.comprobarFicheroNotas(idSiglas, ficheroNotas, cursoAcademico);
+		//ls funcion esta dentro del metodo comprobarFicheroNotas
+	
 		Avisos.avisosFichero("OK");
 		
 		return;

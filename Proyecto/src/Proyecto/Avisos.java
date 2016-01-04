@@ -3,6 +3,7 @@ package Proyecto;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -151,23 +152,6 @@ public class Avisos {
 	return false;
 		
 	}
-	/*
-	public static boolean ComprobarSiglasExistentes(String siglas){
-		
-		int contador = 0;
-	    Set<Integer> clave= Proyecto.mapAsignaturas.keySet();
-	    	
-	    	if(siglas.equals(Proyecto.mapAsignaturas.get(siglas)) ){
-	    		contador++;
-	    	}
-	    	
-	    }
-	    if(contador == 0){
-	    	return false;
-	    }
-		
-		return true;
-	}*/
 	public static int numeroAsignaturasCoordinadas(String arrayDatos){
 		int contador=0;
 		Set<Integer> clave= Proyecto.mapAsignaturas.keySet();
@@ -239,9 +223,9 @@ public class Avisos {
 		}
 		return retorno;
 	}
-	/*public static boolean comprobarAsignaturaYaEvaluada(int idSiglas, String output, String anhoAcademico) throws IOException{
+	public static boolean comprobarAsignaturaYaEvaluada(int idSiglas, String ficheroNotas, String anhoAcademico) throws IOException{
 		boolean retorno = false;
-		Scanner fichero = new Scanner(new File(output));
+		Scanner fichero = new Scanner(new File(ficheroNotas));
 		while(fichero.hasNextLine()){
 			String linea = fichero.nextLine().trim();
 			String [] arrayLinea = linea.split("\\s+");
@@ -249,14 +233,25 @@ public class Avisos {
 				Avisos.avisosFichero("Numero de parametros incorrecto " +linea);
 				break;
 			}
-			if(Proyecto.mapAlumnos.get(arrayLinea[0]).getDocenciaRecibida().values() == idSiglas )
-			
+			String dni = arrayLinea[0].trim();
+			Set<String> clave = Proyecto.mapAlumnos.keySet();
+			for(String key:clave){
+				LinkedHashMap <Integer, Notas> mapAsig = Proyecto.mapAlumnos.get(key).getAsignaturasSuperadas();
+				if(mapAsig.get(idSiglas) == null){
+					retorno = false;
+					continue;
+				}
+				if(mapAsig.get(idSiglas).getAnhoAcademico().equals(anhoAcademico)){
+					retorno = true;
+					break;
+				}	
+			}
 			fichero.nextLine();
 		}
 		
 		fichero.close();
 		return retorno;
-	}*/
+	}
 	/*
 	public static boolean comprobarAsignacionesProfesor(String dniProf){
 		boolean retorno = true;
@@ -279,6 +274,39 @@ public class Avisos {
 		return retorno;
 	}
 	 */
+	public static void comprobarFicheroNotas(int idSiglas, String ficheroNotas, String cursoAcademico) throws IOException {
+		Scanner fichero = new Scanner(new FileReader(ficheroNotas));
+		while(fichero.hasNextLine()){
+			String linea = fichero.nextLine().trim();
+			String [] arrayLinea = linea.split("\\s+");
+			if(arrayLinea.length != 3){
+				Avisos.avisosFichero("Numero de parametros incorrecto " +linea);
+				break;
+			}
+			String dni = arrayLinea[0].trim();
+			float notaTeoria = Float.parseFloat(arrayLinea[1].trim());
+			float notaPractica = Float.parseFloat(arrayLinea[2].trim());
+		
+			if(Proyecto.mapAlumnos.get(dni) == null){
+				Avisos.avisosFichero("Alumno inexistente: <" +dni +">");
+			}
+			else if(!Proyecto.mapAlumnos.get(dni).ComprobarSiMatriculado(idSiglas)){
+				Avisos.avisosFichero("Alumno no matriculado: <" +dni +">");
+			}
+			else if((notaTeoria < 0 || notaTeoria > 5) || (notaPractica < 0 || notaPractica > 5)){
+				Avisos.avisosFichero("Nota grupo A/B incorrecta");
+			}	
+			else{
+				Proyecto.mapAlumnos.get(dni).evaluar(idSiglas, new Notas(notaTeoria+ 
+						notaPractica, cursoAcademico));
+			}
+		}
+	
+		
+		fichero.close();
+		return;
+		
+	}
 	
 	
 }

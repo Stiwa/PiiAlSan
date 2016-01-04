@@ -270,7 +270,6 @@ public class Alumno extends Persona {
 	}
 	
     public static void ObtenerExpediente(String[] arrayDatos) throws IOException{
-
 		if(arrayDatos.length != 3){
 			Avisos.avisosFichero("Numero de parametros incorrecto");
 			return;
@@ -298,19 +297,20 @@ public class Alumno extends Persona {
 				AsignaturasSuperadas.get(key).setCurso(Proyecto.mapAsignaturas.get(key).getCurso());
 				AsignaturasSuperadas.get(key).setNombreAsig(Proyecto.mapAsignaturas.get(key).getNombreAsignatura());
 		  }
-		  Collections.sort(notas);
+		  Collections.sort(notas);  
+		  Collections.sort(notas, new comparaPorNombre());
 		  for (int i = 0; i < notas.size(); i++) {
 			  bufer.write(notas.get(i).getCurso()+" "+notas.get(i).getNombre()+" "+ notas.get(i).getNota()+" "
 						+notas.get(i).getAnhoAcademico()+"\n");
 		  }
-		  //FALTA ORDENAR ALFABETICAMENTE
+		  
 		  
 		  float notaMedia = 0;
 		  for(int j=0; j<notas.size(); j++){
 			   notaMedia += notas.get(j).getNota();
 		  }
 		  notaMedia = notaMedia/notas.size();
-		  bufer.write("Nota media: " +notaMedia);
+		  bufer.write(" Nota media: " +notaMedia);
 		  	  
 		  bufer.close();	  
 	}
@@ -318,6 +318,13 @@ public class Alumno extends Persona {
 	public int compareTo(Object o) {
 		return 0;
 	}
-	
+	public void evaluar(int idSiglas, Notas notas) {
+		if(notas.getNota()>=5){
+			AsignaturasSuperadas.put(idSiglas, notas);
+			DocenciaRecibida.remove(idSiglas);
+		}
+	return;
+	}
+
  }
 	

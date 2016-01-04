@@ -83,7 +83,7 @@ public class Proyecto {
 		  
 		    fichero.close();
 		
-		    //Util.MapaAFichero("personas.txt");
+		    Util.MapaAFichero("personas.txt");
 		    //Util.MapaAFichero("asignaturas.txt");
 	    return;
 	}
