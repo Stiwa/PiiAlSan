@@ -233,7 +233,6 @@ public class Avisos {
 				Avisos.avisosFichero("Numero de parametros incorrecto " +linea);
 				break;
 			}
-			String dni = arrayLinea[0].trim();
 			Set<String> clave = Proyecto.mapAlumnos.keySet();
 			for(String key:clave){
 				LinkedHashMap <Integer, Notas> mapAsig = Proyecto.mapAlumnos.get(key).getAsignaturasSuperadas();
@@ -252,28 +251,21 @@ public class Avisos {
 		fichero.close();
 		return retorno;
 	}
-	/*
+
 	public static boolean comprobarAsignacionesProfesor(String dniProf){
 		boolean retorno = true;
-		Set<String> clave = Proyecto.mapProfesores.keySet();
-		for(String key:clave){
-			ArrayList<Asignatura> asignaturas = Proyecto.mapProfesores.get(dniProf).getDocenciaImpartida().values();			
-		}
-		
-		if(DocenciaImpartida.get(IdAsignatura) == null){
-			return false;
-		}
-		ArrayList<Grupos> grupos = new ArrayList<Grupos>(DocenciaImpartida.get(IdAsignatura).getGrupos());
-		for(int i=0; i<grupos.size(); i++){
-			if(grupos.get(i).getIdGrupo() == IdGrupo && grupos.get(i).getTipoGrupo() == (TipoGrupo)){
-				return true;
+		Set<Integer> clave = Proyecto.mapProfesores.get(dniProf).getDocenciaImpartida().keySet();
+		for(Integer key:clave){
+			ArrayList<Grupos> grupos =Proyecto.mapProfesores.get(dniProf)
+					.getDocenciaImpartida().get(key).getGrupos();	
+			if(grupos == null){
+				retorno = false;
+				break;
 			}
 		}
-		return false;
-		
 		return retorno;
 	}
-	 */
+	 
 	public static void comprobarFicheroNotas(int idSiglas, String ficheroNotas, String cursoAcademico) throws IOException {
 		Scanner fichero = new Scanner(new FileReader(ficheroNotas));
 		while(fichero.hasNextLine()){

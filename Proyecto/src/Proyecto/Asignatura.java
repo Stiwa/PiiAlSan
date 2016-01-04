@@ -1,13 +1,12 @@
 package Proyecto;
 
-import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
-import java.util.Set;
 
 public class Asignatura {
 
@@ -185,6 +184,7 @@ public class Asignatura {
 		}
 	}
 	//Recibe un String de Asignaturas superadas. Comprueba que son correctas y las anhade al mapa
+	/*
 	public void CompruebaAsigSup(String AsigSup){
 		if(AsigSup.trim().length()!=0){
 			//Primero divide el String en grupos (idAsig + a�o + nota)
@@ -197,7 +197,7 @@ public class Asignatura {
 				//this.asignaturasSuperadas.put(Integer.parseInt(aux2[0].trim()), n);
 			}
 		}
-	}
+	}*/
 	public String toString(){
 			
 			return IdAsignatura+"\n"+NombreAsignatura +"\n" +Siglas +"\n" +Curso +"\n" +Coordinador

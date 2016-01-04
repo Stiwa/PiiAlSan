@@ -4,9 +4,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
@@ -152,13 +152,39 @@ public class Profesor extends Persona{
 		return;
 		
 	}
-	public void ObtenerClasesProfesor(String Fichero){
-		//	File f = new File();
-		//	BufferedWriter salida = new BufferedWriter(new FileWriter(f));
-		//Aqui hay que crear un for each con un mapa que recorra las docencias de cada profesor
-			return;
+	public void ObtenerClasesProfesor(String output) throws IOException{
+		File f = new File(output);
+		BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
+		Set<Integer> keys = DocenciaImpartida.keySet();
+		ArrayList<Grupos> gruposImprimir = new ArrayList<Grupos>(); 
+		for(int key:keys){
+			ArrayList<Grupos> grupos = Proyecto.mapAsignaturas.get(key).getGrupos();
+			ArrayList<Grupos> gruposProfesor = DocenciaImpartida.get(key).getGrupos();
+			for(int i = 0; i<gruposProfesor.size(); i++){
+				for(int j=0; j<grupos.size(); j++){
+					if(grupos.get(j).getIdGrupo()==gruposProfesor.get(i).getIdGrupo()&&
+							gruposProfesor.get(i).getTipoGrupo()==grupos.get(j).getTipoGrupo()){
+							gruposImprimir.add(grupos.get(j));
+					}
+				}
+			}
+			//Collections.sort(grupos);
+			//Collections.sort(gruposProfesor);
+			//Collections.sort(grupos, new comparaPorHoras());
+			//Collections.sort(gruposProfesor, new comparaPorHoras());
+			Collections.sort(gruposImprimir, new comparaPorHoras());
+			Collections.sort(gruposImprimir);
+			for(int i=0; i<gruposImprimir.size(); i++){
+				bufer.write(gruposImprimir.get(i).getDia()+"; "+gruposImprimir.get(i).getHoraInicio()+" ;"
+						+Proyecto.mapAsignaturas.get(key).getSiglas()+"; "+
+						gruposImprimir.get(i).getTipoGrupo()+"; "+gruposImprimir.get(i).getIdGrupo()+"\n");
+			}
 		}
-	/*
+		bufer.close();
+	
+			return;
+	}
+	
 	public static void ObtenerCalendarioClases(String[] arrayDatos) throws IOException{
 		if(arrayDatos.length!=3){
 			Avisos.avisosFichero("Numero de argumentos incorrecto");
@@ -174,12 +200,13 @@ public class Profesor extends Persona{
 			Avisos.avisosFichero("Profesor sin asignaciones");
 			return;
 		}
-		//solo falta crear un metodo en la clase profesor que se llame obtenerClasesProfesor que
-		//recorre la lista docencia impartida para obtener las clases y los grupos y despues se llama a la funcion asi:
-		// Proyecto.mapProfesores.get(dniProf).ObtenerClasesProfesor(nombrefichero);
+		
+		Proyecto.mapProfesores.get(dniProf).ObtenerClasesProfesor(nombrefichero);
+		
+		Avisos.avisosFichero("OK");
 		return;
 	}
-	*/
+	
 	public String DocenciaImpartidaToString(){
 		String docencia ="";
 		boolean ponPuntoComa = false;

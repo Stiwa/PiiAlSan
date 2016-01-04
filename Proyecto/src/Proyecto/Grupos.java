@@ -2,8 +2,9 @@ package Proyecto;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Comparator;
 
-public class Grupos {
+public class Grupos implements Comparable<Grupos>{
 	private char TipoGrupo;
 	private int IdGrupo;
 	private char Dia;
@@ -58,4 +59,36 @@ public class Grupos {
 	public String ficheroAsignaturas(){
 		return (Integer.toString(IdGrupo) +" " +Dia +" " +Integer.toString(getHoraInicio()) +" " +Integer.toString(getHoraFin()));
 	}
+	public int compareTo(Grupos grupos){
+		if(getDia() == 'L' && (grupos.getDia() == 'M' || grupos.getDia() == 'X' || grupos.getDia() == 'J' ||
+				grupos.getDia() == 'V'))
+			return -1;
+			else if(getDia()=='M'&&grupos.getDia()=='L')
+					return 1;
+			else if(getDia() == 'M' && (grupos.getDia() == 'X' || grupos.getDia() == 'J' || grupos.getDia() == 'V'))
+				return -1;
+			else if(getDia() == 'X' && (grupos.getDia() == 'M' || grupos.getDia() == 'L'))
+				return 1;
+			else if(getDia() == 'X' && (grupos.getDia() == 'J' || grupos.getDia() == 'V'))
+				return -1;
+			else if(getDia() == 'J' && (grupos.getDia() == 'M' || grupos.getDia() == 'L' || grupos.getDia() == 'X'))
+				return 1;
+			else if(getDia()=='J'&&grupos.getDia()=='V')
+				return -1;
+			else if(getDia() == 'V' && (grupos.getDia() == 'L' || grupos.getDia() == 'M' || grupos.getDia() == 'X' ||
+					grupos.getDia() == 'J'))
+				return 1;
+			else
+					return 0;
+	}
+}
+
+class comparaPorHoras implements Comparator<Grupos>{
+	public int compare(Grupos grupo1, Grupos grupo2){
+		if(grupo2.getHoraInicio()>grupo1.getHoraInicio())
+			return -1;
+		else
+			return 1;
+	}
+	
 }

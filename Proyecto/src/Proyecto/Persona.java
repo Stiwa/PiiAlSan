@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 
 import  Proyecto.Avisos;
@@ -15,7 +14,7 @@ public class Persona {
 	private String Apellidos = new String();
 	private String DNI = new String();
 	private Calendar FechaNacimiento = Calendar.getInstance();
-	private String Perfil = new String();
+	//private String Perfil = new String();
 	
 	protected Persona(){
 	}
@@ -34,7 +33,6 @@ public class Persona {
 		this.Apellidos = Apellidos;
 		this.DNI = DNI;
 		this.FechaNacimiento = FechaNacimiento;
-		this.Perfil = Perfil;
 	}
 	//En datos recibimos toda la linea del fichero de ejecucion. En perfil recibimos el el tipo (al/prof)
 	public static void InsertaPersona(String datos, String perfil) throws IOException{  
@@ -155,7 +153,7 @@ public class Persona {
 					String apellidos = input.nextLine().trim();
 					String aux = input.nextLine().trim();
 					Calendar FechaNacimiento = Util.PasarACalendar(aux);
-					
+					System.out.println(nombre);
 					//Ahora vamos con las variables particulares de alumno y profesor
 						if(perfil.trim().equals("alumno")){
 						String aux1 = input.nextLine().trim();

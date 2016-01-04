@@ -68,7 +68,7 @@ ObtenerCalendarioClases 37834521G calendarioProfesor.txt
 *	    OK
 *
 InsertaPersona alumno 56432001Y  "Cristian "  "Alonso Perez"  15/10/1997  
-InsertaPersona alumno 56432001Y  "Cristian "  "Alonso Perez"  15/10/1997    15/09/2115   
+InsertaPersona alumno 56432001Y  "Cristian "  "Alonso Perez"  15/10/1997    15/09/2005   
 InsertaPersona alumno 56432001Y  "Cristian "  " Alonso Perez"  15/10/1997   02/09/2015   
 *
 ***********************************************************************************
@@ -111,7 +111,7 @@ AsignaGrupo 56534219N P-I B 5
 *	Numero de argumentos incorrecto
 *	Asignatura inexistente	
 *	Fichero	de notas inexistente
-*       Asignatura ya evaluada en ese curso acadï¿½mico
+*       Asignatura ya evaluada en ese curso academico
 *       **Por linea de notas:          notas.txt
 * 	Alumno inexistente: <dni>      56431122R 3 4
 *	Alumno no matriculado: <dni>   56432001Y 4 3	  
@@ -128,7 +128,7 @@ Evalua CAL-II 15/16 notas.txt
 *      Expediente alumno salida 
 *****************************************************************************************
 *      Avisos: 
-*            Expediente vacio
+*            Expediente vacío
 *            OK 
 *  
 Expediente 56432001Y expedienteAlumno.txt 

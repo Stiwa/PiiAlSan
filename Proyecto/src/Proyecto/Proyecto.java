@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.LinkedHashMap;
 import java.util.Scanner;
-import java.util.Set;
 import java.io.IOException;
 
 //Clase princial del proyecto.
@@ -24,7 +23,7 @@ public class Proyecto {
 		//Abre el fichero de ejecucion. En caso de no existir, error
 		Scanner fichero=null;	
 		  try {
-		  	fichero = new Scanner(new File("ejecucion2.txt"));
+		  	fichero = new Scanner(new File("ejecucion.txt"));
 		  	
 		  	String word = fichero.nextLine();
 		    while (fichero.hasNextLine()) {
@@ -65,7 +64,7 @@ public class Proyecto {
 			    			Alumno.ObtenerExpediente(recorre);
 			    			break;
 			    		case "obtenercalendarioclases" :
-			    			//Profesor.ObtenerCalendarioClases(recorre);
+			    			Profesor.ObtenerCalendarioClases(recorre);
 			    			break;
 			    			
 			    		default :
@@ -84,8 +83,8 @@ public class Proyecto {
 		    fichero.close();
 		
 		    Util.MapaAFichero("personas.txt");
-		    //Util.MapaAFichero("asignaturas.txt");
+		    Util.MapaAFichero("asignaturas.txt");
 	    return;
 	}
-//xx
+
 }
