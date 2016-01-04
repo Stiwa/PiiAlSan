@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Set;
 
-//Clase donde vamos a implementar pequeños metodos que pueden usarse desde las diferentes clases del proyecto.
+//Clase donde vamos a implementar pequenhos metodos que pueden usarse desde las diferentes clases del proyecto.
 public class Util {
 
  
 	
-	 //Recibe un String fecha, lo subdivide en dia, mes, año y devuelve un Calendar
-	 public static Calendar PasarACalendar(String s){
+	//Recibe un String fecha, lo subdivide en dia, mes, anho y devuelve un Calendar
+	public static Calendar PasarACalendar(String s){
 	  
 		  String[] auxCalendar = s.trim().split("/");
 		  int dia = Integer.parseInt(auxCalendar[0]);
@@ -25,9 +25,6 @@ public class Util {
 		  
 		  return c;
 	}
-
-  
- 
 	//METODO PARA ESCRIBIR LOS MAPAS ALUMNO, PROFESOR Y ASIGNATURA A FICHEROS .TXT
 	public static void MapaAFichero(String nomFich) throws IOException {
 		boolean ponAsterisco = false;
@@ -63,9 +60,7 @@ public class Util {
 			  ponAsterisco = false;
 		  }
 		  bufer.close();	  
-	}
-	
-	
+	}	
 	public static int PasarSiglasAId(String siglas){
 		
 		Set<Integer> keys = Proyecto.mapAsignaturas.keySet();

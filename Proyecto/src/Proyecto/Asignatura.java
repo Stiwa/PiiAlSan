@@ -1,5 +1,6 @@
 package Proyecto;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -25,13 +26,11 @@ public class Asignatura {
 	//Constructor necesario cuando cargamos del fichero de personas a mapa
 	public Asignatura (int idAsignatura){
 		this.IdAsignatura = idAsignatura;
-	}
-	
+	}	
 	public Asignatura(int idAsignatura,int idGrupo, char grupo){
 		this.IdAsignatura=idAsignatura;	
 		Grupos.add(new Grupos(grupo, idGrupo));	
-	}
-	
+	}	
 	public Asignatura(int IdAsignatura,String Siglas,String Prerrequisitos){
 		this.IdAsignatura= IdAsignatura;
 		this.Siglas=Siglas;	
@@ -78,52 +77,39 @@ public class Asignatura {
 			for(int i=0; i<lista.length; i++){
 			this.Prerrequisitos.add(Integer.parseInt(lista[i]));
 			}		
-		}
-				
-	}
-	
-	
+		}			
+	}	
 	public static void AsignaCoordinador(String [] arrayDatos) throws IOException{
 
 		if(Proyecto.mapProfesores.get(arrayDatos[1])==null){
 			Avisos.avisosFichero("Profesor inexistente");
 			return;
 		}
-		
 		if(Proyecto.mapAsignaturas.get(Util.PasarSiglasAId(arrayDatos[2].trim()))==null){
 			Avisos.avisosFichero("Asignatura Inexistente");
 			return;
 		} 
-		
 		if(Avisos.EsTitular(arrayDatos[1].trim()) == false){
 			Avisos.avisosFichero("Profesor no titular");
 			return;
 		}
-		
 		if(Avisos.numeroAsignaturasCoordinadas(arrayDatos[1])>=2){
 			Avisos.avisosFichero("Profesor ya es coordinador de 2 materias");
 			return;
 		}
-		
-		
 		//Encontrar el id de la asignatura correspondiente a las siglas
-		
 		Proyecto.mapAsignaturas.get(Util.PasarSiglasAId(arrayDatos[2].trim())).setCoordinador(arrayDatos[1]);
-		
 		Avisos.avisosFichero("OK");
-	}
-	
+	}	
 	public int getCurso(){
 		return Curso;
 	}
-	
 	public int getIdAsignatura(){
 		return IdAsignatura;
 	}
 	public String getSiglas(){
 		return Siglas;
-	}
-	
+	}	
 	public String getNombreAsignatura(){
 		return NombreAsignatura;
 	}
@@ -149,8 +135,7 @@ public class Asignatura {
 	}
 	public LinkedList<Integer> getPrerrequisitos(){
 		return Prerrequisitos;
-	}
-	
+	}	
 	public boolean comprobarGrupo(int idGrupo, char tipoGrupo, int idSiglas){
 		if(Proyecto.mapAsignaturas.get(idSiglas)==null)
 			return false;
@@ -167,7 +152,6 @@ public class Asignatura {
 			}
 		}
 		return retorno;
-		// TODO Auto-generated method stub
 	}
 	//Comprobado
 	public static void cargaAsignaturasAMapa(String nombreArchivo) throws IOException{
@@ -200,7 +184,6 @@ public class Asignatura {
 			  System.exit(1);
 		}
 	}
-	
 	//Recibe un String de Asignaturas superadas. Comprueba que son correctas y las anhade al mapa
 	public void CompruebaAsigSup(String AsigSup){
 		if(AsigSup.trim().length()!=0){
@@ -215,13 +198,11 @@ public class Asignatura {
 			}
 		}
 	}
-	
 	public String toString(){
 			
 			return IdAsignatura+"\n"+NombreAsignatura +"\n" +Siglas +"\n" +Curso +"\n" +Coordinador
 					+"\n" +PrerrequisitosToString() +"\n" +gruposToString() +"\n";
-	}
-	
+	}	
 	public String PrerrequisitosToString(){
 		String prerrequisitos ="";
 		boolean ponPuntoComa = false;
@@ -232,8 +213,7 @@ public class Asignatura {
 			ponPuntoComa = true;
 		}	
 		return prerrequisitos;
-	}
-	
+	}	
 	public String gruposToString(){
 		String aux = "";
 		String aux2 = "";
@@ -256,7 +236,38 @@ public class Asignatura {
 		return (aux +"\n" +aux2);
 	}
 	public void anhadeGrupo(int idGrupo, char tipoGrupo) {
-		Grupos.add(new Grupos(tipoGrupo,idGrupo));
-		
+		Grupos.add(new Grupos(tipoGrupo,idGrupo));	
+		return;
 	}
+	public static void evaluaAsignatura(String[] arrayDatos) throws IOException{
+		if(arrayDatos.length != 4){
+			Avisos.avisosFichero("Numero de argumentos incorrecto");
+			return;
+		}
+		String siglas = arrayDatos[1].trim();
+		String cursoAcademico = arrayDatos[2].trim();
+		String output = arrayDatos[3].trim();
+		int idSiglas = Util.PasarSiglasAId(siglas);
+		if(Proyecto.mapAsignaturas.get(idSiglas) == null){
+			Avisos.avisosFichero("Asignatura inexistente");
+			return;
+		}
+		if(!Avisos.compruebaExistenciaFichero(output)){
+			Avisos.avisosFichero("Fichero de notas inexistente");
+			return;
+		}
+		/*
+		if(!Avisos.comprobarAsignaturaYaEvaluada(idSiglas, output, cursoAcademico)){
+			Avisos.avisosFichero("Asignatura ya evaluada en ese curso academico");
+			return;
+		}
+		*/
+		//Avisos: asignatura ya evaluada este curso, alumno no existente, alumno no matriculado , nota A/B incorrecta
+		
+		Avisos.avisosFichero("OK");
+		
+		return;
+	}
+	
+	
 }

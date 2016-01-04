@@ -24,7 +24,7 @@ public class Proyecto {
 		//Abre el fichero de ejecucion. En caso de no existir, error
 		Scanner fichero=null;	
 		  try {
-		  	fichero = new Scanner(new File("ejecucion.txt"));
+		  	fichero = new Scanner(new File("ejecucion2.txt"));
 		  	
 		  	String word = fichero.nextLine();
 		    while (fichero.hasNextLine()) {
@@ -59,10 +59,10 @@ public class Proyecto {
 			    			Alumno.Matricula(recorre);	
 			    			break;
 			    		case "evalua" :
-			    			//Asignatura.evalua(recorre);
+			    			Asignatura.evaluaAsignatura(recorre);
 			    			break;
 			    		case "expediente" :
-			    			// Alumno.expediente(recorre);
+			    			Alumno.ObtenerExpediente(recorre);
 			    			break;
 			    		case "obtenercalendarioclases" :
 			    			//Profesor.ObtenerCalendarioClases(recorre);
@@ -83,8 +83,8 @@ public class Proyecto {
 		  
 		    fichero.close();
 		
-		    Util.MapaAFichero("personas.txt");
-		   // Util.MapaAFichero("asignaturas.txt");
+		    //Util.MapaAFichero("personas.txt");
+		    //Util.MapaAFichero("asignaturas.txt");
 	    return;
 	}
 //xx

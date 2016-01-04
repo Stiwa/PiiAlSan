@@ -7,11 +7,12 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
 
-public class Alumno extends Persona implements Comparable {  
+public class Alumno extends Persona {  
 	
 	private Calendar FechaIngreso = Calendar.getInstance();
 	//private String AsignaturasSuperadas;
@@ -123,8 +124,6 @@ public class Alumno extends Persona implements Comparable {
 		}
 		return AsigSup;
 	}
-	
-	
 	public String toString(){
 
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
@@ -282,7 +281,7 @@ public class Alumno extends Persona implements Comparable {
     		Avisos.avisosFichero("Alumno inexistente");
     		return;
     	}	
-    	if(Proyecto.mapAlumnos.get(dni).getAsignaturasSuperadas() == null){
+    	if(Proyecto.mapAlumnos.get(dni).getAsignaturasSuperadas().size() == 0){
     		Avisos.avisosFichero("Expediente vacio");
     		return;
     	}
@@ -293,12 +292,26 @@ public class Alumno extends Persona implements Comparable {
 	private void cargaExpediente(String output) throws IOException {
 		  File f=new File(output);
 		  BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
+		  ArrayList<Notas> notas = new ArrayList<Notas>(AsignaturasSuperadas.values());
 		  Set<Integer> clave = AsignaturasSuperadas.keySet();
 		  for(int key:clave){
 				AsignaturasSuperadas.get(key).setCurso(Proyecto.mapAsignaturas.get(key).getCurso());
 				AsignaturasSuperadas.get(key).setNombreAsig(Proyecto.mapAsignaturas.get(key).getNombreAsignatura());
-			}
+		  }
+		  Collections.sort(notas);
+		  for (int i = 0; i < notas.size(); i++) {
+			  bufer.write(notas.get(i).getCurso()+" "+notas.get(i).getNombre()+" "+ notas.get(i).getNota()+" "
+						+notas.get(i).getAnhoAcademico()+"\n");
+		  }
+		  //FALTA ORDENAR ALFABETICAMENTE
 		  
+		  float notaMedia = 0;
+		  for(int j=0; j<notas.size(); j++){
+			   notaMedia += notas.get(j).getNota();
+		  }
+		  notaMedia = notaMedia/notas.size();
+		  bufer.write("Nota media: " +notaMedia);
+		  	  
 		  bufer.close();	  
 	}
 	//Necesario implementar metodo abstracto de la interfaz comparable

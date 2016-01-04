@@ -96,7 +96,6 @@ public class Profesor extends Persona{
 			Avisos.avisosFichero("Numero de argumentos incorrecto");
 			return;
 		}
-		
 		String dni = arrayDatos[1].trim();
 		if(Proyecto.mapProfesores.get(dni)==null){
 			Avisos.avisosFichero("Profesor inexistente");
@@ -121,7 +120,6 @@ public class Profesor extends Persona{
 			Avisos.avisosFichero("Grupo Inexistente");
 			return;
 		}
-		
 		if(Avisos.ComprobarGrupoAsignado(idSiglas, idGrupo, tipoGrupo.toCharArray()[0])){		
 			Avisos.avisosFichero("Grupo ya asignado");
 			return;
@@ -133,23 +131,18 @@ public class Profesor extends Persona{
 			return;
 		}
 		
-		if(Avisos.haySolapeEnProfesor(Proyecto.mapProfesores.get(dni),Proyecto.mapAsignaturas.get(idSiglas),idGrupo,tipoGrupo.toCharArray()[0])){
+		if(Avisos.haySolapeEnProfesor(Proyecto.mapProfesores.get(dni),Proyecto.mapAsignaturas.get(idSiglas),
+				idGrupo,tipoGrupo.toCharArray()[0])){
 			Avisos.avisosFichero("Se genera solape");
 			return;
 		}
 		
-
-		
 		Proyecto.mapProfesores.get(dni).anhadeDocencia(idSiglas,idGrupo,
 				tipoGrupo.toCharArray()[0]);
-
-		Avisos.avisosFichero("OK");		
-		
+		Avisos.avisosFichero("OK");				
 		
 		return;
 	}
-	
-
 	public void anhadeDocencia(int idSiglas, int idGrupo, char tipoGrupo) {
 		if(DocenciaImpartida.get(idSiglas)!=null){
 			DocenciaImpartida.get(idSiglas).anhadeGrupo(idGrupo, tipoGrupo);
@@ -167,21 +160,26 @@ public class Profesor extends Persona{
 		}
 	/*
 	public static void ObtenerCalendarioClases(String[] arrayDatos) throws IOException{
-		String dniProf=arrayDatos[1].trim();
-		String nombrefichero=arrayDatos[2].trim();
 		if(arrayDatos.length!=3){
-			Avisos.avisosFichero("Numero de comandos Incorrecto");
+			Avisos.avisosFichero("Numero de argumentos incorrecto");
 			return;
 		}
+		String dniProf=arrayDatos[1].trim();
+		String nombrefichero=arrayDatos[2].trim();
 		if(Proyecto.mapProfesores.get(dniProf)==null){
 			Avisos.avisosFichero("Profesor inexistente");
+			return;
+		}
+		if(!Avisos.comprobarAsignacionesProfesor(dniProf)){
+			Avisos.avisosFichero("Profesor sin asignaciones");
 			return;
 		}
 		//solo falta crear un metodo en la clase profesor que se llame obtenerClasesProfesor que
 		//recorre la lista docencia impartida para obtener las clases y los grupos y despues se llama a la funcion asi:
 		// Proyecto.mapProfesores.get(dniProf).ObtenerClasesProfesor(nombrefichero);
 		return;
-	}*/
+	}
+	*/
 	public String DocenciaImpartidaToString(){
 		String docencia ="";
 		boolean ponPuntoComa = false;
@@ -205,11 +203,9 @@ public class Profesor extends Persona{
 		return (super.toString()+"\n"+Categoria +"\n" +Departamento +"\n" +HorasAsignables +"\n" +DocenciaImpartidaToString()
 		+"\n");
 	}
-
 	public LinkedHashMap<Integer, Asignatura> getDocenciaImpartida(){
 		return DocenciaImpartida;
-	}
-	
+	}	
 	public boolean comprobarGrupo(int IdGrupo, char TipoGrupo, int IdAsignatura){
 		if(DocenciaImpartida.get(IdAsignatura) == null){
 			return false;
@@ -222,7 +218,6 @@ public class Profesor extends Persona{
 		}
 		return false;
 	}
-	
 	public boolean ComprobarHorasAsignables(int horasNuevaAsig){
 		boolean retorno=true;
 		int horasYaAsignadas=0;

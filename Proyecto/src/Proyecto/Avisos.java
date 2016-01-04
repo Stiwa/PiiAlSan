@@ -35,8 +35,6 @@ public class Avisos {
 	  	}
 		return;
 	}
-	
-	
 	public static boolean ComprobarDNI(String DNI){
 		DNI.trim();
 		
@@ -54,9 +52,7 @@ public class Avisos {
 			}
 		}	
 		return true;
-	}
-	
-	
+	}	
 	public static boolean ComprobarFecha(Calendar Fecha){
 		
 		//Comprobamos si la fecha introducida esta entre el minimo y el maximo
@@ -80,7 +76,17 @@ public class Avisos {
 		}
 		return true;
 	}
-	
+	public static boolean compruebaExistenciaFichero(String nombre){
+		Scanner fichero = null;
+		boolean retorno = true;
+		try{
+			fichero = new Scanner(new File(nombre));
+			fichero.close();
+		}catch(FileNotFoundException e){
+			retorno = false;
+		}
+		return retorno;
+	}
 	//Comprobado
 	public static boolean ComprobarFechaIngreso(Calendar fechaNac, Calendar fechaIng){
 		
@@ -91,8 +97,7 @@ public class Avisos {
 			return true;
 		}
 		return false;
-	}
-	
+	}	
 	public static boolean ComprobarGrupoAsignado(int IdAsignatura, int IdGrupo, char TipoGrupo ){
 		boolean retorno = false;
 		Set<String> clave = Proyecto.mapProfesores.keySet();
@@ -175,8 +180,7 @@ public class Avisos {
 
 		return contador;
 		
-	}
-	
+	}	
 	public static boolean ExistenciaGrupo(ArrayList<Grupos> grupos, char tipoGrupo, int idGrupo){
 		boolean retorno = false;
 		
@@ -218,28 +222,63 @@ public class Avisos {
 		}
 		return retorno;
 	}
-
-
 	public static boolean haySolapeEnAlumno(Alumno alumno, Asignatura asignatura, char tipoGrupo, int idGrupo) {
 		boolean retorno=false;
-		if(alumno.horarioSolapeAlumno(asignatura.getGrupo(idGrupo, tipoGrupo).getHoraInicio(), asignatura.getGrupo(idGrupo, tipoGrupo).getHoraFin(), 
-				asignatura.getGrupo(idGrupo, tipoGrupo).getDia())){
+		if(alumno.horarioSolapeAlumno(asignatura.getGrupo(idGrupo, tipoGrupo).getHoraInicio(), 
+				asignatura.getGrupo(idGrupo, tipoGrupo).getHoraFin(), asignatura.getGrupo(idGrupo, tipoGrupo).getDia())){
 			
-		
 			retorno= true;
 		}
 		return retorno;
 	}
-
-
 	public static boolean haySolapeEnProfesor(Profesor profesor, Asignatura asignatura, int idGrupo, char tipoGrupo) {
-		boolean retorno= true;
-		if(profesor.horarioSolapeProfesor(asignatura.getGrupo(idGrupo, tipoGrupo).getHoraInicio(),asignatura.getGrupo(idGrupo, tipoGrupo).getHoraFin(),
-				asignatura.getGrupo(idGrupo, tipoGrupo).getDia())){
+		boolean retorno= false;
+		if(profesor.horarioSolapeProfesor(asignatura.getGrupo(idGrupo, tipoGrupo).getHoraInicio(),
+				asignatura.getGrupo(idGrupo, tipoGrupo).getHoraFin(),asignatura.getGrupo(idGrupo, tipoGrupo).getDia())){
 			retorno=true;
 		}
 		return retorno;
 	}
+	/*public static boolean comprobarAsignaturaYaEvaluada(int idSiglas, String output, String anhoAcademico) throws IOException{
+		boolean retorno = false;
+		Scanner fichero = new Scanner(new File(output));
+		while(fichero.hasNextLine()){
+			String linea = fichero.nextLine().trim();
+			String [] arrayLinea = linea.split("\\s+");
+			if(arrayLinea.length != 3){
+				Avisos.avisosFichero("Numero de parametros incorrecto " +linea);
+				break;
+			}
+			if(Proyecto.mapAlumnos.get(arrayLinea[0]).getDocenciaRecibida().values() == idSiglas )
+			
+			fichero.nextLine();
+		}
+		
+		fichero.close();
+		return retorno;
+	}*/
+	/*
+	public static boolean comprobarAsignacionesProfesor(String dniProf){
+		boolean retorno = true;
+		Set<String> clave = Proyecto.mapProfesores.keySet();
+		for(String key:clave){
+			ArrayList<Asignatura> asignaturas = Proyecto.mapProfesores.get(dniProf).getDocenciaImpartida().values();			
+		}
+		
+		if(DocenciaImpartida.get(IdAsignatura) == null){
+			return false;
+		}
+		ArrayList<Grupos> grupos = new ArrayList<Grupos>(DocenciaImpartida.get(IdAsignatura).getGrupos());
+		for(int i=0; i<grupos.size(); i++){
+			if(grupos.get(i).getIdGrupo() == IdGrupo && grupos.get(i).getTipoGrupo() == (TipoGrupo)){
+				return true;
+			}
+		}
+		return false;
+		
+		return retorno;
+	}
+	 */
 	
 	
 }
