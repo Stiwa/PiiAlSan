@@ -39,6 +39,9 @@ public class Avisos {
 	  	} catch (FileNotFoundException e){
 	  		System.err.println("Error fichero: <avisos.txt>");
 	  	}
+	  	finally{
+	  		fichero.close();
+	  	}
 		return;
 	}
 	/**

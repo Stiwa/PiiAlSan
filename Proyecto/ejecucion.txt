@@ -9,13 +9,13 @@
 * 	Numero de horas incorrecto
 *	OK
 * 
-InsertPersona profesor 34567210G "J Antonio"  "¡lvarez Gonz·lez" asociado "IngenierÌa Telem·tica"  20
-InsertaPersona profesor 34567210G "J Antonio  ¡lvarez Gonz·lez"   asociado "IngenierÌa Telem·tica"  20
+InsertPersona profesor 34567210G "J Antonio"  "Alvarez Gonzalez" asociado "Ingenieria Telematica"  20
+InsertaPersona profesor 34567210G "J Antonio  Alvarez Gonzalez"   asociado "Ingenieria Telematica"  20
 *
-InsertaPersona profesor 34567210 " J Antonio"  "¡lvarez Gonz·lez"  10/02/1972   asociado "IngenierÌa Telem·tica"  20
-InsertaPersona profesor 34567210G "J Antonio"  "¡lvarez Gonz·lez"   10/02/2972   asociado "IngenierÌa Telem·tica"  20
-InsertaPersona profesor 34567210G  "J Antonio"  "Alvarez Gonz·lez"  10/02/1972   asociado "IngenierÌa Telem·tica"  20
-InsertaPersona profesor 34567210G "J Antonio"  "¡lvarez Gonz·lez"   10/02/1972   titular "IngenierÌa Telem·tica"  20
+InsertaPersona profesor 34567210 " J Antonio"  "Alvarez Gonzalez"  10/02/1972   asociado "Ingenieria Telematica"  20
+InsertaPersona profesor 34567210G "J Antonio"  "Alvarez Gonzalez"   10/02/2972   asociado "Ingenieria Telematica"  20
+InsertaPersona profesor 34567210G  "J Antonio"  "Alvarez Gonzalez"  10/02/1972   asociado "Ingenieria Telematica"  20
+InsertaPersona profesor 34567210G "J Antonio"  "Alvarez Gonzalez"   10/02/1972   titular "Ingenieria Telematica"  20
 *
 ***************************************************************************************************************************************
 *      AsignaCoordinador persona asignatura   
@@ -40,7 +40,7 @@ AsignaCoordinador  33218765A P-I
 * 	   Tipo de grupo incorrecto
 * 	   Grupo inexistente
 * 	   Grupo ya asignado 
-* 	   Horas asignables superior al m·ximo
+* 	   Horas asignables superior al maximo
 * 	   OK
 *          Se genera solape
 *
@@ -67,9 +67,9 @@ ObtenerCalendarioClases 37834521G calendarioProfesor.txt
 * 	    Fecha de ingreso incorrecta
 *	    OK
 *
-InsertaPersona alumno 56432001Y  "Cristian "  "Alonso PÈrez"  15/10/1997  
-InsertaPersona alumno 56432001Y  "Cristian "  "Alonso PÈrez"  15/10/1997    15/09/2115   
-InsertaPersona alumno 56432001Y  "Cristian "  " Alonso PÈrez"  15/10/1997   02/09/2015   
+InsertaPersona alumno 56432001Y  "Cristian "  "Alonso Perez"  15/10/1997  
+InsertaPersona alumno 56432001Y  "Cristian "  "Alonso Perez"  15/10/1997    15/09/2115   
+InsertaPersona alumno 56432001Y  "Cristian "  " Alonso Perez"  15/10/1997   02/09/2015   
 *
 ***********************************************************************************
 *       Matricula alumno asignatura 
@@ -128,7 +128,7 @@ Evalua CAL-II 15/16 notas.txt
 *      Expediente alumno salida 
 *****************************************************************************************
 *      Avisos: 
-*            Expediente vacÌo
+*            Expediente vacio
 *            OK 
 *  
 Expediente 56432001Y expedienteAlumno.txt 

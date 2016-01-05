@@ -48,8 +48,6 @@ public class Proyecto {
 		    	}else{
 		    		recorre = word.split("\\s+");	
 		    		
-		    		Avisos.avisosFichero("\n" +word);
-		    		
 		    		//El nombre del comando puede introducirse en mayuscula o minuscula. lo pasamos a minus para trabajar
 		    		switch(recorre[0].toLowerCase()){
 			    		case "insertapersona" :

@@ -183,32 +183,32 @@ public class Alumno extends Persona implements Comparable<Alumno> {
 	public static void Matricula(String[] arrayDatos) throws IOException{
 		
 		if(arrayDatos.length != 3){
-			Avisos.avisosFichero("Numero de parametros incorrecto");
+			Avisos.avisosFichero("MAT--Numero de parametros incorrecto");
 			return;
 		}
 		String dni = arrayDatos[1].trim();
 		String siglas = arrayDatos[2].trim();
 		
     	if(Proyecto.mapAlumnos.get(dni) == null){
-    		Avisos.avisosFichero("Alumno inexistente");
+    		Avisos.avisosFichero("MAT--Alumno inexistente");
     		return;
     	}
 	    int idSiglas = Util.PasarSiglasAId(siglas);
 	    if(Proyecto.mapAsignaturas.get(idSiglas)==null){
-	    	Avisos.avisosFichero("Asignatura inexistente");
+	    	Avisos.avisosFichero("MAT--Asignatura inexistente");
     		return;
 	    } 
 	    if(Proyecto.mapAlumnos.get(dni).ComprobarSiMatriculado(idSiglas)){
-	    	Avisos.avisosFichero("Ya es alumno de la asignatura indicada");
+	    	Avisos.avisosFichero("MAT--Ya es alumno de la asignatura indicada");
 	    	return;
 	    }
 		if(!Avisos.comprobarPrerrequisitos(Proyecto.mapAsignaturas.get(idSiglas), Proyecto.mapAlumnos.get(dni))){
-			Avisos.avisosFichero("No cumple requisitos");
+			Avisos.avisosFichero("MAT--No cumple requisitos");
 			return;
 		}
 		//Anhadir a la docencia recibida
 		Proyecto.mapAlumnos.get(dni).getDocenciaRecibida().put(idSiglas, new Asignatura(idSiglas));
-		Avisos.avisosFichero("OK");   
+		Avisos.avisosFichero("MAT--OK");   
 	}   
 	//Comprobaciones necesarias en alumnos porque necesitan la docencia recibida de cada objeto Alumno
 	/**
@@ -244,7 +244,7 @@ public class Alumno extends Persona implements Comparable<Alumno> {
 	 */
 	public static void asignarGrupo(String[] arrayDatos)throws IOException{
 		if(arrayDatos.length!=5){
-			Avisos.avisosFichero("Numero de argumentos incorrecto");
+			Avisos.avisosFichero("AGRUPO--Numero de argumentos incorrecto");
 			return;
 		}
 		String siglas = arrayDatos[2].trim();
@@ -254,36 +254,36 @@ public class Alumno extends Persona implements Comparable<Alumno> {
 		int idSiglas = Util.PasarSiglasAId(siglas);
 		
 		if(Proyecto.mapAlumnos.get(dni)==null){
-			Avisos.avisosFichero("Alumno inexistente");
+			Avisos.avisosFichero("AGRUPO--Alumno inexistente");
 			return;
 		}
 		if(Proyecto.mapAsignaturas.get(idSiglas)==null){
-			Avisos.avisosFichero("Asignatura inexistente");
+			Avisos.avisosFichero("AGRUPO--Asignatura inexistente");
 			return;
 		}
 		if(!Proyecto.mapAlumnos.get(dni).ComprobarSiMatriculado(Proyecto.mapAsignaturas.get(idSiglas).getIdAsignatura())){
-			Avisos.avisosFichero("Alumno no matriculado");
+			Avisos.avisosFichero("AGRUPO--Alumno no matriculado");
 			return;
 		} 
 		if(!Avisos.comprobarTipoGrupo(tipoGrupo)){
-			Avisos.avisosFichero("Tipo de grupo incorrecto");
+			Avisos.avisosFichero("AGRUPO--Tipo de grupo incorrecto");
 			return;
 		} 
 		if(!Proyecto.mapAsignaturas.get(idSiglas).comprobarGrupo(Integer.parseInt(idGrupo),
 				tipoGrupo.toCharArray()[0],idSiglas)){
-			Avisos.avisosFichero("Grupo Inexistente");
+			Avisos.avisosFichero("AGRUPO--Grupo Inexistente");
 			return;
 		}
 		if(Avisos.haySolapeEnAlumno(Proyecto.mapAlumnos.get(dni), Proyecto.mapAsignaturas.get(idSiglas),
 				tipoGrupo.toCharArray()[0], Integer.parseInt(idGrupo))){
-			Avisos.avisosFichero("Se genera solape");
+			Avisos.avisosFichero("AGRUPO--Se genera solape");
 			return;
 		} 
 		
 		Proyecto.mapAlumnos.get(dni).asignarGrupo(Proyecto.mapAsignaturas.get(idSiglas),
 		tipoGrupo.toCharArray()[0], Integer.parseInt(idGrupo));
 		
-		Avisos.avisosFichero("OK");
+		Avisos.avisosFichero("AGRUPO--OK");
 	
 	}	
 	/**
@@ -352,21 +352,21 @@ public class Alumno extends Persona implements Comparable<Alumno> {
 	 */
     public static void ObtenerExpediente(String[] arrayDatos) throws IOException{
 		if(arrayDatos.length != 3){
-			Avisos.avisosFichero("Numero de parametros incorrecto");
+			Avisos.avisosFichero("EXP--Numero de parametros incorrecto");
 			return;
 		}
 		String dni = arrayDatos[1].trim();
 		String output = arrayDatos[2].trim();		
     	if(Proyecto.mapAlumnos.get(dni) == null){
-    		Avisos.avisosFichero("Alumno inexistente");
+    		Avisos.avisosFichero("EXP--Alumno inexistente");
     		return;
     	}	
     	if(Proyecto.mapAlumnos.get(dni).getAsignaturasSuperadas().size() == 0){
-    		Avisos.avisosFichero("Expediente vacio");
+    		Avisos.avisosFichero("EXP--Expediente vacio");
     		return;
     	}
     	Proyecto.mapAlumnos.get(dni).cargaExpediente(output);
-    	Avisos.avisosFichero("OK");
+    	Avisos.avisosFichero("EXP--OK");
     	return;
     	
     }
@@ -443,7 +443,7 @@ public class Alumno extends Persona implements Comparable<Alumno> {
 	public static void OrdenaAlumnosPorNotas(String[] arrayDatos) throws IOException{
 		
 		if(arrayDatos.length!=2){
-			Avisos.avisosFichero("Numero de argumentos incorrecto");
+			Avisos.avisosFichero("ORD--Numero de argumentos incorrecto");
 			return;
 		}
 	List<Alumno> lista = new LinkedList<Alumno>(Proyecto.mapAlumnos.values());
@@ -455,7 +455,7 @@ public class Alumno extends Persona implements Comparable<Alumno> {
 				lista.get(i).CalcularNota()+"\n");
 	}
 	buffer.close();
-	Avisos.avisosFichero("OK");
+	Avisos.avisosFichero("ORD--OK");
 	return;
 	}
 	/**

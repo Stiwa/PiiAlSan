@@ -127,24 +127,24 @@ public class Asignatura {
 	public static void AsignaCoordinador(String [] arrayDatos) throws IOException{
 
 		if(Proyecto.mapProfesores.get(arrayDatos[1])==null){
-			Avisos.avisosFichero("Profesor inexistente");
+			Avisos.avisosFichero("ACOORD--Profesor inexistente");
 			return;
 		}
 		if(Proyecto.mapAsignaturas.get(Util.PasarSiglasAId(arrayDatos[2].trim()))==null){
-			Avisos.avisosFichero("Asignatura Inexistente");
+			Avisos.avisosFichero("ACOORD--Asignatura Inexistente");
 			return;
 		} 
 		if(Avisos.EsTitular(arrayDatos[1].trim()) == false){
-			Avisos.avisosFichero("Profesor no titular");
+			Avisos.avisosFichero("ACOORD--Profesor no titular");
 			return;
 		}
 		if(Avisos.numeroAsignaturasCoordinadas(arrayDatos[1])>=2){
-			Avisos.avisosFichero("Profesor ya es coordinador de 2 materias");
+			Avisos.avisosFichero("ACOORD--Profesor ya es coordinador de 2 materias");
 			return;
 		}
 		//Encontrar el id de la asignatura correspondiente a las siglas
 		Proyecto.mapAsignaturas.get(Util.PasarSiglasAId(arrayDatos[2].trim())).setCoordinador(arrayDatos[1]);
-		Avisos.avisosFichero("OK");
+		Avisos.avisosFichero("ACOORD--OK");
 	}	
 	/**
 	 * Devuelve la variable int Curso
@@ -354,7 +354,7 @@ public class Asignatura {
 	 */
 	public static void evaluaAsignatura(String[] arrayDatos) throws IOException{
 		if(arrayDatos.length != 4){
-			Avisos.avisosFichero("Numero de argumentos incorrecto");
+			Avisos.avisosFichero("EVALUA--Numero de argumentos incorrecto");
 			return;
 		}
 		String siglas = arrayDatos[1].trim();
@@ -362,22 +362,22 @@ public class Asignatura {
 		String ficheroNotas = arrayDatos[3].trim();
 		int idSiglas = Util.PasarSiglasAId(siglas);
 		if(Proyecto.mapAsignaturas.get(idSiglas) == null){
-			Avisos.avisosFichero("Asignatura inexistente");
+			Avisos.avisosFichero("EVALUA--signatura inexistente");
 			return;
 		}
 		if(!Avisos.compruebaExistenciaFichero(ficheroNotas)){
-			Avisos.avisosFichero("Fichero de notas inexistente");
+			Avisos.avisosFichero("EVALUA--Fichero de notas inexistente");
 			return;
 		}
 		if(Avisos.comprobarAsignaturaYaEvaluada(idSiglas, ficheroNotas, cursoAcademico)){
-			Avisos.avisosFichero("Asignatura ya evaluada en ese curso academico");
+			Avisos.avisosFichero("EVALUA--Asignatura ya evaluada en ese curso academico");
 			return;
 		}
 		//Hay que comprobar el fichero de notas
 		Avisos.comprobarFicheroNotas(idSiglas, ficheroNotas, cursoAcademico);
 		//ls funcion esta dentro del metodo comprobarFicheroNotas
 	
-		Avisos.avisosFichero("OK");
+		Avisos.avisosFichero("EVALUA--OK");
 		
 		return;
 	}

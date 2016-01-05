@@ -72,7 +72,7 @@ public class Persona {
 			
 		//Comprobamos que el numero de parametros sea el correcto
 		if(arrayDatos.length!=7 && arrayDatos.length!=5){
-			Avisos.avisosFichero("Numero de argumentos incorrecto");
+			Avisos.avisosFichero("IP--Numero de argumentos incorrecto");
 			return;
 		}
 		String nombre=arrayDatos[1].trim();
@@ -82,20 +82,20 @@ public class Persona {
 		
 		
 		if(Avisos.ComprobarDNI(dni) == false){
-			Avisos.avisosFichero("DNI incorrecto");
+			Avisos.avisosFichero("IP--DNI incorrecto");
 			return;
 		}
 
 		if(perfil2.equals("alumno")){
 			String[] lineaDatos2=arrayDatos[4].trim().split("\\s+");
 			if(lineaDatos2.length!=2){
-				Avisos.avisosFichero("Numero de argumentos incorrecto");
+				Avisos.avisosFichero("IP--Numero de argumentos incorrecto");
 				return;
 			}
 			
 			Calendar fechaNac= Util.PasarACalendar(lineaDatos2[0]);
 			if(!Avisos.ComprobarFecha(fechaNac)){
-				Avisos.avisosFichero("Fecha incorrecta");
+				Avisos.avisosFichero("IP--Fecha incorrecta");
 				return;
 			}
 			Calendar fechaIng = Util.PasarACalendar(lineaDatos2[1].trim());
@@ -106,29 +106,29 @@ public class Persona {
 			}*/
 			
 			if(!Avisos.ComprobarFechaIngreso(fechaNac, fechaIng)){
-				Avisos.avisosFichero("Fecha ingreso incorrecta");
+				Avisos.avisosFichero("IP--Fecha ingreso incorrecta");
 				return;
 			}
 			
 			if(Proyecto.mapAlumnos.get(dni) != null){
-				Avisos.avisosFichero("Alumno ya existente");
+				Avisos.avisosFichero("IP--Alumno ya existente");
 				return;
 			}
 			
 			Proyecto.mapAlumnos.put(dni, new Alumno(nombre, apellidos, dni, 
 				fechaNac, perfil2, fechaIng));
-			Avisos.avisosFichero("OK");
+			Avisos.avisosFichero("IP--OK");
 		   	
 		}else {
 			String[] lineaDatos2=arrayDatos[4].trim().split("\\s+");
 			if(lineaDatos2.length!=2){
-				Avisos.avisosFichero("Numero de argumentos incorrecto");
+				Avisos.avisosFichero("IP--Numero de argumentos incorrecto");
 				return;
 			}
 				Calendar fechaNac= Util.PasarACalendar(lineaDatos2[0].trim());
 			
 			if(!Avisos.ComprobarFecha(fechaNac)){
-				Avisos.avisosFichero("Fecha incorrecta");
+				Avisos.avisosFichero("IP--Fecha incorrecta");
 				return;
 			}
 			String categoria = lineaDatos2[1].trim();
@@ -138,19 +138,19 @@ public class Persona {
 			int horasAsignables = Integer.parseInt(lineaDatos4[0]);
 			
 			if(!Avisos.ComprobarHorasAsig(horasAsignables, categoria)){
-				Avisos.avisosFichero("Numero de horas incorrecto");
+				Avisos.avisosFichero("IP--Numero de horas incorrecto");
 				return;
 			}
 			
 			if(Proyecto.mapProfesores.get(dni) != null){
-				Avisos.avisosFichero("Profesor ya existente");
+				Avisos.avisosFichero("IP--Profesor ya existente");
 				return;
 			}
 			
 			
 			Proyecto.mapProfesores.put(dni, new Profesor(nombre, apellidos, dni, 
 				fechaNac, perfil2, categoria, departamento, horasAsignables));
-			Avisos.avisosFichero("OK");
+			Avisos.avisosFichero("IP--OK");
 		}
 		
 	}	

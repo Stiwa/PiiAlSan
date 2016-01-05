@@ -137,12 +137,12 @@ public class Profesor extends Persona{
 	public static void AsignaCargaDocente(String[] arrayDatos) throws IOException{
 		
 		if(arrayDatos.length != 5){
-			Avisos.avisosFichero("Numero de argumentos incorrecto");
+			Avisos.avisosFichero("ACDOC--Numero de argumentos incorrecto");
 			return;
 		}
 		String dni = arrayDatos[1].trim();
 		if(Proyecto.mapProfesores.get(dni)==null){
-			Avisos.avisosFichero("Profesor inexistente");
+			Avisos.avisosFichero("ACDOC--Profesor inexistente");
 			return;
 		}
 		
@@ -150,40 +150,40 @@ public class Profesor extends Persona{
 		String siglas = arrayDatos[2].trim();
 		int idSiglas = Util.PasarSiglasAId(siglas);
 		if(Proyecto.mapAsignaturas.get(idSiglas)==null){
-			Avisos.avisosFichero("Asignatura Inexistente");
+			Avisos.avisosFichero("ACDOC--Asignatura Inexistente");
 			return;
 		} 
 		String tipoGrupo = arrayDatos[3].trim();
 		if(!tipoGrupo.equalsIgnoreCase("A") && !tipoGrupo.equalsIgnoreCase("B")){
-			Avisos.avisosFichero("Tipo de grupo incorrecto");
+			Avisos.avisosFichero("ACDOC--Tipo de grupo incorrecto");
 			return;
 		}
 		int idGrupo = Integer.parseInt(arrayDatos[4].trim());
 		
 		if(!Avisos.ExistenciaGrupo(Proyecto.mapAsignaturas.get(idSiglas).getGrupos(), tipoGrupo.charAt(0), idGrupo )) {
-			Avisos.avisosFichero("Grupo Inexistente");
+			Avisos.avisosFichero("ACDOC--Grupo Inexistente");
 			return;
 		}
 		if(Avisos.ComprobarGrupoAsignado(idSiglas, idGrupo, tipoGrupo.toCharArray()[0])){		
-			Avisos.avisosFichero("Grupo ya asignado");
+			Avisos.avisosFichero("ACDOC--Grupo ya asignado");
 			return;
 		}
 		
 		if(!Avisos.ComprobarHorasAsigSuperiorAlMax(Proyecto.mapProfesores.get(dni),Proyecto.mapAsignaturas.get(idSiglas),idGrupo,
 				tipoGrupo.toCharArray()[0])){
-			Avisos.avisosFichero("Horas asignables superior al maximo");
+			Avisos.avisosFichero("ACDOC--Horas asignables superior al maximo");
 			return;
 		}
 		
 		if(Avisos.haySolapeEnProfesor(Proyecto.mapProfesores.get(dni),Proyecto.mapAsignaturas.get(idSiglas),
 				idGrupo,tipoGrupo.toCharArray()[0])){
-			Avisos.avisosFichero("Se genera solape");
+			Avisos.avisosFichero("ACDOC--Se genera solape");
 			return;
 		}
 		
 		Proyecto.mapProfesores.get(dni).anhadeDocencia(idSiglas,idGrupo,
 				tipoGrupo.toCharArray()[0]);
-		Avisos.avisosFichero("OK");				
+		Avisos.avisosFichero("ACDOC--OK");				
 		
 		return;
 	}
@@ -244,23 +244,23 @@ public class Profesor extends Persona{
 	 */
 	public static void ObtenerCalendarioClases(String[] arrayDatos) throws IOException{
 		if(arrayDatos.length!=3){
-			Avisos.avisosFichero("Numero de argumentos incorrecto");
+			Avisos.avisosFichero("CALENP--Numero de argumentos incorrecto");
 			return;
 		}
 		String dniProf=arrayDatos[1].trim();
 		String nombrefichero=arrayDatos[2].trim();
 		if(Proyecto.mapProfesores.get(dniProf)==null){
-			Avisos.avisosFichero("Profesor inexistente");
+			Avisos.avisosFichero("CALENP--Profesor inexistente");
 			return;
 		}
 		if(!Avisos.comprobarAsignacionesProfesor(dniProf)){
-			Avisos.avisosFichero("Profesor sin asignaciones");
+			Avisos.avisosFichero("CALENP--Profesor sin asignaciones");
 			return;
 		}
 		
 		Proyecto.mapProfesores.get(dniProf).ObtenerClasesProfesor(nombrefichero);
 		
-		Avisos.avisosFichero("OK");
+		Avisos.avisosFichero("CALENP--OK");
 		return;
 	}
 	/**
