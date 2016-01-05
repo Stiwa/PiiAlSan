@@ -14,7 +14,12 @@ import java.util.Set;
 
 
 public class Avisos {
-	
+	/**
+	 * Metodo que escribe al fichero avisos.txt los avisos que se vayan generando en la ejecucion del programa.
+	 * Recibe la cadena que va a escribir al fichero.
+	 * @param comando
+	 * @throws IOException
+	 */
 	public static void avisosFichero(String comando) throws IOException{	
 		Scanner fichero = null;
 
@@ -36,6 +41,12 @@ public class Avisos {
 	  	}
 		return;
 	}
+	/**
+	 * Comprueba si el DNI que recibe en forma de cadena es correcto o no.
+	 * Retorna true si es correcto, false en caso contrario.
+	 * @param DNI
+	 * @return boolean
+	 */
 	public static boolean ComprobarDNI(String DNI){
 		DNI.trim();
 		
@@ -54,6 +65,12 @@ public class Avisos {
 		}	
 		return true;
 	}	
+	/**
+	 * Comprueba si la fecha que recibe como Calendar tiene el formato y los valores permitidos por el software.
+	 * Retorna true si es correcta y false en caso de erronea.
+	 * @param Fecha
+	 * @return boolean
+	 */
 	public static boolean ComprobarFecha(Calendar Fecha){
 		
 		//Comprobamos si la fecha introducida esta entre el minimo y el maximo
@@ -77,6 +94,12 @@ public class Avisos {
 		}
 		return true;
 	}
+	/**
+	 * Verifica la existencia del fichero cuyo nombre recibe como un string.
+	 * Devuelve falso si no existe, true si existe.
+	 * @param nombre
+	 * @return boolean
+	 */
 	public static boolean compruebaExistenciaFichero(String nombre){
 		Scanner fichero = null;
 		boolean retorno = true;
@@ -88,6 +111,13 @@ public class Avisos {
 		}
 		return retorno;
 	}
+	/**
+	 * Comprueba si la fecha de ingreso de un alumno es correcta segun los criterios especificados de edad.
+	 * Retorna true si es correcta y false si no lo es.
+	 * @param fechaNac
+	 * @param fechaIng
+	 * @return boolean
+	 */
 	public static boolean ComprobarFechaIngreso(Calendar fechaNac, Calendar fechaIng){
 		
 		int edadMinima = 15;
@@ -98,6 +128,14 @@ public class Avisos {
 		}
 		return false;
 	}	
+	/**
+	 * Metodo que comprueba si el grupo que se esta pretendiendo asignar ya ha sido asignado previamente.
+	 * Devuelve false si no ha sido asignado, true si lo ha sido.
+	 * @param IdAsignatura
+	 * @param IdGrupo
+	 * @param TipoGrupo
+	 * @return boolean
+	 */
 	public static boolean ComprobarGrupoAsignado(int IdAsignatura, int IdGrupo, char TipoGrupo ){
 		boolean retorno = false;
 		Set<String> clave = Proyecto.mapProfesores.keySet();
@@ -116,6 +154,13 @@ public class Avisos {
 		}	
 		return retorno;
 	}	
+	/**
+	 * Comprueba si el numero de horas asignables es el correcto dependiendo del tipo de profesor (titular o asociado)
+	 * Retorna true si es correcto. False si es incorrecto.
+	 * @param Horas
+	 * @param TipoProfesor
+	 * @return boolean
+	 */
 	public static boolean ComprobarHorasAsig(int Horas, String TipoProfesor){
 		//Aqui depende de si el profesor es titular (20horas) o asocidado(15horas)
 		if (Horas<0){
@@ -133,6 +178,12 @@ public class Avisos {
 		
 		return true;
 	}
+	/**
+	 * Metodo que verifica si la edad calculada es correcta.
+	 * Retorna true si correcta, false si no.
+	 * @param edad
+	 * @return boolean
+	 */
 	public static boolean ComprobarEdad(int edad){
 		//comprobacion de edad minima y maxima permitida
 		int EdadMinima=15;
@@ -145,12 +196,24 @@ public class Avisos {
 		}
 		return true;
 	}
+	/**
+	 * Metodo que comprueba si un profesor es titular.
+	 * Retorna false si no lo es. True si lo es
+	 * @param arrayDatos
+	 * @return boolean
+	 */
 	public static boolean EsTitular(String arrayDatos){
 			if(Proyecto.mapProfesores.get(arrayDatos).getCategoria().equals("titular"))
 				return true;
 	return false;
 		
 	}
+	/**
+	 * Calcula el numero de asignaturas que coordina cada profesor.
+	 * Devuelve un entero con el numero de asignaturas coordinadas.
+	 * @param arrayDatos
+	 * @return entero (contador)
+	 */
 	public static int numeroAsignaturasCoordinadas(String arrayDatos){
 		int contador=0;
 		Set<Integer> clave= Proyecto.mapAsignaturas.keySet();
@@ -164,6 +227,14 @@ public class Avisos {
 		return contador;
 		
 	}	
+	/**
+	 * Comprueba la existencia del grupo del cual recibe su identificador y su tipo.
+	 * Devuelve true si existe y false si no lo hace.
+	 * @param grupos
+	 * @param tipoGrupo
+	 * @param idGrupo
+	 * @return boolean
+	 */
 	public static boolean ExistenciaGrupo(ArrayList<Grupos> grupos, char tipoGrupo, int idGrupo){
 		boolean retorno = false;
 		
@@ -176,6 +247,14 @@ public class Avisos {
 		
 		return retorno;
 	}
+	/**
+	 * Metodo que comprueba si el alumno ha cumplido los prerrequisitos necesarios de una asignatura.
+	 * Recibe un objeto alumno y otro asignatura.
+	 * Devuelve true si los ha cumplido y false si no lo ha hecho.
+	 * @param asig
+	 * @param al
+	 * @return boolean
+	 */
 	public static boolean comprobarPrerrequisitos(Asignatura asig, Alumno al){
 		boolean retorno = true;
 		for(int i=0; i<asig.getPrerrequisitos().size(); i++){
@@ -185,6 +264,16 @@ public class Avisos {
 		}
 		return retorno;
 	}
+	/**
+	 * Verifica si el numero de horas asignables de un profesor es superior al maximo o no.
+	 * Recibe un objeto profesor, una asignatura y la informacion del grupo que se pretende asignar.
+	 * Retorna true si no es superior, false si lo es.
+	 * @param p
+	 * @param a
+	 * @param idGrupo
+	 * @param tipoGrupo
+	 * @return boolean
+	 */
 	public static boolean ComprobarHorasAsigSuperiorAlMax(Profesor p,Asignatura a,int idGrupo,char tipoGrupo){
 
 		boolean retorno = true;
@@ -197,6 +286,12 @@ public class Avisos {
 		return retorno;
 		
 	}
+	/**
+	 * Comprueba si el tipo de grupo introducido es el correcto segun las especificaciones (A o B)
+	 * Retorna true si es correcto y false en caso contrario.
+	 * @param tipoGrupo
+	 * @return boolean
+	 */
 	public static boolean comprobarTipoGrupo(String tipoGrupo){
 		boolean retorno= false;
 		if(tipoGrupo.equalsIgnoreCase("A")||tipoGrupo.equalsIgnoreCase("B")){
@@ -205,6 +300,15 @@ public class Avisos {
 		}
 		return retorno;
 	}
+	/**
+	 * Verifica si en el objeto alumno que recibe hay solape entre sus asignaturas y el nuevo grupo que se pretende asignar.
+	 * Retorna true si hay solape, false si no lo hay.
+	 * @param alumno
+	 * @param asignatura
+	 * @param tipoGrupo
+	 * @param idGrupo
+	 * @return boolean
+	 */
 	public static boolean haySolapeEnAlumno(Alumno alumno, Asignatura asignatura, char tipoGrupo, int idGrupo) {
 		boolean retorno=false;
 		if(alumno.horarioSolapeAlumno(asignatura.getGrupo(idGrupo, tipoGrupo).getHoraInicio(), 
@@ -214,6 +318,15 @@ public class Avisos {
 		}
 		return retorno;
 	}
+	/**
+	 * Comprueba si hay solape en los horarios del profesor que recibe entre su docencia impartida y la nueva a añadir.
+	 * Devuelve true si hay solape y false si no lo hay.
+	 * @param profesor
+	 * @param asignatura
+	 * @param idGrupo
+	 * @param tipoGrupo
+	 * @return boolean
+	 */
 	public static boolean haySolapeEnProfesor(Profesor profesor, Asignatura asignatura, int idGrupo, char tipoGrupo) {
 		boolean retorno= false;
 		if(profesor.horarioSolapeProfesor(asignatura.getGrupo(idGrupo, tipoGrupo).getHoraInicio(),
@@ -222,6 +335,15 @@ public class Avisos {
 		}
 		return retorno;
 	}
+	/**
+	 * Metodo que comprueba si la asignatura de la cual recibe el identificador ya ha sido evaluada.
+	 * Retorna true si ha sido evaluada y false si no lo ha sido.
+	 * @param idSiglas
+	 * @param ficheroNotas
+	 * @param anhoAcademico
+	 * @return boolean
+	 * @throws IOException
+	 */
 	public static boolean comprobarAsignaturaYaEvaluada(int idSiglas, String ficheroNotas, String anhoAcademico) throws IOException{
 		boolean retorno = false;
 		Scanner fichero = new Scanner(new File(ficheroNotas));
@@ -250,6 +372,12 @@ public class Avisos {
 		fichero.close();
 		return retorno;
 	}
+	/**
+	 * Metodo que comprueba si el profesor tiene asignaciones.
+	 * Retorna true si las tiene y false sino.
+	 * @param dniProf
+	 * @return boolean
+	 */
 	public static boolean comprobarAsignacionesProfesor(String dniProf){
 		boolean retorno = true;
 		Set<Integer> clave = Proyecto.mapProfesores.get(dniProf).getDocenciaImpartida().keySet();
@@ -263,6 +391,13 @@ public class Avisos {
 		}
 		return retorno;
 	} 
+	/**
+	 * Realiza las comprobaciones del fichero de notas que se utiliza en evalua y genera los avisos pertinentes.
+	 * @param idSiglas
+	 * @param ficheroNotas
+	 * @param cursoAcademico
+	 * @throws IOException
+	 */
 	public static void comprobarFicheroNotas(int idSiglas, String ficheroNotas, String cursoAcademico) throws IOException {
 		Scanner fichero = new Scanner(new FileReader(ficheroNotas));
 		while(fichero.hasNextLine()){

@@ -6,7 +6,17 @@ import java.util.LinkedHashMap;
 import java.util.Scanner;
 import java.io.IOException;
 
-//Clase princial del proyecto.
+/**
+ * Proyecto Centro Universitario. Grupo PII113
+ * Alejandro Santome Valverde (53614814C)
+ * Santiago Salvador Rodriguez
+ */
+
+/**
+ * Clase principal del proyecto en la que se abre el fichero de ejecucion y se hacen las llamadas a los metodos.
+ * Al inicio se cargan las personas y las asignaturas a sus respectivos mapas.
+ * Al terminar, se guarda en los ficheros los cambios realizados en el programa.
+ */
 public class Proyecto {
 
 

@@ -10,18 +10,33 @@ import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.Set;
 
-
+/**
+ * Clase Profesor, que hereda de persona. En ella vamos a crear los objetos profesor necesarios.
+ * Tambien se realizan diversos metodos relacionados con los profesores.
+ */
 public class Profesor extends Persona{
 	
 	private String Departamento = new String();
 	private String Categoria = new String();
 	private int HorasAsignables;
-	//private String DocenciaImpartida = "";
 	private LinkedHashMap<Integer,Asignatura> DocenciaImpartida= new LinkedHashMap<Integer,Asignatura>();
 	
-	
+	/**
+	 * Constructor vacio.
+	 */
 	public Profesor(){
 	}
+	/**
+	 * Constructor necesario para crear objetos Profesor en un metodo de esta clase.
+	 * @param Nombre
+	 * @param Apellidos
+	 * @param DNI
+	 * @param FechaNacimiento
+	 * @param Perfil
+	 * @param Categoria
+	 * @param Departamento
+	 * @param HorasAsignables
+	 */
 	public Profesor(String Nombre, String Apellidos, String DNI, 
 		Calendar FechaNacimiento, String Perfil, String Categoria,String Departamento,int HorasAsignables ){
 	
@@ -32,7 +47,16 @@ public class Profesor extends Persona{
 	this.HorasAsignables=HorasAsignables;
 	
 	}
-// ESTE CONSTRUCTOR DE PROFESOR ES EL DEL FICHERO DE EJECUCION PARA METERLO AL MAPA
+	/**
+	 * Constructor que se utiliza para crear los objetos profesor del fichero ejecucion a la hora de cargarlos al mapa.
+	 * @param DNI
+	 * @param Nombre
+	 * @param Apellidos
+	 * @param FechaNacimiento
+	 * @param Categoria
+	 * @param Departamento
+	 * @param HorasAsignables
+	 */
 	public Profesor(String DNI,String Nombre,String Apellidos,Calendar FechaNacimiento,String Categoria,
 			String Departamento, int HorasAsignables){
 		super(Nombre,Apellidos,DNI,FechaNacimiento);
@@ -41,7 +65,17 @@ public class Profesor extends Persona{
 		this.Departamento=Departamento;
 		this.HorasAsignables=HorasAsignables;
 	}
-	//Necesario para cargar del fichero personas al mapa mapProfesores
+	/**
+	 * Constructor de profesor que es necesario para cargar del fichero personas al mapa de profesores.
+	 * @param DNI
+	 * @param Nombre
+	 * @param Apellidos
+	 * @param FechaNacimiento
+	 * @param Categoria
+	 * @param Departamento
+	 * @param HorasAsignables
+	 * @param DocenciaImpartida
+	 */
 	public Profesor(String DNI,String Nombre,String Apellidos,Calendar FechaNacimiento,String Categoria,
 			String Departamento, int HorasAsignables, String DocenciaImpartida){
 
@@ -78,13 +112,28 @@ public class Profesor extends Persona{
 			
 		}
 	}
+	/**
+	 * Getter del campo Categoria de cada profesor
+	 * @return
+	 */
 	public String getCategoria(){
 		return Categoria;
 		
 	}
+	/**
+	 * Getter del campo HorasAsignables de cada profesor
+	 * @return
+	 */
 	public int getHorasAsignables(){
 		return HorasAsignables;
 	}
+	/**
+	 * Funcionalidad del programa que se encarga de asignarle carga docente a un profesor.
+	 * Recibe un array de Strings el cual contiene la informacion del profesor y de la asignatura a anhadir a la docencia.
+	 * Hace las pertinentes comprobaciones y en caso correcto, anhade a la docencia impartida la nueva carga docente.
+	 * @param arrayDatos
+	 * @throws IOException
+	 */
 	public static void AsignaCargaDocente(String[] arrayDatos) throws IOException{
 		
 		if(arrayDatos.length != 5){
@@ -138,6 +187,12 @@ public class Profesor extends Persona{
 		
 		return;
 	}
+	/**
+	 * Anhade a la docencia impartida del profesor los nuevos campos que se le indican a traves de AsignaCargaDocente
+	 * @param idSiglas
+	 * @param idGrupo
+	 * @param tipoGrupo
+	 */
 	public void anhadeDocencia(int idSiglas, int idGrupo, char tipoGrupo) {
 		if(DocenciaImpartida.get(idSiglas)!=null){
 			DocenciaImpartida.get(idSiglas).anhadeGrupo(idGrupo, tipoGrupo);
@@ -147,6 +202,11 @@ public class Profesor extends Persona{
 		return;
 		
 	}
+	/**
+	 * Metodo auxiliar de obtener clases profesor (implementado debajo) que realiza las ordenaciones y las escribe.
+	 * @param output
+	 * @throws IOException
+	 */
 	public void ObtenerClasesProfesor(String output) throws IOException{
 		File f = new File(output);
 		BufferedWriter bufer = new BufferedWriter(new FileWriter(f));
@@ -175,6 +235,13 @@ public class Profesor extends Persona{
 	
 			return;
 	}
+	/**
+	 * Metodo que realiza la funcionalidad del proyecto de obtener el calendario de clases del profesor.
+	 * Calcula con su docencia impartida los horarios de clases (generando los avisos oportunos).
+	 * Escribe en el fichero (cuyo nombre recibe) el horario del profesor ordenado segun varios criterios.
+	 * @param arrayDatos
+	 * @throws IOException
+	 */
 	public static void ObtenerCalendarioClases(String[] arrayDatos) throws IOException{
 		if(arrayDatos.length!=3){
 			Avisos.avisosFichero("Numero de argumentos incorrecto");
@@ -196,6 +263,11 @@ public class Profesor extends Persona{
 		Avisos.avisosFichero("OK");
 		return;
 	}
+	/**
+	 * Metodo que pasa la docencia impartida del profesor, que va a estar cargada en un mapa, a un String.
+	 * Dicho string tendra cada asignatura impartida (con sus grupos) separada por ;
+	 * @return String 
+	 */
 	public String DocenciaImpartidaToString(){
 		String docencia ="";
 		boolean ponPuntoComa = false;
@@ -212,14 +284,30 @@ public class Profesor extends Persona{
 		
 		return docencia;
 	}	
+	/**
+	 * Sobreescritura del metodo toString para retornar los campos de profesor que se quieren escribir.
+	 * Primero llama al toString del padre (Persona) y luego anhade los campos particulares de profesor
+	 */
 	public String toString(){
 		
 		return (super.toString()+"\n"+Categoria +"\n" +Departamento +"\n" +HorasAsignables +"\n" +DocenciaImpartidaToString()
 		+"\n");
 	}
+	/**
+	 * Getter del mapa DocenciaImpartida
+	 * @return
+	 */
 	public LinkedHashMap<Integer, Asignatura> getDocenciaImpartida(){
 		return DocenciaImpartida;
 	}	
+	/**
+	 * Recibe el identificador del grupo (numero entero) y su tipo (caracter A/B) y comprueba si existe coincidencia.
+	 * Devuelve true si coincide. False en caso contrario
+	 * @param IdGrupo
+	 * @param TipoGrupo
+	 * @param IdAsignatura
+	 * @return boolean
+	 */
 	public boolean comprobarGrupo(int IdGrupo, char TipoGrupo, int IdAsignatura){
 		if(DocenciaImpartida.get(IdAsignatura) == null){
 			return false;
@@ -232,6 +320,12 @@ public class Profesor extends Persona{
 		}
 		return false;
 	}
+	/**
+	 * Metodo que comprueba si el numero de horas que se le pretende asignar al profesor no se excede de su maximo.
+	 * Retorna true si se le pueden asignar, false en caso contrario.
+	 * @param horasNuevaAsig
+	 * @return boolean
+	 */
 	public boolean ComprobarHorasAsignables(int horasNuevaAsig){
 		boolean retorno=true;
 		int horasYaAsignadas=0;
@@ -256,6 +350,14 @@ public class Profesor extends Persona{
 		}
 		return retorno;
 	}
+	/**
+	 * Comprueba si el horario del profesor se solapa con la nueva docencia que se le esta pretendiendo asignar.
+	 * Devuelve un boolean con true/false dependiendo del caso.
+	 * @param horaInicio
+	 * @param horaFin
+	 * @param dia
+	 * @return boolean
+	 */
 	public boolean horarioSolapeProfesor(int horaInicio, int horaFin, char dia) {
 		boolean retorno= false;
 		Set<Integer> claves = DocenciaImpartida.keySet();
