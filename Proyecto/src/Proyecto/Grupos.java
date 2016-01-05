@@ -25,7 +25,6 @@ public class Grupos implements Comparable<Grupos>{
 		this.HoraFin.set(2010, 3, 3,Horafinal,0,0);
 		this.HoraInicio.set(2010, 3, 3,Horainic, 0, 0);
 	}
-
 	public char getTipoGrupo(){
 		return TipoGrupo;
 	}
@@ -55,7 +54,6 @@ public class Grupos implements Comparable<Grupos>{
 	public String toString(){
 		return (Integer.toString(IdGrupo) +" " +TipoGrupo);
 	}
-	
 	public String ficheroAsignaturas(){
 		return (Integer.toString(IdGrupo) +" " +Dia +" " +Integer.toString(getHoraInicio()) +" " +Integer.toString(getHoraFin()));
 	}
@@ -82,7 +80,6 @@ public class Grupos implements Comparable<Grupos>{
 					return 0;
 	}
 }
-
 class comparaPorHoras implements Comparator<Grupos>{
 	public int compare(Grupos grupo1, Grupos grupo2){
 		if(grupo2.getHoraInicio()>grupo1.getHoraInicio())

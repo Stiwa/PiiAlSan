@@ -17,8 +17,7 @@ public class Persona {
 	//private String Perfil = new String();
 	
 	protected Persona(){
-	}
-	
+	}	
 	protected Persona(String Nombre, String Apellidos, String DNI, Calendar FechaNacimiento){
 		
 		this.Nombre = Nombre;
@@ -26,7 +25,6 @@ public class Persona {
 		this.DNI = DNI;
 		this.FechaNacimiento = FechaNacimiento;
 	}
-	
 	protected Persona(String Nombre, String Apellidos, String DNI, Calendar FechaNacimiento, String Perfil){
 		
 		this.Nombre = Nombre;
@@ -57,7 +55,6 @@ public class Persona {
 			return;
 		}
 
-		
 		if(perfil2.equals("alumno")){
 			String[] lineaDatos2=arrayDatos[4].trim().split("\\s+");
 			if(lineaDatos2.length!=2){
@@ -125,8 +122,7 @@ public class Persona {
 			Avisos.avisosFichero("OK");
 		}
 		
-	}
-	
+	}	
 	public String getDNI(){
 		return DNI;
 	}
@@ -136,9 +132,6 @@ public class Persona {
 	public String getApellidos(){
 		return Apellidos;
 	}
-	
-
-	//Comprobado
 	public static void cargaPersonasAMapa(String nombreArchivo) throws IOException{
 		
 		try {
@@ -153,9 +146,8 @@ public class Persona {
 					String apellidos = input.nextLine().trim();
 					String aux = input.nextLine().trim();
 					Calendar FechaNacimiento = Util.PasarACalendar(aux);
-					System.out.println(nombre);
 					//Ahora vamos con las variables particulares de alumno y profesor
-						if(perfil.trim().equals("alumno")){
+					if(perfil.trim().equalsIgnoreCase("alumno")){
 						String aux1 = input.nextLine().trim();
 						Calendar fechaIng = Util.PasarACalendar(aux1);
 						
@@ -173,7 +165,7 @@ public class Persona {
 						}
 						
 					}
-						if(perfil.trim().equals("profesor")){
+					if(perfil.trim().equalsIgnoreCase("profesor")){
 						String Categoria = input.nextLine().trim();
 						String Departamento = input.nextLine().trim();
 						int HorasAsignables = Integer.parseInt(input.nextLine().trim() );
@@ -199,13 +191,11 @@ public class Persona {
 			  System.exit(1);
 		}
 	}
-	
 	public String toString(){
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
 		return DNI+"\n"+Nombre+"\n"+Apellidos+"\n"+sdf.format(FechaNacimiento.getTime());
 		
 	}
-	
-	
+		
 }
 

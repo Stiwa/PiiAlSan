@@ -10,8 +10,6 @@ import java.util.Set;
 //Clase donde vamos a implementar pequenhos metodos que pueden usarse desde las diferentes clases del proyecto.
 public class Util {
 
- 
-	
 	//Recibe un String fecha, lo subdivide en dia, mes, anho y devuelve un Calendar
 	public static Calendar PasarACalendar(String s){
 	  
@@ -43,7 +41,7 @@ public class Util {
 			  ponAsterisco = false;
 			  clave=Proyecto.mapProfesores.keySet();
 			  for(String key:clave){
-				  bufer.write("*"+"\nProfesor\n"+Proyecto.mapProfesores.get(key).toString());
+				  bufer.write("*"+"\nprofesor\n"+Proyecto.mapProfesores.get(key).toString());
 			  }
 	
 		  }
@@ -77,7 +75,6 @@ public class Util {
 		return asignatura.getIdAsignatura();
 		
 	}
-	
 	
 }
  

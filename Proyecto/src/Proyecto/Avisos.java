@@ -88,7 +88,6 @@ public class Avisos {
 		}
 		return retorno;
 	}
-	//Comprobado
 	public static boolean ComprobarFechaIngreso(Calendar fechaNac, Calendar fechaIng){
 		
 		int edadMinima = 15;
@@ -251,7 +250,6 @@ public class Avisos {
 		fichero.close();
 		return retorno;
 	}
-
 	public static boolean comprobarAsignacionesProfesor(String dniProf){
 		boolean retorno = true;
 		Set<Integer> clave = Proyecto.mapProfesores.get(dniProf).getDocenciaImpartida().keySet();
@@ -264,8 +262,7 @@ public class Avisos {
 			}
 		}
 		return retorno;
-	}
-	 
+	} 
 	public static void comprobarFicheroNotas(int idSiglas, String ficheroNotas, String cursoAcademico) throws IOException {
 		Scanner fichero = new Scanner(new FileReader(ficheroNotas));
 		while(fichero.hasNextLine()){

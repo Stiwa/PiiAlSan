@@ -64,7 +64,6 @@ public class Asignatura {
 		}
 		
 	}
-	
 	public void AsignaturaCoord(int IdAsignatura,String Siglas,String Coordinador,String Prerrequisitos){
 		//Esta funcion vamos a usarla?????
 		this.IdAsignatura=IdAsignatura;
@@ -77,7 +76,7 @@ public class Asignatura {
 			this.Prerrequisitos.add(Integer.parseInt(lista[i]));
 			}		
 		}			
-	}	
+	}		
 	public static void AsignaCoordinador(String [] arrayDatos) throws IOException{
 
 		if(Proyecto.mapProfesores.get(arrayDatos[1])==null){
@@ -152,7 +151,6 @@ public class Asignatura {
 		}
 		return retorno;
 	}
-	//Comprobado
 	public static void cargaAsignaturasAMapa(String nombreArchivo) throws IOException{
 
 		try{
@@ -183,21 +181,6 @@ public class Asignatura {
 			  System.exit(1);
 		}
 	}
-	//Recibe un String de Asignaturas superadas. Comprueba que son correctas y las anhade al mapa
-	/*
-	public void CompruebaAsigSup(String AsigSup){
-		if(AsigSup.trim().length()!=0){
-			//Primero divide el String en grupos (idAsig + a�o + nota)
-			String Asignaturas[] = AsigSup.trim().split(";");
-			
-			//Hace cada caso del array de Strings por separado dividiendo id, a�o y nota
-			for(int i= 0; i<Asignaturas.length; i++){
-				String[] aux2 = Asignaturas[i].trim().split(" ");
-				//Nota n = new Nota(Float.parseFloat(aux2[2]), aux2[1].trim());
-				//this.asignaturasSuperadas.put(Integer.parseInt(aux2[0].trim()), n);
-			}
-		}
-	}*/
 	public String toString(){
 			
 			return IdAsignatura+"\n"+NombreAsignatura +"\n" +Siglas +"\n" +Curso +"\n" +Coordinador

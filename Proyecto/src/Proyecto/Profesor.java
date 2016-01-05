@@ -31,9 +31,7 @@ public class Profesor extends Persona{
 	this.Departamento=Departamento;
 	this.HorasAsignables=HorasAsignables;
 	
-	
 	}
-	
 // ESTE CONSTRUCTOR DE PROFESOR ES EL DEL FICHERO DE EJECUCION PARA METERLO AL MAPA
 	public Profesor(String DNI,String Nombre,String Apellidos,Calendar FechaNacimiento,String Categoria,
 			String Departamento, int HorasAsignables){
@@ -80,7 +78,6 @@ public class Profesor extends Persona{
 			
 		}
 	}
-	
 	public String getCategoria(){
 		return Categoria;
 		
@@ -88,8 +85,6 @@ public class Profesor extends Persona{
 	public int getHorasAsignables(){
 		return HorasAsignables;
 	}
-
-	
 	public static void AsignaCargaDocente(String[] arrayDatos) throws IOException{
 		
 		if(arrayDatos.length != 5){
@@ -168,10 +163,6 @@ public class Profesor extends Persona{
 					}
 				}
 			}
-			//Collections.sort(grupos);
-			//Collections.sort(gruposProfesor);
-			//Collections.sort(grupos, new comparaPorHoras());
-			//Collections.sort(gruposProfesor, new comparaPorHoras());
 			Collections.sort(gruposImprimir, new comparaPorHoras());
 			Collections.sort(gruposImprimir);
 			for(int i=0; i<gruposImprimir.size(); i++){
@@ -184,7 +175,6 @@ public class Profesor extends Persona{
 	
 			return;
 	}
-	
 	public static void ObtenerCalendarioClases(String[] arrayDatos) throws IOException{
 		if(arrayDatos.length!=3){
 			Avisos.avisosFichero("Numero de argumentos incorrecto");
@@ -206,7 +196,6 @@ public class Profesor extends Persona{
 		Avisos.avisosFichero("OK");
 		return;
 	}
-	
 	public String DocenciaImpartidaToString(){
 		String docencia ="";
 		boolean ponPuntoComa = false;
@@ -215,16 +204,14 @@ public class Profesor extends Persona{
 			ArrayList<Grupos> Grupos = DocenciaImpartida.get(key).getGrupos();
 			for(int i=0; i<Grupos.size(); i++){
 				if(ponPuntoComa)
-					docencia += ";";
+					docencia += "; ";
 				docencia += key +" " +Grupos.get(i).getTipoGrupo() +" " +Integer.toString(Grupos.get(i).getIdGrupo());
 				ponPuntoComa = true;
 			}
 		}
 		
 		return docencia;
-	}
-	
-	
+	}	
 	public String toString(){
 		
 		return (super.toString()+"\n"+Categoria +"\n" +Departamento +"\n" +HorasAsignables +"\n" +DocenciaImpartidaToString()
@@ -298,5 +285,5 @@ public class Profesor extends Persona{
 	}
 
 }
-	//xx
+
 
