@@ -13,17 +13,17 @@ Susana
 Prieto Vazquez
 28/06/1994
 03/10/2012
-18 13/14 7.2; 8 12/13 7.6; 9 12/13 6.2; 12 13/14 5.8
+8 12/13 7.6; 9 12/13 6.2; 12 13/14 5.8; 18 13/14 7.2
 34 A 1; 34 B 1
 *
 alumno
 56534219N
-Maria Luisa
+MarÃia Luisa
 Castro Anton
 11/12/1997
 02/10/2015
-
-8 A 3; 8 B 5; 10
+8 15/16 6.0
+10
 *
 alumno
 56432001Y
@@ -37,17 +37,17 @@ Alonso Perez
 profesor
 33218765A
 Carlos
-Perez Sanchez
+Perez Sachez
 07/10/1966
 titular
-Ingenieria Telematica
+IngenierÃia Telematica
 14
 12 A 1
 *
 profesor
 37834521G
 Jose
-Casas Dominguez
+Casas Domi­nguez
 17/12/1972
 asociado
 Matematica Aplicada
@@ -56,11 +56,11 @@ Matematica Aplicada
 *
 profesor
 45632109V
-Sofia
-Carbajal Martinez
+SofÃia
+Carbajal MartÃinez
 17/09/1970
 titular
-Teoria de la Senhal y Comunicaciones
+Teori­a de la Senhal y Comunicaciones
 15
 9 A 1
 *

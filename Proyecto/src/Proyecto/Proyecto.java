@@ -76,6 +76,9 @@ public class Proyecto {
 			    		case "obtenercalendarioclases" :
 			    			Profesor.ObtenerCalendarioClases(recorre);
 			    			break;
+			    		case "ordenaalumnosxnota" :
+			    			Alumno.OrdenaAlumnosPorNotas(recorre);
+			    			break;
 			    			
 			    		default :
 			    			Avisos.avisosFichero("Comando incorrecto <" +recorre[0] +">") ;			

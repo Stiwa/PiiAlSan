@@ -8,7 +8,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -17,7 +20,7 @@ import java.util.Set;
  *
  */
 
-public class Alumno extends Persona {  
+public class Alumno extends Persona implements Comparable<Alumno> {  
 	
 	private Calendar FechaIngreso = Calendar.getInstance();
 	private LinkedHashMap<Integer, Asignatura> DocenciaRecibida = new LinkedHashMap<Integer, Asignatura>();
@@ -364,6 +367,7 @@ public class Alumno extends Persona {
     	}
     	Proyecto.mapAlumnos.get(dni).cargaExpediente(output);
     	Avisos.avisosFichero("OK");
+    	return;
     	
     }
     /**
@@ -395,17 +399,11 @@ public class Alumno extends Persona {
 		  notaMedia = notaMedia/notas.size();
 		  bufer.write(" Nota media: " +notaMedia);
 		  	  
-		  bufer.close();	  
+		  bufer.close();	
+		  return;
 	}
 	//Necesario implementar metodo abstracto de la interfaz comparable
-	/**
-	 * CompareTo
-	 * @param o
-	 * @return
-	 */
-	public int compareTo(Object o) {
-		return 0;
-	}
+
 	/**
 	 * Metodo evaluar que comprueba si la nota total entre la teorica y la practica es mayor que 5, si es mayor que 5, la anhade a la lista
 	 * de asignaturas superadas y lo borra de la lista docenciaRecibida
@@ -419,6 +417,67 @@ public class Alumno extends Persona {
 		}
 	return;
 	}
-
+	/**
+	 * Metodo para calcular nota de las asignaturas superadas
+	 * @return
+	 */
+	public float CalcularNota(){
+		Set<Integer> claves = AsignaturasSuperadas.keySet();
+		float aux=0;
+		int aux1=0;
+		
+		for(int key:claves){
+			aux += AsignaturasSuperadas.get(key).getNota();
+			aux1++;
+		}
+		if(aux1==0){
+			return 0;
+		}
+	return aux/aux1;
+	}
+	/**
+	 * Metodo de la amplicacion del proyecto para ordenar alumnos por notas
+	 * @param arrayDatos
+	 * @throws IOException
+	 */
+	public static void OrdenaAlumnosPorNotas(String[] arrayDatos) throws IOException{
+		
+		if(arrayDatos.length!=2){
+			Avisos.avisosFichero("Numero de argumentos incorrecto");
+			return;
+		}
+	List<Alumno> lista = new LinkedList<Alumno>(Proyecto.mapAlumnos.values());
+	BufferedWriter buffer=new BufferedWriter(new FileWriter(arrayDatos[1].trim()));
+	Collections.sort(lista);
+	Collections.sort(lista, new ComparadorNotas());
+	for(int i=0;i<lista.size();i++){
+		buffer.write(lista.get(i).getApellidos()+" "+lista.get(i).getNombre()+" "+lista.get(i).getDNI()+" "+
+				lista.get(i).CalcularNota()+"\n");
+	}
+	buffer.close();
+	Avisos.avisosFichero("OK");
+	return;
+	}
+	/**
+	 * CompareTo del metodo OrdenarAlumnosPorNotas
+	 */
+	public int compareTo(Alumno alumno){
+		return getApellidos().compareTo(alumno.getApellidos());
+		
+		
+	}
  }
+/**
+ * Clase para comparar notas entre dos objetos alumno
+ *
+ *
+ */
+class ComparadorNotas implements Comparator<Alumno>{
+	public int compare(Alumno al1,Alumno al2){
+		if(al1.CalcularNota()<al2.CalcularNota()){
+			return -1;
+		}
+		return 1;
+	}
+}
 	
