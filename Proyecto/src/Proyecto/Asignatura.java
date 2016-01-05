@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Scanner;
 
+/**
+ * Clase asignatura que anhade las asignaturas del fichero asignaturas.txt al mapa,asigna un coordinador,anhade grupos y evalua asignaturas
+ *
+ *
+ */
 public class Asignatura {
 
 	private String Coordinador = new String();
@@ -19,22 +24,52 @@ public class Asignatura {
 	private LinkedList<Integer> Prerrequisitos = new LinkedList<Integer>();
 	private ArrayList<Grupos> Grupos = new ArrayList<Grupos>();	
 	
+	/**
+	 * Constructor vacio de asignatura
+	 */
 	public Asignatura(){
 		
 	}
 	//Constructor necesario cuando cargamos del fichero de personas a mapa
+	/**
+	 * Constructor de asignatura
+	 * @param idAsignatura
+	 */
 	public Asignatura (int idAsignatura){
 		this.IdAsignatura = idAsignatura;
 	}	
+	/**
+	 * Constructor de asignatura que anhade grupos
+	 * @param idAsignatura
+	 * @param idGrupo
+	 * @param grupo
+	 */
 	public Asignatura(int idAsignatura,int idGrupo, char grupo){
 		this.IdAsignatura=idAsignatura;	
 		Grupos.add(new Grupos(grupo, idGrupo));	
 	}	
+	/**
+	 * Constructor de asignatura
+	 * @param IdAsignatura
+	 * @param Siglas
+	 * @param Prerrequisitos
+	 */
 	public Asignatura(int IdAsignatura,String Siglas,String Prerrequisitos){
 		this.IdAsignatura= IdAsignatura;
 		this.Siglas=Siglas;	
 	}
 	//Necesario para cargar las asignaturas a los mapas
+	/**
+	 * Constructor de asignatura necesario para cargar las asignaturas en los mapas y anhade los prerrequisitos y grupos de teoria y practica
+	 * @param IdAsignatura
+	 * @param NombreAsignatura
+	 * @param Siglas
+	 * @param Curso
+	 * @param Coordinador
+	 * @param Prerrequisitos
+	 * @param gruposTeoria
+	 * @param gruposPractica
+	 */
 	public Asignatura(int IdAsignatura, String NombreAsignatura, String Siglas, int Curso, String Coordinador,
 			String Prerrequisitos, String gruposTeoria, String gruposPractica){
 		this.IdAsignatura= IdAsignatura;
@@ -64,6 +99,13 @@ public class Asignatura {
 		}
 		
 	}
+	/**
+	 * Metodo que anhade preerrequisitos
+	 * @param IdAsignatura
+	 * @param Siglas
+	 * @param Coordinador
+	 * @param Prerrequisitos
+	 */
 	public void AsignaturaCoord(int IdAsignatura,String Siglas,String Coordinador,String Prerrequisitos){
 		//Esta funcion vamos a usarla?????
 		this.IdAsignatura=IdAsignatura;
@@ -77,6 +119,11 @@ public class Asignatura {
 			}		
 		}			
 	}		
+	/**
+	 * Metodo que recorre el fichero de ejecucion para asignar un coordinador que mete en el mapa de asignaturas
+	 * @param arrayDatos
+	 * @throws IOException
+	 */
 	public static void AsignaCoordinador(String [] arrayDatos) throws IOException{
 
 		if(Proyecto.mapProfesores.get(arrayDatos[1])==null){
@@ -99,30 +146,69 @@ public class Asignatura {
 		Proyecto.mapAsignaturas.get(Util.PasarSiglasAId(arrayDatos[2].trim())).setCoordinador(arrayDatos[1]);
 		Avisos.avisosFichero("OK");
 	}	
+	/**
+	 * Devuelve la variable int Curso
+	 * @return
+	 */
 	public int getCurso(){
 		return Curso;
 	}
+	/**
+	 * Devuelve la variable int IdAsignatura
+	 * @return
+	 */
 	public int getIdAsignatura(){
 		return IdAsignatura;
 	}
+	/**
+	 * Devuelve la variable String Siglas
+	 * @return
+	 */
 	public String getSiglas(){
 		return Siglas;
 	}	
+	/**
+	 * Devuelve la variable String NombreAsignatura
+	 * @return
+	 */
 	public String getNombreAsignatura(){
 		return NombreAsignatura;
 	}
+	/**
+	 * Devuelve la variable String Coordinador
+	 * @return
+	 */
 	public String getCoordinador(){
 		return Coordinador;
 	}
+	/**
+	 * Setter de la variable String Coordinador
+	 * @param Coordinador
+	 */
 	public void setCoordinador(String Coordinador){
 		this.Coordinador = Coordinador;
 	}
+	/**
+	 * Devuelve el ArrayList Grupos
+	 * @return
+	 */
 	public ArrayList<Grupos> getGrupos() {
 		return Grupos;
 	}
+	/**
+	 * Setter del ArrayList Grupos
+	 * @param grupos
+	 */
 	public void setGrupos(ArrayList<Grupos> grupos) {
 		Grupos = grupos;
 	}
+	/**
+	 * Metodo que recorre la lista Grupos y compara las variables id y tipo de grupo con las que recibe el metodo y retorna el objeto grupo que
+	 * coincida con las variables
+	 * @param idGrupo
+	 * @param tipoGrupo
+	 * @return
+	 */
 	public Grupos getGrupo(int idGrupo,char tipoGrupo){
 		for(int i=0;i<Grupos.size();i++){
 			if(Grupos.get(i).getIdGrupo()==idGrupo && Grupos.get(i).getTipoGrupo()==tipoGrupo){
@@ -131,9 +217,20 @@ public class Asignatura {
 		}
 		return null;
 	}
+	/**
+	 * Devuelve la LinkedList Prerrequisitos
+	 * @return
+	 */
 	public LinkedList<Integer> getPrerrequisitos(){
 		return Prerrequisitos;
-	}	
+	}
+	/**
+	 * Metodo boolean que comprueba si coincide una asignatura en un grupo
+	 * @param idGrupo
+	 * @param tipoGrupo
+	 * @param idSiglas
+	 * @return
+	 */
 	public boolean comprobarGrupo(int idGrupo, char tipoGrupo, int idSiglas){
 		if(Proyecto.mapAsignaturas.get(idSiglas)==null)
 			return false;
@@ -141,6 +238,13 @@ public class Asignatura {
 			return true;
 		return false;
 	}
+	/**
+	 * Metodo boolean que recorre la lista grupos y compara las variables id y tipo de grupo para saber si coinciden con los parametros
+	 * que recibe el metodo, si coinciden retorna true
+	 * @param tipoGrupo
+	 * @param idGrupo
+	 * @return
+	 */
 	public boolean comprobarTipoGrupo(char tipoGrupo,int idGrupo) {
 		boolean retorno = false;
 		for(int i=0; i<Grupos.size(); i++){
@@ -151,6 +255,11 @@ public class Asignatura {
 		}
 		return retorno;
 	}
+	/**
+	 * Metodo que recorre el fichero asignaturas y las mete en el mapa asignaturas
+	 * @param nombreArchivo
+	 * @throws IOException
+	 */
 	public static void cargaAsignaturasAMapa(String nombreArchivo) throws IOException{
 
 		try{
@@ -181,11 +290,18 @@ public class Asignatura {
 			  System.exit(1);
 		}
 	}
+	/**
+	 * Retorna una variable String para escribir en el fichero
+	 */
 	public String toString(){
 			
 			return IdAsignatura+"\n"+NombreAsignatura +"\n" +Siglas +"\n" +Curso +"\n" +Coordinador
 					+"\n" +PrerrequisitosToString() +"\n" +gruposToString() +"\n";
 	}	
+	/**
+	 * Metodo que crea un String prerrquisitos con todos los valores de la lista Prerrequisitos separados por un ;
+	 * @return
+	 */
 	public String PrerrequisitosToString(){
 		String prerrequisitos ="";
 		boolean ponPuntoComa = false;
@@ -196,7 +312,11 @@ public class Asignatura {
 			ponPuntoComa = true;
 		}	
 		return prerrequisitos;
-	}	
+	}
+	/**
+	 * Metodo que crea dos Strings, uno para grupos de teoria y otro para grupos de practica, con los valores de la lista Grupos
+	 * @return
+	 */
 	public String gruposToString(){
 		String aux = "";
 		String aux2 = "";
@@ -218,10 +338,20 @@ public class Asignatura {
 		}
 		return (aux +"\n" +aux2);
 	}
+	/**
+	 * Metodo que anhade un nuevo grupo a la lista Grupos
+	 * @param idGrupo
+	 * @param tipoGrupo
+	 */
 	public void anhadeGrupo(int idGrupo, char tipoGrupo) {
 		Grupos.add(new Grupos(tipoGrupo,idGrupo));	
 		return;
 	}
+	/**
+	 * Metodo que evalua la asignatura recibe por el fichero de ejecucion
+	 * @param arrayDatos
+	 * @throws IOException
+	 */
 	public static void evaluaAsignatura(String[] arrayDatos) throws IOException{
 		if(arrayDatos.length != 4){
 			Avisos.avisosFichero("Numero de argumentos incorrecto");

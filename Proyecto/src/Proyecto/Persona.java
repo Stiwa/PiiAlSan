@@ -9,15 +9,32 @@ import java.util.Scanner;
 
 import  Proyecto.Avisos;
 
+/**
+ * Clase padre de alumno y profesor donde creamos un metodo que recorre el fichero de ejecucion y otro que recorre
+ * el fichero de personas para meter las personas en sus mapas
+ * 
+ *
+ *
+ */
 public class Persona {
 	private String Nombre = new String();
 	private String Apellidos = new String();
 	private String DNI = new String();
 	private Calendar FechaNacimiento = Calendar.getInstance();
-	//private String Perfil = new String();
 	
+	
+	/**
+	 * Constructor vacio de persona
+	 */
 	protected Persona(){
 	}	
+	/**
+	 * Constructor persona
+	 * @param Nombre
+	 * @param Apellidos
+	 * @param DNI
+	 * @param FechaNacimiento
+	 */
 	protected Persona(String Nombre, String Apellidos, String DNI, Calendar FechaNacimiento){
 		
 		this.Nombre = Nombre;
@@ -25,6 +42,14 @@ public class Persona {
 		this.DNI = DNI;
 		this.FechaNacimiento = FechaNacimiento;
 	}
+	/**
+	 * Constructor persona
+	 * @param Nombre
+	 * @param Apellidos
+	 * @param DNI
+	 * @param FechaNacimiento
+	 * @param Perfil
+	 */
 	protected Persona(String Nombre, String Apellidos, String DNI, Calendar FechaNacimiento, String Perfil){
 		
 		this.Nombre = Nombre;
@@ -33,6 +58,12 @@ public class Persona {
 		this.FechaNacimiento = FechaNacimiento;
 	}
 	//En datos recibimos toda la linea del fichero de ejecucion. En perfil recibimos el el tipo (al/prof)
+	/**
+	 * Metodo que recorre el fichero de ejecucion y mete las personas en los mapas
+	 * @param datos
+	 * @param perfil
+	 * @throws IOException
+	 */
 	public static void InsertaPersona(String datos, String perfil) throws IOException{  
 																						
 		String[] arrayDatos = datos.trim().split("\"");
@@ -123,15 +154,32 @@ public class Persona {
 		}
 		
 	}	
+	/**
+	 * Devuelve la variable String DNI
+	 * @return
+	 */
 	public String getDNI(){
 		return DNI;
 	}
+	/**
+	 * Devuelve la variable String Nombre
+	 * @return
+	 */
 	public String getNombre(){
 		return Nombre;
 	}
+	/**
+	 * Devuelve la variable String Apellidos
+	 * @return
+	 */
 	public String getApellidos(){
 		return Apellidos;
 	}
+	/**
+	 * Metodo que recorre el fichero personas.txt y mete las personas en los mapas
+	 * @param nombreArchivo
+	 * @throws IOException
+	 */
 	public static void cargaPersonasAMapa(String nombreArchivo) throws IOException{
 		
 		try {
@@ -191,6 +239,9 @@ public class Persona {
 			  System.exit(1);
 		}
 	}
+	/**
+	 * Retorna los campos que se quieren escribir en una variable String
+	 */
 	public String toString(){
 		SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy"); 
 		return DNI+"\n"+Nombre+"\n"+Apellidos+"\n"+sdf.format(FechaNacimiento.getTime());
