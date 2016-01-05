@@ -1,0 +1,5 @@
+1 Calculo II 7.6 12/13
+1 Probabilidad y Estadistica 6.2 12/13
+2 Programacion II 5.8 13/14
+2 Redes de Ordenadores 7.2 13/14
+ Nota media: 6.7
